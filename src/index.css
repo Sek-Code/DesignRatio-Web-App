@@ -1,5 +1,7 @@
 @import "tailwindcss";
 @import "tw-animate-css";
+/* นำเข้าฟอนต์ Playfair Display และ Montserrat เพื่อใช้ทั้งเว็บ */
+@import url("https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Montserrat:wght@400;500;600&display=swap");
 
 @custom-variant dark (&:is(.dark *));
 
@@ -46,37 +48,59 @@
 
 :root {
   --radius: 0.625rem;
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.145 0 0);
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.145 0 0);
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.205 0 0);
-  --primary-foreground: oklch(0.985 0 0);
-  --secondary: oklch(0.97 0 0);
-  --secondary-foreground: oklch(0.205 0 0);
-  --muted: oklch(0.97 0 0);
-  --muted-foreground: oklch(0.556 0 0);
-  --accent: oklch(0.97 0 0);
-  --accent-foreground: oklch(0.205 0 0);
+  /* โทนสีหลักของแบรนด์: ประกาศครั้งเดียว ใช้ได้ทั่วเว็บผ่านตัวแปรหรือ Tailwind */
+  --color-light-cream: #fffbf7;
+  --color-cream: #f3ece3;
+  --color-matcha: #9e9957;
+  --color-brown: #411d03;
+
+  --font-display: "Playfair Display", serif;
+  --font-body: "Montserrat", sans-serif;
+  --h1-size: 48px;
+  --h1-weight: 600;
+  --h2-size: 32px;
+  --h2-weight: 600;
+  --h3-size: 22px;
+  --h3-weight: 600;
+  --p-size: 16px;
+  --p-weight: 400;
+  --btn-size: 14px;
+  --btn-weight: 500;
+  --nav-size: 16px;
+  --nav-weight: 700;
+
+  /* Semantic: จับคู่สีแบรนด์กับบทบาทใน UI */
+  --background: var(--color-light-cream);
+  --foreground: var(--color-brown);
+  --card: var(--color-light-cream);
+  --card-foreground: var(--color-brown);
+  --popover: var(--color-light-cream);
+  --popover-foreground: var(--color-brown);
+  --primary: var(--color-brown);
+  --primary-foreground: var(--color-light-cream);
+  --secondary: var(--color-cream);
+  --secondary-foreground: var(--color-brown);
+  --muted: var(--color-cream);
+  --muted-foreground: #6b5435;
+  --accent: var(--color-matcha);
+  --accent-foreground: var(--color-brown);
   --destructive: oklch(0.577 0.245 27.325);
-  --border: oklch(0.922 0 0);
-  --input: oklch(0.922 0 0);
-  --ring: oklch(0.708 0 0);
-  --chart-1: oklch(0.646 0.222 41.116);
-  --chart-2: oklch(0.6 0.118 184.704);
-  --chart-3: oklch(0.398 0.07 227.392);
-  --chart-4: oklch(0.828 0.189 84.429);
-  --chart-5: oklch(0.769 0.188 70.08);
-  --sidebar: oklch(0.985 0 0);
-  --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.205 0 0);
-  --sidebar-primary-foreground: oklch(0.985 0 0);
-  --sidebar-accent: oklch(0.97 0 0);
-  --sidebar-accent-foreground: oklch(0.205 0 0);
-  --sidebar-border: oklch(0.922 0 0);
-  --sidebar-ring: oklch(0.708 0 0);
+  --border: #e0d6c7;
+  --input: #e0d6c7;
+  --ring: #9e9957;
+  --chart-1: #9e9957;
+  --chart-2: #f3ece3;
+  --chart-3: #fffbf7;
+  --chart-4: #411d03;
+  --chart-5: #6b5435;
+  --sidebar: var(--color-cream);
+  --sidebar-foreground: var(--color-brown);
+  --sidebar-primary: var(--color-brown);
+  --sidebar-primary-foreground: var(--color-light-cream);
+  --sidebar-accent: var(--color-matcha);
+  --sidebar-accent-foreground: var(--color-brown);
+  --sidebar-border: #e0d6c7;
+  --sidebar-ring: #9e9957;
 }
 
 .dark {
@@ -118,6 +142,60 @@
     @apply border-border outline-ring/50;
   }
   body {
+    font-family: var(--font-body);
     @apply bg-background text-foreground;
   }
+
+  h1,
+  .font-display {
+    font-family: var(--font-display);
+  }
+
+  /* ตัวอย่าง HTML การใช้งาน (คัดลอกไปลองได้)
+     1) Section พื้นหลังครีม + หัวเรื่อง Playfair
+     <section class="bg-cream text-brown font-body p-6 space-y-3">
+       <h1 class="font-display text-4xl">หัวเรื่อง</h1>
+       <p class="text-lg">ข้อความปกติ</p>
+     </section>
+
+     2) การใช้ตัวแปร CSS ตรง (ไม่ใช้คลาส Tailwind)
+     <div style="background: var(--color-light-cream); color: var(--color-brown); font-family: var(--font-body); padding: 16px;">
+       <h2 style="font-family: var(--font-display); font-size: var(--h2-size); font-weight: var(--h2-weight);">
+         หัวข้อย่อย
+       </h2>
+       <p style="font-size: var(--p-size); font-weight: var(--p-weight);">ข้อความ</p>
+     </div>
+
+     3) ปุ่มใช้สีแบรนด์
+     <button
+       class="font-body text-sm px-4 py-2 rounded-full"
+       style="background: var(--primary); color: var(--primary-foreground);"
+     >
+       ปุ่มตัวอย่าง
+     </button>
+
+     4) Navbar + ลิงก์
+     <nav class="bg-lightCream text-brown font-display text-base font-bold px-4 py-3 flex gap-4 items-center">
+       <span class="text-lg">Brand</span>
+       <a class="font-body font-medium hover:text-matcha" href="#">หน้าแรก</a>
+       <a class="font-body font-medium hover:text-matcha" href="#">บริการ</a>
+       <a class="font-body font-medium hover:text-matcha" href="#">ติดต่อ</a>
+     </nav>
+
+     5) การ์ดสินค้า
+     <div class="bg-white text-brown font-body border border-border rounded-lg p-4 shadow-sm space-y-2">
+       <h3 class="font-display text-2xl">สินค้า A</h3>
+       <p class="text-sm text-brown/80">รายละเอียดสั้น ๆ</p>
+       <div class="flex gap-2">
+         <span class="px-2 py-1 rounded-full text-xs" style="background: var(--color-cream);">ใหม่</span>
+         <span class="px-2 py-1 rounded-full text-xs" style="background: var(--color-matcha); color: var(--color-brown);">แนะนำ</span>
+       </div>
+       <button
+         class="font-body text-sm px-4 py-2 rounded-md"
+         style="background: var(--primary); color: var(--primary-foreground);"
+       >
+         เพิ่มลงตะกร้า
+       </button>
+     </div>
+  */
 }
