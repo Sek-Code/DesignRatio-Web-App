@@ -1,7 +1,7 @@
-import CarouselImages from "./components/CarouselImage";
-import AboutUs from "./components/AboutUs";
-import CustomBlend from "./components/CustomBlend";
-import OurProducts from "./components/OurProducts";
+import CarouselImages from "./session/CarouselImage";
+import AboutUs from "./session/AboutUs";
+import CustomBlend from "./session/CustomBlend";
+import OurProducts from "./session/OurProducts";
 
 export default function HomeContainer() {
   return (
