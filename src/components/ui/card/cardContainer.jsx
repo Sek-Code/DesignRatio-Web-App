@@ -1,5 +1,14 @@
-const increase =
+import { useState } from "react";
 
-const decrease =
+const CounterAddInCart = () => {
+    const [count, setCount] = useState(0);
 
-const addToCart =
+    const increase = () => {
+        setCount(count + 1)
+    }
+
+    const decrease = () => {
+        setCount(count -1 )
+    }
+
+}
