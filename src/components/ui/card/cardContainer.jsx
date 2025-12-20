@@ -1,17 +1,5 @@
-export function Increase() {
-    return (
-        <></>
-    )
-}
+const increase =
 
-export function Decrease() {
-    return (
-        <></>
-    )
-}
+const decrease =
 
-export function AddToCart() {
-    return (
-        <></>
-    )
-}
+const addToCart =
