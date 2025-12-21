@@ -14,18 +14,19 @@ import { createRoot } from "react-dom/client";
 // )
 
 const router = createBrowserRouter([
-  {
-    path: "/",
-    element: <LayoutScreen />,
-    children: [
-      { path: "/", element: <HomeContainer /> },
-      // { path: "/owner", element: <Owner /> },
+  {path: "/",
+    element: <App />,
+    children: [{
+        path: "/",
+        element: <LayoutScreen />,
+        children: [
+          { path: "/", element: <HomeContainer /> },
+         // { path: "/owner", element: <Owner /> },
+        ]}
     ],
   },
 ]);
 
 createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router}>
-    <App />
-  </RouterProvider>
+  <RouterProvider router={router} />
 );

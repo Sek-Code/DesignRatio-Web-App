@@ -6,10 +6,10 @@ import OurProducts from "./session/OurProducts";
 export default function HomeContainer() {
   return (
     <>
-      <CarouselImages />
+      {/* <CarouselImages /> */}
       <AboutUs />
-      <CustomBlend />
-      <OurProducts />
+      {/* <CustomBlend /> */}
+      {/* <OurProducts /> */}
     </>
   );
 }
