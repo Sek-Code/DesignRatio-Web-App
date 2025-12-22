@@ -12,8 +12,7 @@ export default function CustomBlend() {
                     rerum accusantium exercitationem eum iste voluptates quo iusto dolor
                     necessitatibus? Earum laboriosam quis quaerat esse, voluptas
                     dignissimos.</p>
-            <div className="relative w-full">        
-                    
+            <div className="relative w-full">
             <img src={bgBlend} alt="bg blend" className="w-full "/>
             <Button variant="secondary" className="absolute top-[7%] left-1/2
       -translate-x-1/2" >Blend Now </Button>

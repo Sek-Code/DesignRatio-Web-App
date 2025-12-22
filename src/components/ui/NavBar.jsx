@@ -129,7 +129,7 @@ const Navbar = () => {
               href={item.href}        // ลิงก์ปลายทาง
               className="nav-link transition" // ใช้ nav-link + transition ให้ hover ลื่น
             >
-              {item.label}            // แสดงชื่อเมนู
+              {item.label}
             </a>
           ))}
         </nav>

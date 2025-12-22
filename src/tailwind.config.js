@@ -7,10 +7,10 @@ export default {
     extend: {
       // สีแบรนด์: ใช้ผ่านคลาส bg-*, text-*, border-*
       colors: {
-        lightCream: "#FFFBF7",
-        cream: "#F3ECE3",
-        matcha: "#9E9957",
-        brown: "#411D03",
+        'lightCream': "#FFFBF7",
+        'cream': "#F3ECE3",
+        'matcha': "#9E9957",
+        'brown': "#411D03",
       },
       // ฟอนต์: ใช้ font-display สำหรับหัวเรื่อง, font-body/font-sans สำหรับเนื้อความ
       fontFamily: {
