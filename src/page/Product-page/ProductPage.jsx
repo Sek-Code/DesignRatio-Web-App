@@ -2,7 +2,7 @@ import CardScreen from "@/components/ui/card/CardScreen";
 
 export default function ProductPage (){
     return(
-        <div className="justify-center items-center flex flex-col">
+        <div className="justify-center items-center flex flex-col m-4">
             <h1 class="h1-style py-12 text-[#9e9957]">Products</h1>
             <div className="flex flex-wrap justify-center mx-120">
                 <CardScreen></CardScreen>
