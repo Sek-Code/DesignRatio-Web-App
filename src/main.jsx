@@ -7,26 +7,26 @@ import LayoutScreen from './page/layout/LayoutScreen';
 import HomeContainer from './page/home/HomeContainer';
 import { createRoot } from "react-dom/client";
 
-// ReactDOM.createRoot(document.getElementById('root')).render(
-//   <React.StrictMode>
-//     <App />
-//   </React.StrictMode>
-// )
+ReactDOM.createRoot(document.getElementById('root')).render(
+  <React.StrictMode>
+    <App />
+  </React.StrictMode>
+)
 
-const router = createBrowserRouter([
-  {path: "/",
-    element: <App />,
-    children: [{
-        path: "/",
-        element: <LayoutScreen />,
-        children: [
-          { path: "/", element: <HomeContainer /> },
-         // { path: "/owner", element: <Owner /> },
-        ]}
-    ],
-  },
-]);
+// const router = createBrowserRouter([
+//   {path: "/",
+//     element: <App />,
+//     children: [{
+//         path: "/",
+//         element: <LayoutScreen />,
+//         children: [
+//           { path: "/", element: <HomeContainer /> },
+//          // { path: "/owner", element: <Owner /> },
+//         ]}
+//     ],
+//   },
+// ]);
 
-createRoot(document.getElementById("root")).render(
-  <RouterProvider router={router} />
-);
+// createRoot(document.getElementById("root")).render(
+//   <RouterProvider router={router} />
+// );
