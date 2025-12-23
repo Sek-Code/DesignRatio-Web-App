@@ -1,11 +1,7 @@
-import { useState } from "react";
-
+import { Counter } from "./cardContainer"
 
 export default function CardScreen() {
-
-    const [count, setCount] = useState(0);
-
-
+    const {count, increament, decreament} = Counter()
 
     return (
         <div>
@@ -18,17 +14,13 @@ export default function CardScreen() {
                 <div className="flex flex-row gap-5 h3-style text-[#411D03] pb-5">
                     <button
                         className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8"
-                        onClick={() => {
-                            setCount(prev => Math.max(prev-1,0))
-                        }}>
+                        onClick={decreament}>
                         <p>-</p>
                     </button>
                     <p>{count}</p>
                     <button
                         className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8"
-                        onClick={() => {
-                            setCount(count + 1)
-                        }}>
+                        onClick={increament}>
                         <p>+</p>
                     </button>
                 </div>
