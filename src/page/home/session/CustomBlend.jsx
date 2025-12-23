@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/button"
+import { Button } from "@/components/ui/Button"
 import bgBlend from "@/assets/img/bg-blend-crop.png"
 
 export default function CustomBlend() {
