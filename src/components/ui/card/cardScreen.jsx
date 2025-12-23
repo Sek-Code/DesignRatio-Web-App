@@ -13,13 +13,13 @@ export default function CardScreen() {
                 <p className="p-style text-[#411D03] pb-5">Size S │ Size L</p>
                 <div className="flex flex-row gap-5 h3-style text-[#411D03] pb-5">
                     <button
-                        className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8"
+                        className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8 active:bg-[#411D03] active:text-white"
                         onClick={decreament}>
                         <p>-</p>
                     </button>
                     <p>{count}</p>
                     <button
-                        className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8"
+                        className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8 active:bg-[#411D03] active:text-white"
                         onClick={increament}>
                         <p>+</p>
                     </button>
