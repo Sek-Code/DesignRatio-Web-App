@@ -1,18 +1,12 @@
 import { useState } from "react";
 
-const CounterAddInCart = () => {
+
+export default function CardScreen() {
+
     const [count, setCount] = useState(0);
 
-    const increase = () => {
-        setCount(count + 1)
-    }
 
-    const decrease = () => {
-        setCount(count -1 )
-    }
 
-}
-export default function CardScreen() {
     return (
         <div>
             <div className="flex flex-col items-center w-64 h-114">
@@ -22,11 +16,19 @@ export default function CardScreen() {
                     <h3 className="h3-style pt-5 pb-4 text-[#411D03]">Tea</h3>
                     <p className="p-style text-[#411D03] pb-5">Size S │ Size L</p>
                     <div className="flex flex-row gap-5 h3-style text-[#411D03] pb-5">
-                        <button className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8">
+                        <button
+                            className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8"
+                            onClick = {() => {
+                                setCount( count - 1)
+                            }}>
                             <p>-</p>
                         </button>
-                        <p>0</p>
-                        <button className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8">
+                        <p>{count}</p>
+                        <button
+                            className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8"
+                            onClick = {() => {
+                                setCount(count + 1)
+                            }}>
                             <p>+</p>
                         </button>
                     </div>
