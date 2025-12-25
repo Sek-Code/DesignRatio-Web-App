@@ -16,7 +16,13 @@ export default function OurProduct() {
                 <CardScreen product = {productSection}/> 
                 
             </div>
-            
+            <Link
+                to="/products"
+                className="hover:text-[(--matcha-color)] transition-colors">
+                <Button variant="default"  >
+                    See more
+                </Button>
+            </Link>
         </div>
     )
 }
