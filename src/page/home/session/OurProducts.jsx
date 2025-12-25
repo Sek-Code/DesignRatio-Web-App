@@ -18,7 +18,7 @@ export default function OurProduct() {
             </div>
             <Link
                 to="/products"
-                className="hover:text-[(--matcha-color)] transition-colors">
+                className="hover:text-[(--matcha-color)] transition-colors flex justify-center mb-16">
                 <Button variant="default"  >
                     See more
                 </Button>
