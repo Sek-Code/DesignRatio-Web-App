@@ -1,10 +1,42 @@
 import Checkbox from "./Checkbox";
 
-const ListBox1 = () => {
+const items = [
+  { id: "herb-jasmine", name: "Jasmine", price: "+ 20" },
+  { id: "herb-rose", name: "Rose Petals", price: "+ 20" },
+  { id: "herb-mint", name: "Mint", price: "+ 10" },
+  { id: "herb-chamomile", name: "Charmomile", price: "+ 30" },
+  { id: "herb-chrysanthemum", name: "Chrysanthemum", price: "+ 10" },
+  { id: "herb-lavender", name: "Lavender", price: "+ 40" },
+  { id: "herb-lemongrass", name: "Lemon Grass", price: "+ 20" },
+];
+
+const ListBox1 = ({ selectedItems, onToggle, max }) => {
     return(
-        <div className="w-80 bg-(--color-matcha) rounded-xl flex flex-col justify-center items-center px-10 py-5 gap-y-2">
-            <h3 className="text-white lg:text-2xl">Herbs</h3>
-            <div className="flex justify-center items-center gap-x-5">
+        <div className="w-80 bg-(--color-matcha) rounded-xl flex flex-col justify-center items-center px-10 py-5">
+            <h3 className="text-white lg:text-2xl pb-2">Herbs</h3>
+
+        {items.map((item) => {
+        const checked = selectedItems.includes(item.id);
+        const disabled = !checked && selectedItems.length >= max;
+
+        return (
+          <div key={item.id} className="w-full flex justify-between items-center gap-x-5">
+            <div className="flex justify-start gap-x-5"><Checkbox
+                checked={checked}
+                disabled={disabled}
+                onChange={() => onToggle(item.id)}
+              />
+            <div className="flex flex-col justify-start items-start text-white">{item.name}</div>
+            </div>
+            <div className="flex justify-start">
+                <div className="flex justify-start items-start text-white text-left">{item.price}</div>
+                <div></div>
+            </div>
+          </div>
+        );
+        })}
+
+            {/* <div className="flex justify-center items-center gap-x-5">
             <div className="flex flex-col justify-start items-start">
                 <Checkbox />
                 <Checkbox />
@@ -32,7 +64,7 @@ const ListBox1 = () => {
                 <p>+ 40</p>
                 <p>+ 20</p>
             </div>
-            </div>
+            </div> */}
         </div>
     );
 };
