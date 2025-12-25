@@ -5,6 +5,10 @@ import ListBox3 from "./ListBox3";
 import { Button } from "@/components/ui/button";
 
 export default function Blending() {
+
+    // const sizeS = () => {
+    //     if(Checkbox === 4){};
+
     return (
         <div className="flex flex-col justify-center items-center gap-y-7 px-5 py-10 mb-16">
             <h3 className="w-full flex justify-center items-center text-center lg:text-2xl">Step 3: Choose Your Ingredients</h3>
