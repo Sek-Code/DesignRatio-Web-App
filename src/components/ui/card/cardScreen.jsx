@@ -13,8 +13,18 @@ export default function CardScreen({product}) {
                     <img src={product.image} className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover" />
                 </div>
                 <h3 className="h3-style pt-5 pb-4 text-[#411D03] line-clamp-2">{product.title}</h3>
-                <p className="p-style text-[#411D03] pb-5">Size S │ Size L</p>
+                
+                <div className="flex">
+                <div>
+                <p className="p-style text-[#411D03] pb-5">Size S  </p>
                 <p>{product.price} bath</p>
+                </div>
+
+                <p>|</p>
+
+                <p className="p-style text-[#411D03] pb-5"> Size L</p>
+                <p>{product.rating.rate} bath</p>
+                </div>
                 
                 <div className="flex flex-row gap-5 h3-style text-[#411D03] pb-5">
                     <button
