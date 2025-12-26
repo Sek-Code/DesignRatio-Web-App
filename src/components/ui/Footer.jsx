@@ -13,7 +13,7 @@ return (
         <div>
             <nav className="h1 flex flex-col px-4 sm:px-6 md:flex-row items-center gap-20 text-amber-950">
                 <Link
-                to="/blending"
+                to="/"
                 className="hover:text-(--color-matcha) transition">Home
                 </Link>
 
@@ -23,7 +23,7 @@ return (
                 </Link>
 
                 <Link
-                to="/products"
+                to="/product"
                 className="hover:text-(--color-matcha) transition text-(--nav-size)">Product
                 </Link>
 
