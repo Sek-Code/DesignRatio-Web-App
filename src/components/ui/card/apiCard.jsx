@@ -4,7 +4,6 @@ import {  useState } from "react";
 export function useProducts() {
     const[products,setProducts] = useState([]);
 
-    
     const fetchData = async() => {
         try {
             const products = await axios.get("https://fakestoreapi.com/products");
@@ -14,9 +13,7 @@ export function useProducts() {
         }
     }
 
-    
         fetchData();
-    
 
     return products;
 }
