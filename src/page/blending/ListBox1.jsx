@@ -1,6 +1,6 @@
 import Checkbox from "./Checkbox";
 
-const items = [
+const itemsHerbs = [
   { id: "herb-jasmine", name: "Jasmine", price: "+ 20" },
   { id: "herb-rose", name: "Rose Petals", price: "+ 20" },
   { id: "herb-mint", name: "Mint", price: "+ 10" },
@@ -15,23 +15,21 @@ const ListBox1 = ({ selectedItems, onToggle, max }) => {
         <div className="w-80 bg-(--color-matcha) rounded-xl flex flex-col justify-center items-center px-10 py-5">
             <h3 className="text-white lg:text-2xl pb-2">Herbs</h3>
 
-        {items.map((item) => {
+        {itemsHerbs.map((item) => {
         const checked = selectedItems.includes(item.id);
         const disabled = !checked && selectedItems.length >= max;
 
         return (
-          <div key={item.id} className="w-full flex justify-between items-center gap-x-5">
-            <div className="flex justify-start gap-x-5"><Checkbox
+          <div key={item.id} className="w-full flex justify-between gap-x-5">
+            <div className="w-4/5 flex justify-start gap-x-5">
+                <Checkbox
                 checked={checked}
                 disabled={disabled}
                 onChange={() => onToggle(item.id)}
-              />
-            <div className="flex flex-col justify-start items-start text-white">{item.name}</div>
+                />
+                <div className="text-white">{item.name}</div>
             </div>
-            <div className="flex justify-start">
-                <div className="flex justify-start items-start text-white text-left">{item.price}</div>
-                <div></div>
-            </div>
+            <div className="w-1/5 text-white">{item.price}</div>
           </div>
         );
         })}
