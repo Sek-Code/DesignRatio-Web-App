@@ -1,16 +1,15 @@
 import { useState } from "react";
 
-export function Counter(){
-    const [count, setCount] = useState(1)
+export function useCounter() {
+  const [count, setCount] = useState(1);
 
-    const increament = () => setCount(count => count + 1)
-    const decreament = () => setCount(count => Math.max(count - 1, 1))
+  const increment = () => setCount((value) => value + 1);
+  const decrement = () => setCount((value) => Math.max(value - 1, 1));
 
-
-    return{
-        count,
-        increament,
-        decreament
-    }
+  return {
+    count,
+    increment,
+    decrement,
+  };
 }
 
