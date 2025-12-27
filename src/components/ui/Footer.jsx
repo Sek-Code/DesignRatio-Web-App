@@ -8,12 +8,12 @@ return (
         <div className="max-w-7xl mx-auto px-4 md:px-5 flex flex-col md:flex-row items-center justify-between gap-9">
 
             <div className="flex flex-row items-center">
-                <img src={Logo} alt="LOGO" className="h-28 w-42"/>
+                <Link to="/"><img src={Logo} alt="LOGO" className="h-28 w-42"/></Link>
             </div>
         <div>
-            <nav className="h1 flex flex-col px-4 sm:px-6 md:flex-row items-center gap-20 text-amber-950">
+            <nav className="flex flex-col px-4 sm:px-6 md:flex-row items-center gap-x-24 lg:gap-y-16 text-amber-950">
                 <Link
-                to="/blending"
+                to="/"
                 className="hover:text-(--color-matcha) transition">Home
                 </Link>
 
