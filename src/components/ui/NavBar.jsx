@@ -145,21 +145,21 @@ const Navbar = () => {
             rounded-full p-2: ปุ่มวงกลม + padding
             hover:text-brown: hover แล้วเปลี่ยนสี
           */}
-          <button
-            type="button"
+          <Link
+            to="/profile"
             aria-label="Profile"
             className="rounded-full p-2 transition hover:text-brown"
           >
             {/* ไอคอน User */}
             <User className="size-5" />
-          </button>
+          </Link>
 
           {/* 
             ปุ่มตะกร้า
             relative: เพื่อให้ badge (ตัวเลข) absolute อ้างอิงตำแหน่งในปุ่มนี้
           */}
-          <button
-            type="button"
+          <Link
+            to="/checkout"
             aria-label="Cart"
             className="relative rounded-full p-2 transition hover:text-brown"
           >
@@ -179,7 +179,7 @@ const Navbar = () => {
             <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
               2
             </span>
-          </button>
+          </Link>
         </div>
       </div>
 
@@ -244,18 +244,18 @@ const Navbar = () => {
               */}
               <div className="flex items-center justify-between px-4 py-3">
                 {/* ปุ่ม Profile mobile */}
-                <button
-                  type="button"
+                <Link
+                  to="/profile"
                   aria-label="Profile"
                   className="rounded-full p-2 text-matcha transition hover:text-brown"
                   onClick={() => setOpen(false)} // กดแล้วปิดเมนู
                 >
                   <User className="size-5" />
-                </button>
+                </Link>
 
                 {/* ปุ่ม Cart mobile */}
-                <button
-                  type="button"
+                <Link
+                  to="/checkout"
                   aria-label="Cart"
                   className="relative rounded-full p-2 text-matcha transition hover:text-brown"
                   onClick={() => setOpen(false)} // กดแล้วปิดเมนู
@@ -265,7 +265,7 @@ const Navbar = () => {
                   <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
                     2
                   </span>
-                </button>
+                </Link>
               </div>
             </nav>
           </div>
