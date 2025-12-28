@@ -23,7 +23,7 @@ return (
                 </Link>
 
                 <Link
-                to="/products"
+                to="/product"
                 className="hover:text-(--color-matcha) transition text-(--nav-size)">Product
                 </Link>
 
