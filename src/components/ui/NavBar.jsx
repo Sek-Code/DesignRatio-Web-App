@@ -1,17 +1,14 @@
 // นำเข้า React เพื่อให้ใช้ JSX ได้ และนำเข้า useState สำหรับเก็บ state ใน component
 import React, { useState } from "react";
-
-// นำเข้าไอคอนจาก lucide-react เพื่อใช้เป็น React components (SVG icons)
+import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
-
-// นำเข้าไฟล์รูปโลโก้จาก path alias (@/) เพื่อใช้เป็น src ของ <img />
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
-// สร้าง array ของลิงก์เมนู
-// label = ข้อความที่แสดง, href = ลิงก์ปลายทาง
+
+// เมนูหลักสำหรับ routing
 const navLinks = [
-  { label: "Blending", href: "#" }, // เมนู Blending ลิงก์ไปที่ #
-  { label: "Product", href: "#" },  // เมนู Product ลิงก์ไปที่ #
-  { label: "Contact", href: "#" },  // เมนู Contact ลิงก์ไปที่ #
+  { label: "Blending", to: "/blending" },
+  { label: "Product", to: "/product" },
+  { label: "Contact", to: "/contact" },
 ];
 
 // ประกาศ functional component ชื่อ Navbar
@@ -112,25 +109,25 @@ const Navbar = () => {
             flex items-center gap-2: ให้ไอคอนกับข้อความอยู่บรรทัดเดียวกัน
             transition: ทำให้ hover ลื่น
           */}
-          <a href="#" className="nav-link flex items-center gap-2 transition">
+          <Link to="/" className="nav-link flex items-center gap-2 transition">
             {/* ไอคอน Home ขนาด 16px โดยประมาณ */}
             <Home className="size-4" />
             {/* ข้อความเมนู */}
             Home
-          </a>
+          </Link>
 
           {/* 
             วน render เมนูที่เหลือจาก navLinks
             key ต้อง unique เพื่อให้ React จัดการ list ได้ถูกต้อง
           */}
           {navLinks.map((item) => (
-            <a
-              key={item.label}        // key ใช้ label เพราะไม่ซ้ำกันในชุดนี้
-              href={item.href}        // ลิงก์ปลายทาง
-              className="nav-link transition" // ใช้ nav-link + transition ให้ hover ลื่น
+            <Link
+              key={item.label}
+              to={item.to}
+              className="nav-link transition"
             >
               {item.label}
-            </a>
+            </Link>
           ))}
         </nav>
 
@@ -216,16 +213,14 @@ const Navbar = () => {
                 hover:bg-cream: hover แล้วพื้นหลังเป็นสี cream
                 onClick: กดแล้วปิดเมนูด้วย setOpen(false)
               */}
-              <a
-                href="#"
+              <Link
+                to="/"
                 className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition hover:bg-cream"
                 onClick={() => setOpen(false)}
               >
-                {/* ไอคอน Home */}
                 <Home className="size-4" />
-                {/* ข้อความ */}
                 Home
-              </a>
+              </Link>
 
               {/* 
                 วนเมนูอื่นๆ ใน mobile
@@ -233,14 +228,14 @@ const Navbar = () => {
                 onClick ปิดเมนูหลังเลือก (UX ดีขึ้น)
               */}
               {navLinks.map((item) => (
-                <a
+                <Link
                   key={item.label}
-                  href={item.href}
+                  to={item.to}
                   className="nav-link flex items-center justify-center px-4 py-3 transition hover:bg-cream"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
-                </a>
+                </Link>
               ))}
 
               {/* 

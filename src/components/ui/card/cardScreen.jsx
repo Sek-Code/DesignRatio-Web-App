@@ -41,7 +41,7 @@ function CardItem({ product }) {
 
 export default function CardScreen({ product }) {
   return (
-    <div className="flex items-center w-64 h-114 gap-7">
+    <div className="flex flex-wrap items-center w-full gap-7">
       {product.map((item) => (
         <CardItem key={item.id || item.title} product={item} />
       ))}
