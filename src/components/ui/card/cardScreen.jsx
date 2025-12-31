@@ -1,5 +1,6 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
+import { teaProducts } from "@/mock-data/teaData";
 
 function CardItem({ product }) {
   const { count, increment, decrement } = useCounter();
@@ -9,27 +10,27 @@ function CardItem({ product }) {
       
       <div className="">
         <img
-          src={product.image}
-          alt={product.title}
+          src={product.img}
+          alt={product.name}
           className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover"
         />
       </div>
       
-      <h3 className="h3-style pt-5 pb-4 text-[#411D03] truncate w-full text-center">
-        {product.title}
+      <h3 className="h3-style pt-5 pb-4 text-[#411D03] truncate w-full text-center ">
+        {product.name}
       </h3>
       
       <div className="w-full flex justify-around pb-6 items-center">
         <div className="flex flex-col items-center">
         <p>Size S</p>
-        <p>{product.price} bath </p> 
+        <p>{product.sizes.S.price} bath </p> 
         </div>
 
         <p>|</p>
 
         <div className="flex flex-col items-center">
         <p>Size L</p>
-        <p>{product.price} bath</p>
+        <p>{product.sizes.M.price} bath</p>
         </div>
       </div>
       
@@ -57,11 +58,11 @@ function CardItem({ product }) {
   );
 }
 
-export default function CardScreen({ product }) {
+export default function CardScreen() {
   return (
     <div className="flex flex-wrap justify-center items-center w-full gap-7">
-      {product.map((item) => (
-        <CardItem key={item.id || item.title} product={item} />
+      {teaProducts.map((item) => (
+        <CardItem key={item.id || item.name} product={item} />
       ))}
     </div>
   );
