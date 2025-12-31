@@ -6,8 +6,10 @@ export function useCounter() {
   const increment = () => setCount((value) => value + 1);
   const decrement = () => setCount((value) => Math.max(value - 1, 1));
 
+
   return {
     count,
+
     increment,
     decrement,
   };
