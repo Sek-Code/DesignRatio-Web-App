@@ -8,6 +8,24 @@ function CardItem({ product }) {
   const { count, increment, decrement } = useCounter();
   const [selectedSize, setSelectedSize] = useState(null)
 
+  const handleAddToCart = () => {
+  if (!selectedSize) {
+    alert("กรุณาเลือก size ก่อน");
+    return;
+  }
+
+  const cartItem = {
+    id: product.id,
+    name: product.name,
+    size: selectedSize,
+    price: product.sizes[selectedSize].price,
+    qty: count,
+    image: product.img
+  };
+
+  console.log("Add to cart:", cartItem);
+};
+
   return (
     <div className=" w-66 h-auto mb-15 p-3 flex flex-col items-center">
 
@@ -52,8 +70,14 @@ function CardItem({ product }) {
           <p>+</p>
         </button>
       </div>
-      <Button variant="default" className=" bg-[#411D03] text-[#f3ece3] text-sm  ">
-        Add to Cart
+      <Button
+          type = "button"
+          onClick={handleAddToCart}
+          disabled={!selectedSize}
+          variant="default"
+          className=" bg-[#411D03] text-[#f3ece3] text-sm  "
+        >
+          Add to Cart
       </Button>
     </div>
   );
