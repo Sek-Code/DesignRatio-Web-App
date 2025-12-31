@@ -7,8 +7,8 @@ return (
     <footer className="bg-[#f6efe6] py-8">
         <div className="max-w-7xl mx-auto px-4 md:px-5 flex flex-col md:flex-row items-center justify-between gap-9">
 
-            <div className="flex flex-row items-center">
-                <Link to="/"><img src={Logo} alt="LOGO" className="h-28 w-42"/></Link>
+            <div className="flex flex-row items-center flex-shrink-0">
+                <Link to="/"><img src={Logo} alt="LOGO" className="h-16 w-16 object-contain drop-shadow-sm sm:h-20 sm:w-20"/></Link>
             </div>
         <div>
             <nav className="flex flex-col px-4 sm:px-6 md:flex-row items-center gap-x-24 lg:gap-y-16 text-amber-950">

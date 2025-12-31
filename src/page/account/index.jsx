@@ -1,5 +1,5 @@
 import AccountContainer from "./AccountContainer"
 
-export default function Account_Profile () {
+export default function AccountPage () {
     return (<AccountContainer />)
 }
