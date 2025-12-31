@@ -1,13 +1,16 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
 import { teaProducts } from "@/mock-data/teaData";
+import SizeChoose from "./sizeChoose/sizeScreen";
+import { useState } from "react";
 
 function CardItem({ product }) {
   const { count, increment, decrement } = useCounter();
+  const [selectedSize, setSelectedSize] = useState(null)
 
   return (
     <div className=" w-66 h-auto mb-15 p-3 flex flex-col items-center">
-      
+
       <div className="">
         <img
           src={product.img}
@@ -15,26 +18,24 @@ function CardItem({ product }) {
           className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover"
         />
       </div>
-      
+
       <h3 className="h3-style pt-5 pb-4 text-[#411D03] truncate w-full text-center ">
         {product.name}
       </h3>
-      
-      <div className="w-full flex justify-around pb-6 items-center">
-        <div className="flex flex-col items-center">
-        <p>Size S</p>
-        <p>{product.sizes.S.price} bath </p> 
-        </div>
 
-        <p>|</p>
+      <SizeChoose
+        sizes={product.sizes}
+        selectedSize={selectedSize}
+        onSelect={setSelectedSize} />
 
-        <div className="flex flex-col items-center">
-        <p>Size L</p>
-        <p>{product.sizes.M.price} bath</p>
-        </div>
-      </div>
-      
-
+        <p className="mt-3">
+        Selected: {selectedSize || "—"}
+        </p>
+        <p>
+        Price: {selectedSize
+        ? product.sizes[selectedSize].price
+        : "—"} baht
+        </p>
 
       <div className="flex flex-row items-center gap-5 h3-style text-[#411D03] pb-5 ">
         <button
