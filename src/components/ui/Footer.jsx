@@ -1,5 +1,6 @@
 import { Link } from "react-router-dom"
 import Logo from "@/assets/img/Design-Ratio-logo.png"
+import { Home } from "lucide-react";
 
 const Footer = () => {
 
@@ -14,7 +15,9 @@ return (
             <nav className="flex flex-col px-4 sm:px-6 md:flex-row items-center gap-x-24 lg:gap-y-16 text-amber-950">
                 <Link
                 to="/"
-                className="hover:text-(--color-matcha) transition">Home
+                className="hover:text-(--color-matcha) transition">
+                <Home className="size-4"/>
+                    Home
                 </Link>
 
                 <Link
