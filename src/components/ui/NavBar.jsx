@@ -146,7 +146,8 @@ const Navbar = () => {
             hover:text-brown: hover แล้วเปลี่ยนสี
           */}
           <Link
-            to="/profile"
+            // to="/profile"
+            to="/account"
             aria-label="Profile"
             className="rounded-full p-2 transition hover:text-brown"
           >

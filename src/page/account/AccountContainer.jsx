@@ -1,9 +1,9 @@
-import AccountScreen from "./AccountScreen";
+import AccountPage from "./AccountPage";
 
 export default function AccountContainer () {
     return (
-    <>
-        <AccountScreen />
-    </>
+        <>
+            <AccountPage />
+        </>
     );
 }
