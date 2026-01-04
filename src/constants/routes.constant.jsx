@@ -3,7 +3,8 @@ import HomeScreen from '../page/home';
 import ProductPage from '../page/Product-page/ProductPage';
 import Blending from '../page/blending/Blending';
 import ContactPage from '../page/contact/ContactPage';
-import ProfileSetting from '../page/profile_setting';
+// import ProfileSetting from '../page/profile_setting'
+import AccountPage from '../page/account/AccountPage'
 import Checkout from '../page/checkout';
 
 const routes = [
@@ -15,7 +16,8 @@ const routes = [
       { path: 'blending', element: <Blending /> },
       { path: 'product', element: <ProductPage /> },
       { path: 'contact', element: <ContactPage /> },
-      { path: 'profile', element: <ProfileSetting /> },
+      // { path: 'profile', element: <ProfileSetting /> },
+      { path: 'account', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },
     ],
   },

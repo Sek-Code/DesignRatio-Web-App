@@ -1,5 +1,7 @@
-import AccountContainer from "./AccountContainer"
+const AccountPage = () => {
+  return (
+        <AccountContainer />
+    );
+};
 
-export default function AccountPage () {
-    return (<AccountContainer />)
-}
+export default AccountPage;
