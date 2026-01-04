@@ -3,7 +3,7 @@ import ProfilePic from "@/assets/img/kindpng_223965.png" ;
 export default function AccountPage() {
   return (
     <div className="max-w-5xl mx-auto py-12">
-      <h1 className="font-semibold mb-8 mt-2">Profile</h1>
+      <h1 className="font-semibold mb-8 mt-2">Account</h1>
       <div className="relative w-32 mx-auto">
         <img
           src={ProfilePic}
@@ -63,8 +63,8 @@ export default function AccountPage() {
 
         <div className="flex gap-4 justify-center pt-4">
           <button
-            className="flex justify-center button-style mt-10 hover:bg-amber-800
-       hover:text-white px-15 py-4 bg-[#d8d8d8] rounded-4xl"
+            className="flex justify-center button-style mt-4 hover:bg-amber-800
+       hover:text-white px-16 py-1.5 bg-[#d8d8d8] rounded-4xl"
           >
             <h3>
             Save change
