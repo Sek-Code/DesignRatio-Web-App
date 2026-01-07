@@ -1,6 +1,8 @@
 import ListBox1 from "./ListBox1";
 import ListBox2 from "./ListBox2";
 import ListBox3 from "./ListBox3";
+import BlendingIntro from "./BlendingIntro";
+import BlendingSteps from "./BlendingSteps";
 import { Button } from "@/components/ui/button";
 import { useState } from "react";
 
@@ -10,7 +12,7 @@ const maxBySize = {
         L: 6,
 };
 
-export default function Blending() {
+export default function BlendingPage() {
 
     const size = "S"; // เปลี่ยนเป็น dynamic ได้ทีหลัง
     const max = maxBySize[size];
@@ -32,8 +34,10 @@ export default function Blending() {
   };
 
     return (
-        <div className="flex flex-col justify-center items-center gap-y-7 px-5 py-10 mb-16">
-            <h3 className="w-full flex justify-center items-center text-center lg:text-2xl">Step 3: Choose Your Ingredients ({selectedItems.length}/{max})</h3>
+        <div className="flex flex-col justify-center items-center gap-y-7 px-5 py-10 mb-16 lg:px-[150px]">
+            <BlendingIntro />
+            <BlendingSteps />
+            <h3 className="w-full text-left text-2xl font-bold mb-4 lg:text-2xl" style={{ color: 'var(--color-brown)', fontFamily: 'var(--font-body)' }}>Step 3: Choose Your Ingredients ({selectedItems.length}/{max})</h3>
             <div className="flex flex-col justify-center items-center gap-y-5 lg:flex-row lg:gap-x-5">
                 <div><ListBox1
                     selectedItems={selectedItems}
