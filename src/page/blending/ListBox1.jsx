@@ -11,7 +11,7 @@ const itemsHerbs = [
 ];
 
 const ListBox1 = ({ selectedItems, onToggle, max }) => {
-    return(
+    return (
         <div className="w-80 bg-(--color-matcha) rounded-xl flex flex-col justify-center items-center px-10 py-5">
             <h3 className="text-white lg:text-2xl pb-2">Herbs</h3>
 
