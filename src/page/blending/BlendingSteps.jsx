@@ -28,7 +28,7 @@ export default function BlendingSteps() {
     <div className="blending-steps w-full space-y-8">
       {/* Step 1: Choose Your Tea Size */}
       <div className="step-1">
-        <h2 
+        <h2
           className="w-full text-left text-2xl font-bold mb-4 lg:text-2xl"
           style={{ color: 'var(--color-brown)', fontFamily: 'var(--font-body)' }}
         >
@@ -36,7 +36,7 @@ export default function BlendingSteps() {
         </h2>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6 w-full">
           {sizeOptions.map((option) => (
-            <label 
+            <label
               key={option.value}
               className="flex items-center cursor-pointer"
               style={{ color: 'var(--color-brown)' }}
@@ -57,7 +57,7 @@ export default function BlendingSteps() {
 
       {/* Step 2: Choose Your Tea Base */}
       <div className="step-2">
-        <h2 
+        <h2
           className="w-full text-left text-2xl font-bold mb-4 lg:text-2xl"
           style={{ color: 'var(--color-brown)', fontFamily: 'var(--font-body)' }}
         >
@@ -65,7 +65,7 @@ export default function BlendingSteps() {
         </h2>
         <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-6 w-full">
           {baseOptions.map((option) => (
-            <label 
+            <label
               key={option.value}
               className="flex items-center cursor-pointer"
               style={{ color: 'var(--color-brown)' }}
