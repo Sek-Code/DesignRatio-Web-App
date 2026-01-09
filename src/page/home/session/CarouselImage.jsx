@@ -1,7 +1,7 @@
+import HotTeaCarousel from "../../../components/HotTeaCarousel";
+
 export default function CarouselImage (){
     return (
-        <div>
-            <h1>Image</h1>
-        </div>
+        <HotTeaCarousel />
     );
 }
