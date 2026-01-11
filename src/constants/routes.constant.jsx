@@ -6,6 +6,7 @@ import ContactPage from '../page/userPage/contact/ContactPage';
 // import ProfileSetting from '../page/profile_setting'
 import AccountPage from '../page/userPage/account/AccountPage'
 import Checkout from '../page/userPage/checkout';
+import RevenuePage from '@/page/adminPage/revenue/RevenuePage';
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
       // { path: 'profile', element: <ProfileSetting /> },
       { path: 'account', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },
+      {path: 'revenue', element: <RevenuePage/>}
     ],
   },
 ];
