@@ -1,11 +1,8 @@
-const AddressPart = () => {
+const AddressPart = ({address}) => {
     return (
         <div>
-            <h3>Address :</h3>
-            <p>address from profile</p>
-            <hr />
-            <p>address from profile</p>
-            <hr />
+            <h3 className="mb-2">Address :</h3>
+            <p>{address}</p>
         </div>
     );
 };

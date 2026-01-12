@@ -24,7 +24,7 @@ const PaymentMethod = () => {
   return (
     <FormControl className="text-(--color-brown)">
       <label id="demo-radio-buttons-group-label">
-        <h3>Payment Method :</h3>
+        <h3 className='mb-1'>Payment Method :</h3>
       </label>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"

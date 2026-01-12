@@ -7,7 +7,7 @@ export default function DeliveryChoice() {
   return (
     <FormControl className="text-(--color-brown)">
       <label id="demo-radio-buttons-group-label">
-        <h3>Delivery :</h3>
+        <h3 className='mb-1'>Delivery :</h3>
       </label>
       <RadioGroup
         aria-labelledby="demo-radio-buttons-group-label"
