@@ -147,7 +147,8 @@ const Navbar = () => {
           */}
           <Link
             // to="/profile"
-            to="/account"
+            // to="/account"
+            to="/signin"
             aria-label="Profile"
             className="rounded-full p-2 transition hover:text-brown"
           >
