@@ -28,10 +28,10 @@ function CardItem({ product }) {
         selectedSize={selectedSize}
         onSelect={setSelectedSize} />
 
-        <p className="mt-3">
+        <p>
         Selected: {selectedSize || "—"}
         </p>
-        <p>
+        <p className="mb-3">
         Price: {selectedSize
         ? product.sizes[selectedSize].price
         : "—"} baht

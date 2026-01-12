@@ -1,11 +1,12 @@
 import LayoutScreen from '../page/layout/LayoutScreen';
-import HomeScreen from '../page/home';
-import ProductPage from '../page/Product-page/ProductPage';
-import Blending from '../page/blending/BlendingPage';
-import ContactPage from '../page/contact/ContactPage';
+import HomeScreen from '../page/userPage/home';
+import ProductPage from '../page/userPage/Product-page/ProductPage';
+import Blending from '../page/userPage/blending/BlendingPage';
+import ContactPage from '../page/userPage/contact/ContactPage';
 // import ProfileSetting from '../page/profile_setting'
-import AccountPage from '../page/account/AccountPage'
-import Checkout from '../page/checkout';
+import AccountPage from '../page/userPage/account/AccountPage'
+import Checkout from '../page/userPage/checkout';
+import RevenuePage from '@/page/adminPage/revenue/RevenuePage';
 
 const routes = [
   {
@@ -19,6 +20,7 @@ const routes = [
       // { path: 'profile', element: <ProfileSetting /> },
       { path: 'account', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },
+      {path: 'revenue', element: <RevenuePage/>}
     ],
   },
 ];
