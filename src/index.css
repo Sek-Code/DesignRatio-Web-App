@@ -71,7 +71,7 @@
   --nav-weight: 700;
 
   /* Semantic: จับคู่สีแบรนด์กับบทบาทใน UI */
-  --background: var(--color-light-cream);
+  --background: var(--color-white);
   --foreground: var(--color-brown);
   --card: var(--color-light-cream);
   --card-foreground: var(--color-brown);
