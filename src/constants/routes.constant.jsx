@@ -10,6 +10,7 @@ import SignUpPage from '../page/userPage/signup/SignUpPage';
 import EditProductDetailPage from '../page/adminPage/editProductDetails/editProductsDetailPage';
 import OrderManagementPage from '../page/adminPage/orderManagementPage/orederMagementPage';
 import RevenuePage from '../page/adminPage/revenuePage/RevenuePage';
+import EditP from '@/page/adminPage/editProductDetails/EditP';
 
 const routes = [
   {
@@ -26,7 +27,8 @@ const routes = [
       { path: 'signup', element: <SignUpPage />},
       { path: 'admin/revenue', element: <RevenuePage /> },
       { path: 'admin/orders', element: <OrderManagementPage /> },
-      { path: 'admin/edit-product', element: <EditProductDetailPage /> },
+      { path: 'admin/edit-products', element: <EditProductDetailPage /> },
+      { path: 'admin/edit-product/:id', element: <EditP/> },
     ],
   },
 ];
