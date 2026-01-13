@@ -12,7 +12,7 @@ const navLinks = [
 const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
-  { label: "Edit Product", to: "/admin/edit-product" },
+  { label: "Before-edit", to: "/admin/edit-products" },
 ];
 
 const Navbar = () => {
@@ -34,7 +34,7 @@ const Navbar = () => {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-matcha"
+            className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-matcha"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>

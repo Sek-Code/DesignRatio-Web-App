@@ -4,12 +4,13 @@ import { teaProducts } from "@/mock-data/teaData";
 import SizeChoose from "./sizeChoose/sizeScreen";
 import { useState } from "react";
 
-function CardItem({ product }) {
+function CardItem({ product, onCardClick}) {
   const { count, increment, decrement } = useCounter();
   const [selectedSize, setSelectedSize] = useState(null)
 
   return (
-    <div className=" w-66 h-auto mb-15 p-3 flex flex-col items-center">
+    <div className=" w-66 h-auto mb-15 p-3 flex flex-col items-center"
+    onClick={() => onCardClick?.(product)}>
 
       <div className="">
         <img
@@ -59,11 +60,12 @@ function CardItem({ product }) {
   );
 }
 
-export default function CardScreen() {
+export default function CardScreen({onCardClick}) {
   return (
     <div className="flex flex-wrap justify-center items-center w-full gap-7">
       {teaProducts.map((item) => (
-        <CardItem key={item.id || item.name} product={item} />
+        <CardItem key={item.id || item.name} product={item}
+        onCardClick={onCardClick}/>
       ))}
     </div>
   );

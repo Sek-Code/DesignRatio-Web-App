@@ -5,9 +5,10 @@ import Blending from '../page/userPage/blending/BlendingPage';
 import ContactPage from '../page/userPage/contact/ContactPage';
 import AccountPage from '../page/userPage/account/AccountPage'
 import Checkout from '../page/userPage/checkout';
-import EditProductDetailPage from '../page/adminPage/editProductDetails/editProductsDetailPage';
+import EditProductDetailPage from '../page/adminPage/editProductDetails/EditProductsDetailPage';
 import OrderManagementPage from '../page/adminPage/orderManagementPage/orederMagementPage';
 import RevenuePage from '../page/adminPage/revenuePage/RevenuePage';
+import EditP from '@/page/adminPage/editProductDetails/EditP';
 
 const routes = [
   {
@@ -22,7 +23,8 @@ const routes = [
       { path: 'checkout', element: <Checkout /> },
       { path: 'admin/revenue', element: <RevenuePage /> },
       { path: 'admin/orders', element: <OrderManagementPage /> },
-      { path: 'admin/edit-product', element: <EditProductDetailPage /> },
+      { path: 'admin/edit-products', element: <EditProductDetailPage /> },
+      { path: 'admin/edit-product/:id', element: <EditP/> },
     ],
   },
 ];

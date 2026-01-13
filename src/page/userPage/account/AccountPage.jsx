@@ -36,7 +36,7 @@ export default function AccountPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-1 grid-cols-2 gap-15">
+        <div className="grid grid-cols-2 gap-15">
           <div>
             <h2 className="text-sm">Email:</h2>
             <input
