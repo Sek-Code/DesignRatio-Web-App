@@ -36,13 +36,13 @@ export default function EditP() {
 
     return (
         <div className="max-w-5xl mx-auto py-12">
-            <h1 className="font-semibold mb-8 mt-2">Edit Product</h1>
+            <h1 className="font-semibold mb-4 mt-2">Edit Product</h1>
 
-            <div className="relative w-32 mx-auto">
+            <div className="relative w-50 mx-auto">
                 <img
                     src={product.img}
                     alt={product.name}
-                    className="mt-10 w-30 h-30 rounded-full border object-cover"
+                    className="mt-5 w-50 h-50 rounded-full border object-cover"
                 />
                 <button
                     type="button"
@@ -53,7 +53,7 @@ export default function EditP() {
             </div>
 
             {/* form */}
-            <form className="mt-20 space-y-8">
+            <form className="mt-5 space-y-8">
 
                 {/* name */}
                 <div>
