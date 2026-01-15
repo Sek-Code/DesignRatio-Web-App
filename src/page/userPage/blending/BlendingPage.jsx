@@ -14,7 +14,7 @@ const maxBySize = {
 
 export default function BlendingPage() {
 
-    const size = "S"; // เปลี่ยนเป็น dynamic ได้ทีหลัง
+    const size = "M"; // เปลี่ยนเป็น dynamic ได้ทีหลัง
     const max = maxBySize[size];
 
     const [selectedItems, setSelectedItems] = useState([]);

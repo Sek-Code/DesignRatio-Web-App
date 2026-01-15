@@ -11,17 +11,16 @@ export default function BlendingSteps() {
   };
 
   const sizeOptions = [
-    { value: 'size-s', label: 'Size S (approximately 50 g.)' },
-    { value: 'size-m', label: 'Size M (approximately 70 g.)' },
-    { value: 'size-l', label: 'Size L (approximately 100 g.)' },
+    { value: 'size-s', label: 'Size S (approx. 50 g.) + 50 THB' },
+    { value: 'size-m', label: 'Size M (approx. 70 g.) + 70 THB' },
+    { value: 'size-l', label: 'Size L (approx. 100 g.) + 100 THB' },
   ];
 
   const baseOptions = [
-    { value: 'black-tea', label: 'Black Tea' },
-    { value: 'green-tea', label: 'Green Tea' },
-    { value: 'oolong-tea', label: 'Oolong Tea' },
-    { value: 'yellow-tea', label: 'Yellow Tea' },
-    { value: 'white-tea', label: 'White Tea' },
+    { value: 'black-tea', label: 'Black Tea + 20 THB' },
+    { value: 'green-tea', label: 'Green Tea + 20 THB' },
+    { value: 'oolong-tea', label: 'Oolong Tea + 30 THB' },
+    { value: 'white-tea', label: 'White Tea + 30 THB' },
   ];
 
   return (
