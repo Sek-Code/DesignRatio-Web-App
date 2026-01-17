@@ -1,7 +1,7 @@
 export const memberdata = [
     {id:1,
     name:"member1",
-    picture:"/userProflie/img_002.png",
+    picture:"/userProflie/img_001.png",
     text:"text",
     link:"link",
     },
@@ -13,25 +13,25 @@ export const memberdata = [
     },
     {id:3,
         name:"member3",
-        picture:"/userProflie/img_002.png",
+        picture:"/userProflie/img_003.png",
         text:"text",
         link:"link"
     },
     {id:4,
         name:"member4",
-        picture:"/userProflie/img_002.png",
+        picture:"/userProflie/img_004.png",
         text:"text",
         link:"link"
     },
     {id:5,
         name:"member5",
-        picture:"/userProflie/img_002.png",
+        picture:"/userProflie/img_005.png",
         text:"text",
         link:"link"
     },
     {id:6,
         name:"member6",
-        picture:"/userProflie/img_002.png",
+        picture:"/userProflie/img_006.png",
         text:"text",
         link:"link"
     },

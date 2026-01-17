@@ -12,7 +12,7 @@ const navLinks = [
 const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
-  { label: "Before-edit", to: "/admin/edit-products" },
+  { label: "Before-edit", to: `/admin/edit-products/` },
 ];
 
 const Navbar = () => {
