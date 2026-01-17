@@ -3,15 +3,10 @@ export default function SizeChoose({
     selectedSize,
     onSelect
 }) {
-    if (!sizes || Object.keys(sizes).length === 0) {
-        return <p className="text-sm text-gray-400">No sizes available</p>;
-    }
-
     return (
         <div className="w-full flex justify-around pb-6 items-center">
             {Object.entries(sizes).map(([size, data]) => {
                 const isActive = selectedSize === size;
-
                 return (
                     <button
                         key={size}

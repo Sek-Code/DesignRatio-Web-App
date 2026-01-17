@@ -7,12 +7,15 @@ import { useState } from "react";
 function CardItem({ product, onCardClick}) {
   const { count, increment, decrement } = useCounter();
   const [selectedSize, setSelectedSize] = useState(null)
+  const sizeMap = Object.fromEntries(
+  (product.variants || []).map(v => [v.size, v])
+);
+
 
   return (
     <div
   className="w-66 h-auto mb-15 p-3 flex flex-col items-center"
   onClick={() => {
-    console.log("CLICKED 👉", product._id);
     onCardClick?.(product);
   }}
 >
@@ -30,20 +33,21 @@ function CardItem({ product, onCardClick}) {
         {product.name}
       </h3>
 
-    <SizeChoose
-      sizes={product.sizes || {}}
-      selectedSize={selectedSize}
-      onSelect={setSelectedSize}
-    />
+      <SizeChoose
+        sizes={sizeMap}
+        selectedSize={selectedSize}
+        onSelect={setSelectedSize}
+      />
 
-        <p>
+      <p>
         Selected: {selectedSize || "—"}
-        </p>
-        <p className="mb-3">
+      </p>
+
+      <p className="mb-3">
         Price: {selectedSize
-        ? product.sizes[selectedSize].price
-        : "—"} baht
-        </p>
+          ? sizeMap[selectedSize]?.price ?? "—"
+          : "—"} baht
+      </p>
 
       <div className="flex flex-row items-center gap-5 h3-style text-[#411D03] pb-5 ">
         <button
