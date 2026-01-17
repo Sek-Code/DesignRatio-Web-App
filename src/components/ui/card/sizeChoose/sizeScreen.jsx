@@ -18,7 +18,7 @@ export default function SizeChoose({
             :"border-gray-300 text-[#411D03]"}`}
             >
                 <p>Size {size}</p>
-                <p>{data.price} bath </p>
+                <p>{data.price} baht </p>
             </button>
             )
             })}
