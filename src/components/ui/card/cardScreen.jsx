@@ -1,6 +1,6 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
-import { teaProducts } from "@/mock-data/teaData";
+import { readyProducts } from "@/mock-data/readyProducts";
 import SizeChoose from "./sizeChoose/sizeScreen";
 import { useState } from "react";
 
@@ -9,12 +9,18 @@ function CardItem({ product, onCardClick}) {
   const [selectedSize, setSelectedSize] = useState(null)
 
   return (
-    <div className=" w-66 h-auto mb-15 p-3 flex flex-col items-center"
-    onClick={() => onCardClick?.(product)}>
+    <div
+  className="w-66 h-auto mb-15 p-3 flex flex-col items-center"
+  onClick={() => {
+    console.log("CLICKED 👉", product._id);
+    onCardClick?.(product);
+  }}
+>
+
 
       <div className="">
         <img
-          src={product.img}
+          src={product.image}
           alt={product.name}
           className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover"
         />
@@ -24,10 +30,11 @@ function CardItem({ product, onCardClick}) {
         {product.name}
       </h3>
 
-      <SizeChoose
-        sizes={product.sizes}
-        selectedSize={selectedSize}
-        onSelect={setSelectedSize} />
+    <SizeChoose
+      sizes={product.sizes || {}}
+      selectedSize={selectedSize}
+      onSelect={setSelectedSize}
+    />
 
         <p>
         Selected: {selectedSize || "—"}
@@ -63,8 +70,8 @@ function CardItem({ product, onCardClick}) {
 export default function CardScreen({onCardClick}) {
   return (
     <div className="flex flex-wrap justify-center items-center w-full gap-7">
-      {teaProducts.map((item) => (
-        <CardItem key={item.id || item.name} product={item}
+      {readyProducts.map((item) => (
+        <CardItem key={item._id || item.name} product={item}
         onCardClick={onCardClick}/>
       ))}
     </div>
