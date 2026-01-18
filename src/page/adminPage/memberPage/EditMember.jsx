@@ -1,7 +1,15 @@
+// import { useParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
+
 export default function EditMember() {
+  // const { id } = useParams();
+  const navigate = useNavigate();
+
+
   return (
     <div className="max-w-5xl mx-auto py-12">
-      <h1 className="font-semibold mb-8 mt-2">Account</h1>
+      <button onClick={() => navigate(`/admin/members`)}><ArrowLeft/></button>
       <div className="relative w-32 mx-auto">
         <div className="mt-10 w-full rounded-full border"></div>
         <button

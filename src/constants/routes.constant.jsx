@@ -11,6 +11,8 @@ import EditProductDetailPage from '../page/adminPage/editProductDetails/editProd
 import OrderManagementPage from '../page/adminPage/orderManagementPage/orederMagementPage';
 import RevenuePage from '../page/adminPage/revenuePage/RevenuePage';
 import EditP from '@/page/adminPage/editProductDetails/EditP';
+import MemberPage from '@/page/adminPage/memberPage/MemberPage';
+import EditMember from '@/page/adminPage/memberPage/EditMember';
 
 const routes = [
   {
@@ -29,6 +31,8 @@ const routes = [
       { path: 'admin/orders', element: <OrderManagementPage /> },
       { path: 'admin/edit-products', element: <EditProductDetailPage /> },
       { path: 'admin/edit-product/:id', element: <EditP/> },
+      { path: 'admin/members', element: <MemberPage/>},
+      { path: 'admin/members/:id', element: <EditMember/>}
     ],
   },
 ];
