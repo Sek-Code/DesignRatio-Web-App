@@ -27,7 +27,7 @@ export default function BlendingPage() {
   };
 
     return (
-        <div className="flex flex-col justify-center items-center gap-y-7 px-5 py-10 mb-16 lg:px-37.5">
+        <div className="flex flex-col justify-center items-center gap-y-7 px-10 py-10 mb-10 lg:px-37.5">
             <BlendingIntro />
             <BlendingSteps />
             <h3 className="w-full text-left text-2xl font-bold mb-4 lg:text-2xl" style={{ color: 'var(--color-brown)', fontFamily: 'var(--font-body)' }}>Step 3: Choose Your Ingredients ({selectedItems.length}/{size})</h3>

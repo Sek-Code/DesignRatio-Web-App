@@ -57,8 +57,7 @@ export default function HotTeaCarousel() {
               <div>
                 {/* ส่วนการแสดงผลการ์ดสินค้า */}
                 <div className="border-none shadow-lg overflow-hidden">
-
-                  <div className="relative flex flex-col items-center justify-center overflow-hidden h-150">
+                  <div className="relative flex flex-col items-center justify-center overflow-hidden lg:h-150 h-100">
                     <img
                         src={tea.image}
                         alt={tea.name}

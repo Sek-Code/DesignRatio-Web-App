@@ -8,18 +8,17 @@ export default function OurProduct() {
     const products = useProducts()
     const productSection = products.slice(0, 6)
     //console.log(productSection)
-    
+
     return (
-        <div className=" w-full px-[15%] flex-col items-center">
-            <h1 className="h1-style py-12 text-[#9e9957] text-center">Our Products</h1>
-            <div className="w-full  mb-11 flex">
-                <CardScreen  product={productSection}/>
-                
+        <div className=" w-full flex-col items-center px-10 py-10 lg:px-37.5">
+            <h1 className="lg:text-6xl lg:mb-5 mt-10 py-5 text-(--color-matcha) text-center">Our Products</h1>
+            <div className="w-full lg:mb-11 lg:ml-10 ml-6">
+                <CardScreen  product={productSection} className="lg:flex flex-col justify-center" />
             </div>
             <Link
                 to="/products"
-                className="hover:text-[(--matcha-color)] transition-colors flex justify-center mb-16">
-                <Button variant="default"  >
+                className="hover:text-(--color-matcha) transition-colors flex justify-center mb-20 mt-10">
+                <Button className="px-10 py-2 rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px] hover:bg-(--color-matcha)">
                     See more
                 </Button>
             </Link>
