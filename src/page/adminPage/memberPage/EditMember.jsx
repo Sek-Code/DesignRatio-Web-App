@@ -1,15 +1,17 @@
-import ProfilePic from "@/assets/img/kindpng_223965.png" ;
+// import { useParams } from "react-router-dom";
+import { ArrowLeft } from "lucide-react";
+import { useNavigate } from "react-router-dom";
 
-export default function AccountPage() {
+export default function EditMember() {
+  // const { id } = useParams();
+  const navigate = useNavigate();
+
+
   return (
     <div className="max-w-5xl mx-auto py-12">
-      <h1 className="font-semibold mb-8 mt-2">Account</h1>
+      <button onClick={() => navigate(`/admin/members`)}><ArrowLeft/></button>
       <div className="relative w-32 mx-auto">
-        <img
-          src={ProfilePic}
-          alt="ProfilePicture"
-          className="mt-10 w-full rounded-full border"
-        />
+        <div className="mt-10 w-full rounded-full border"></div>
         <button
           className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800
        hover:text-white"
@@ -66,9 +68,13 @@ export default function AccountPage() {
             className="flex justify-center button-style mt-4 hover:bg-amber-800
        hover:text-white px-16 py-1.5 bg-[#d8d8d8] rounded-4xl"
           >
-            <h3>
-            Save change
-            </h3>
+            Save
+          </button>
+          <button
+            className="flex justify-center button-style mt-4 hover:bg-amber-800
+       hover:text-white px-16 py-1.5 bg-[#d8d8d8] rounded-4xl"
+          >
+            Clear
           </button>
         </div>
       </form>

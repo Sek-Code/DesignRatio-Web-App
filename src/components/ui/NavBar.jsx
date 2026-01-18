@@ -6,13 +6,13 @@ import logoMark from "@/assets/img/Design-Ratio-logo.png";
 const navLinks = [
   { label: "Blending", to: "/blending" },
   { label: "Product", to: "/product" },
-  { label: "Contact", to: "/contact" },
+  { label: "Contact", to: "/contact" }
 ];
 
 const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
-  { label: "Edit Product", to: "/admin/edit-product" },
+  { label: "Before-edit", to: `/admin/edit-products/` },
 ];
 
 const Navbar = () => {
@@ -68,7 +68,7 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-4 text-matcha sm:flex">
           <Link
-            to="/account"
+            to="/signin"
             aria-label="Profile"
             className="rounded-full p-2 transition hover:text-brown"
           >

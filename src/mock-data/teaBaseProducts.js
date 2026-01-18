@@ -1,0 +1,58 @@
+export const teaBaseProducts = [
+  {
+    _id: "TEABASE_BLACK",
+    type: "tea_base",
+    name: "Black Tea",
+    image: "/teaBaseImageData/black-tea.jpg",
+    variants: [
+      { variant_id: "TEABASE_BLACK_S", size: "S", gram: 50, price: 20, stock_count: 999 },
+      { variant_id: "TEABASE_BLACK_M", size: "M", gram: 70, price: 20, stock_count: 999 },
+      { variant_id: "TEABASE_BLACK_L", size: "L", gram: 100, price: 20, stock_count: 999 },
+    ],
+    is_active: true,
+    created_at: "2026-01-15T03:30:00.000Z",
+    updated_at: "2026-01-15T03:30:00.000Z",
+  },
+  {
+    _id: "TEABASE_GREEN",
+    type: "tea_base",
+    name: "Green Tea",
+    image: "/teaBaseImageData/green-tea.jpg",
+    variants: [
+      { variant_id: "TEABASE_GREEN_S", size: "S", gram: 50, price: 20, stock_count: 999 },
+      { variant_id: "TEABASE_GREEN_M", size: "M", gram: 70, price: 20, stock_count: 999 },
+      { variant_id: "TEABASE_GREEN_L", size: "L", gram: 100, price: 20, stock_count: 999 },
+    ],
+    is_active: true,
+    created_at: "2026-01-15T03:30:00.000Z",
+    updated_at: "2026-01-15T03:30:00.000Z",
+  },
+  {
+    _id: "TEABASE_OOLONG",
+    type: "tea_base",
+    name: "Oolong Tea",
+    image: "/teaBaseImageData/oolong-tea.jpg",
+    variants: [
+      { variant_id: "TEABASE_OOLONG_S", size: "S", gram: 50, price: 30, stock_count: 999 },
+      { variant_id: "TEABASE_OOLONG_M", size: "M", gram: 70, price: 30, stock_count: 999 },
+      { variant_id: "TEABASE_OOLONG_L", size: "L", gram: 100, price: 30, stock_count: 999 },
+    ],
+    is_active: true,
+    created_at: "2026-01-15T03:30:00.000Z",
+    updated_at: "2026-01-15T03:30:00.000Z",
+  },
+  {
+    _id: "TEABASE_WHITE",
+    type: "tea_base",
+    name: "White Tea",
+    image: "/teaBaseImageData/white-tea.jpg",
+    variants: [
+      { variant_id: "TEABASE_WHITE_S", size: "S", gram: 50, price: 30, stock_count: 999 },
+      { variant_id: "TEABASE_WHITE_M", size: "M", gram: 70, price: 30, stock_count: 999 },
+      { variant_id: "TEABASE_WHITE_L", size: "L", gram: 100, price: 30, stock_count: 999 },
+    ],
+    is_active: true,
+    created_at: "2026-01-15T03:30:00.000Z",
+    updated_at: "2026-01-15T03:30:00.000Z",
+  },
+];
