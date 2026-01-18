@@ -1,38 +1,38 @@
 export const memberdata = [
     {id:1,
-    name:"member1",
+    name:"03_Chalisa(Mae/เม) JSD#11",
     picture:"/userProflie/img_001.png",
-    text:"text",
-    link:"link",
+    text:"UI/UX Designer",
+    link:"https://github.com/supalerkp",
     },
     {id:2,
-        name:"member2",
+        name:"06_Chanapoom(Poom/ภูมิ) JSD#11",
         picture:"/userProflie/img_002.png",
-        text:"text",
-        link:"link",
+        text:"Frontend Developer",
+        link:"https://github.com/jirayub",
     },
     {id:3,
-        name:"member3",
+        name:"09_Chutidet(Ice/ไอซ์) JSD#11",
         picture:"/userProflie/img_003.png",
-        text:"text",
-        link:"link"
+        text:"Backend Developer",
+        link:"https://github.com/pornchais"
     },
     {id:4,
-        name:"member4",
+        name:"13_Jakkrit(โบ๊ท/Boat) JSD#11",
         picture:"/userProflie/img_004.png",
-        text:"text",
-        link:"link"
+        text:"Fullstack Developer",
+        link:"https://github.com/thanakornc"
     },
     {id:5,
-        name:"member5",
+        name:"23_Nattha(Game/เกม) JSD#11",
         picture:"/userProflie/img_005.png",
-        text:"text",
-        link:"link"
+        text:"Project Manager",
+        link:"https://github.com/natchaw"
     },
     {id:6,
-        name:"member6",
+        name:"43_Veerakarn(V/วี) JSD#11",
         picture:"/userProflie/img_006.png",
-        text:"text",
-        link:"link"
+        text:"QA Engineer",
+        link:"https://github.com/chayaneep"
     },
 ]

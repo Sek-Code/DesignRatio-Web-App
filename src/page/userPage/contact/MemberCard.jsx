@@ -24,7 +24,7 @@ export default function MemberCard(member) {
         <p>{item.text}</p>
       </CardContent>
       <CardFooter>
-        <p>{item.link}</p>
+        <a href={item.link} target="_blank" rel="noopener noreferrer">{item.link}</a>
       </CardFooter>
     </Card>
   );
