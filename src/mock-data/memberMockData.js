@@ -3,36 +3,42 @@ export const memberdata = [
     name:"03_Chalisa(Mae/เม) JSD#11",
     picture:"/userProflie/img_001.png",
     text:"UI/UX Designer",
-    link:"https://github.com/supalerkp",
+    link:"https://github.com/chalisathanathi",
+    facebookLink: "https://www.facebook.com/chalisa.thanathipanont",
     },
     {id:2,
         name:"06_Chanapoom(Poom/ภูมิ) JSD#11",
         picture:"/userProflie/img_002.png",
         text:"Frontend Developer",
-        link:"https://github.com/jirayub",
+        link:"https://github.com/Karine1412",
+        facebookLink: "https://www.facebook.com/poomzaapoom",
     },
     {id:3,
         name:"09_Chutidet(Ice/ไอซ์) JSD#11",
         picture:"/userProflie/img_003.png",
         text:"Backend Developer",
-        link:"https://github.com/pornchais"
+        link:"https://github.com/ChutidetBen-oss",
+        facebookLink: "https://www.facebook.com/chutidet.benchathamloed"
     },
     {id:4,
         name:"13_Jakkrit(โบ๊ท/Boat) JSD#11",
         picture:"/userProflie/img_004.png",
-        text:"Fullstack Developer",
-        link:"https://github.com/thanakornc"
+        text:"Project Manager",
+        link:"https://github.com/boatlittlebear",
+        facebookLink: "https://www.facebook.com/profile.php?id=100005841723233"
     },
     {id:5,
         name:"23_Nattha(Game/เกม) JSD#11",
         picture:"/userProflie/img_005.png",
-        text:"Project Manager",
-        link:"https://github.com/natchaw"
+        text:"Backend Developer",
+        link:"https://github.com/nanarnat",
+        facebookLink: "https://www.facebook.com/gamenattha"
     },
     {id:6,
         name:"43_Veerakarn(V/วี) JSD#11",
         picture:"/userProflie/img_006.png",
-        text:"QA Engineer",
-        link:"https://github.com/chayaneep"
+        text:"Frontend Developer",
+        link:"https://github.com/veerakarnvrk",
+        facebookLink: "https://www.facebook.com/veerakarn.vrk/"
     },
 ]
