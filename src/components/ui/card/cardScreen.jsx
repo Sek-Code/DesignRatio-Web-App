@@ -1,20 +1,29 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
-import { teaProducts } from "@/mock-data/teaData";
+import { readyProducts } from "@/mock-data/readyProducts";
 import SizeChoose from "./sizeChoose/sizeScreen";
 import { useState } from "react";
 
 function CardItem({ product, onCardClick}) {
   const { count, increment, decrement } = useCounter();
   const [selectedSize, setSelectedSize] = useState(null)
+  const sizeMap = Object.fromEntries(
+  (product.variants || []).map(v => [v.size, v])
+);
+
 
   return (
-    <div className=" w-66 h-auto mb-15 p-3 flex flex-col items-center"
-    onClick={() => onCardClick?.(product)}>
+    <div
+  className="w-66 h-auto mb-15 p-3 flex flex-col items-center"
+  onClick={() => {
+    onCardClick?.(product);
+  }}
+>
+
 
       <div className="">
         <img
-          src={product.img}
+          src={product.image}
           alt={product.name}
           className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover"
         />
@@ -25,18 +34,20 @@ function CardItem({ product, onCardClick}) {
       </h3>
 
       <SizeChoose
-        sizes={product.sizes}
+        sizes={sizeMap}
         selectedSize={selectedSize}
-        onSelect={setSelectedSize} />
+        onSelect={setSelectedSize}
+      />
 
-        <p>
+      <p>
         Selected: {selectedSize || "—"}
-        </p>
-        <p className="mb-3">
+      </p>
+
+      <p className="mb-3">
         Price: {selectedSize
-        ? product.sizes[selectedSize].price
-        : "—"} baht
-        </p>
+          ? sizeMap[selectedSize]?.price ?? "—"
+          : "—"} baht
+      </p>
 
       <div className="flex flex-row items-center gap-5 h3-style text-[#411D03] pb-5 ">
         <button
@@ -63,8 +74,8 @@ function CardItem({ product, onCardClick}) {
 export default function CardScreen({onCardClick}) {
   return (
     <div className="flex flex-wrap justify-center items-center w-full gap-7">
-      {teaProducts.map((item) => (
-        <CardItem key={item.id || item.name} product={item}
+      {readyProducts.map((item) => (
+        <CardItem key={item._id || item.name} product={item}
         onCardClick={onCardClick}/>
       ))}
     </div>

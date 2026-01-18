@@ -1,38 +1,60 @@
 import { useState } from "react";
 import { useParams } from "react-router-dom";
-import { teaProducts } from "@/mock-data/teaData";
+import { readyProducts } from "@/mock-data/readyProducts";
 
 export default function EditP() {
     const { id } = useParams();
 
-    const product = teaProducts.find(
-        (p) => p.id === Number(id)
+    const product = readyProducts.find(
+        (p) => String(p._id) === String(id)
     );
+        if (!product) {
+            return <div className="text-center py-20">❌ ไม่พบสินค้า</div>;
+        }
+        console.log("PARAM ID 👉", id);
+console.log("READY PRODUCTS 👉", readyProducts.map(p => p._id));
 
-    const [form, setForm] = useState(() => {
-        if (!product) return null;
 
-        return {
-            name: product.name,
-            M_gram: product.sizes.M.gram,
-            M_price: product.sizes.M.price,
-            L_gram: product.sizes.L.gram,
-            L_price: product.sizes.L.price,
-        };
-    });
+
+        const m = product.variants.find(v => v.size === "M");
+        const l = product.variants.find(v => v.size === "L");
+
+
+    const [form, setForm] = useState(() => ({
+        name: product.name,
+        M_gram: m?.gram ?? "",
+        M_price: m?.price ?? "",
+        L_gram: l?.gram ?? "",
+        L_price: l?.price ?? "",
+    }));
+
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setForm((prev) => ({
+        setForm(prev => ({
             ...prev,
-            [name]: value,
+            [name]: value
         }));
     };
 
     const handleSave = () => {
-        console.log("SAVE DATA 👉", form);
-        alert("Saved! (ดู console)");
+        const updated = {
+            ...product,
+            name: form.name,
+            variants: product.variants.map(v => {
+                if (v.size === "M") {
+                    return { ...v, gram: Number(form.M_gram), price: Number(form.M_price) };
+                }
+                if (v.size === "L") {
+                    return { ...v, gram: Number(form.L_gram), price: Number(form.L_price) };
+                }
+                return v;
+            })
+        };
+
+        console.log("SAVE DATA 👉", updated);
     };
+
 
     return (
         <div className="max-w-5xl mx-auto py-12">
@@ -40,7 +62,7 @@ export default function EditP() {
 
             <div className="relative w-50 mx-auto">
                 <img
-                    src={product.img}
+                    src={product.image}
                     alt={product.name}
                     className="mt-5 w-50 h-50 rounded-full border object-cover"
                 />

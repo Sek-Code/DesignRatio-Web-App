@@ -8,7 +8,7 @@ export default function EditDetailProduct(){
     return(
         <div>
             <CardScreen
-                onCardClick ={(product) => navigate(`/admin/edit-product/${product.id}`)}/>
+                onCardClick ={(product) => navigate(`/admin/edit-product/${product._id}`)}/>
         </div>
     );
 }
