@@ -13,17 +13,7 @@ function CardItem({ product, onCardClick}) {
 
 
   return (
-<<<<<<< HEAD
     <div className="w-66 h-auto my-4 p-3 flex flex-col items-center gap-y-4">
-=======
-    <div
-  className="w-66 h-auto mb-15 p-3 flex flex-col items-center"
-  onClick={() => {
-    onCardClick?.(product);
-  }}
->
-
->>>>>>> develop
 
       <div>
         <img
@@ -43,18 +33,10 @@ function CardItem({ product, onCardClick}) {
         onSelect={setSelectedSize}
       />
 
-<<<<<<< HEAD
         <p className="lg:text-xl">
         Selected: {selectedSize || "—"}
         </p>
         <p className="mb-3 lg:text-xl">
-=======
-      <p>
-        Selected: {selectedSize || "—"}
-      </p>
-
-      <p className="mb-3">
->>>>>>> develop
         Price: {selectedSize
           ? sizeMap[selectedSize]?.price ?? "—"
           : "—"} baht
@@ -84,16 +66,10 @@ function CardItem({ product, onCardClick}) {
 
 export default function CardScreen({onCardClick}) {
   return (
-<<<<<<< HEAD
     <div className="flex flex-wrap justify-center items-center w-full gap-4">
-      {teaProducts.map((item) => (
-        <CardItem key={item.id || item.name} product={item} />
-=======
-    <div className="flex flex-wrap justify-center items-center w-full gap-7">
       {readyProducts.map((item) => (
         <CardItem key={item._id || item.name} product={item}
         onCardClick={onCardClick}/>
->>>>>>> develop
       ))}
     </div>
   );

@@ -10,9 +10,9 @@ export default function OurProduct() {
     //console.log(productSection)
 
     return (
-        <div className=" w-full flex-col items-center px-10 py-10 lg:px-37.5">
+        <div className=" w-full flex-col justify-center px-10 py-10 lg:px-37.5">
             <h1 className="lg:text-6xl lg:mb-5 mt-10 py-5 text-(--color-matcha) text-center">Our Products</h1>
-            <div className="w-full lg:mb-11 lg:ml-10 ml-6">
+            <div className="w-full">
                 <CardScreen  product={productSection} className="lg:flex flex-col justify-center" />
             </div>
             <Link
