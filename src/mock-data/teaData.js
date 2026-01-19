@@ -2,7 +2,7 @@
 export const teaProducts = [
     {
         id: 1,
-        name: "Japanese Latcha Green Tea",
+        name: "Japanese Green Tea",
         img: "/teaImageData/29dc5b52815d1fc72e40975f34e34db7.jpg",
         sizes: {
             M: { gram: 50, price: 180 },

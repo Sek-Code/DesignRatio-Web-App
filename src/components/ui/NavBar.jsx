@@ -34,16 +34,15 @@ const Navbar = () => {
             type="button"
             aria-label="Toggle menu"
             onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-matcha"
+            className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
 
-        <nav className="hidden flex-1 items-center justify-center gap-8 text-[15px] font-semibold text-matcha sm:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-8 text-[16px] lg:text-xl font-semibold text-matcha sm:flex">
           <Link to="/" className="nav-link flex items-center gap-2 transition">
             <Home className="size-4" />
-            Home
           </Link>
 
           {navLinks.map((item) => (
@@ -98,7 +97,6 @@ const Navbar = () => {
                 className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition hover:bg-cream"
                 onClick={() => setOpen(false)}
               >
-                <Home className="size-4" />
                 Home
               </Link>
 
@@ -112,10 +110,6 @@ const Navbar = () => {
                   {item.label}
                 </Link>
               ))}
-
-              <div className="border-t border-border px-4 py-2 text-sm font-semibold text-orange-600">
-                Admin Pages
-              </div>
 
               {adminLinks.map((item) => (
                 <Link

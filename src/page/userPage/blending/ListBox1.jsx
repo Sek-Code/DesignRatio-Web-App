@@ -4,7 +4,7 @@ const itemsHerbs = [
   { id: "herb-jasmine", name: "Jasmine", price: "+ 20" },
   { id: "herb-rose", name: "Rose Petals", price: "+ 20" },
   { id: "herb-mint", name: "Mint", price: "+ 10" },
-  { id: "herb-chamomile", name: "Charmomile", price: "+ 30" },
+  { id: "herb-chamomile", name: "Chamomile", price: "+ 30" },
   { id: "herb-chrysanthemum", name: "Chrysanthemum", price: "+ 10" },
   { id: "herb-lavender", name: "Lavender", price: "+ 40" },
   { id: "herb-lemongrass", name: "Lemon Grass", price: "+ 20" },
@@ -48,7 +48,7 @@ const ListBox1 = ({ selectedItems, onToggle, max }) => {
                 <p>Jasmine</p>
                 <p>Rose Petals</p>
                 <p>Mint</p>
-                <p>Charmomile</p>
+                <p>Chamomile</p>
                 <p>Chrysanthemum</p>
                 <p>Lavender</p>
                 <p>Lemon Grass</p>

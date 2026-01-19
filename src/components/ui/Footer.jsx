@@ -3,9 +3,9 @@ import Logo from "@/assets/img/Design-Ratio-logo.png";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#f6efe6] py-8">
-      <div className="max-w-7xl mx-auto px-4 md:px-5 flex flex-col md:flex-row items-center justify-between gap-9">
-        <div className="flex flex-row items-center flex-shrink-0">
+    <footer className="bg-(--color-cream) py-8">
+      <div className="max-w-7xl mx-auto px-4 lg:px-5 flex flex-col lg:flex-row items-center justify-between gap-9">
+        <div className="flex flex-row items-center shrink-0">
           <Link to="/">
             <img
               src={Logo}
@@ -15,7 +15,7 @@ const Footer = () => {
           </Link>
         </div>
         <div>
-          <nav className="flex flex-col px-4 sm:px-6 md:flex-row items-center gap-x-24 lg:gap-y-16 text-amber-950">
+          <nav className="flex flex-col lg:px-4 px-6 lg:flex-row items-center lg:gap-x-20 gap-y-3 text-(--color-brown) mb-6 lg:mb-0">
             <Link to="/" className="hover:text-(--color-matcha) transition">
               Home
             </Link>
@@ -43,10 +43,10 @@ const Footer = () => {
           </nav>
         </div>
 
-        <div className="flex flex-col px-1 h-auto sm:px-3 sm:text-xl items-center justify-center md:items-end text-center md:text-right">
-          <h3 className="rounded-full flex items-center justify-center md:justify-end text-amber-950">
+        <div className="flex flex-col lg:px-1 h-auto px-3 lg:text-xl justify-center items-center lg:items-end lg:text-center text-right gap-y-1">
+          <p className="rounded-full flex items-center lg:justify-center justify-end text-(--color-brown) font-bold font-display">
             Contact Us
-          </h3>
+          </p>
           <p className="flex">Address: 123 456 789</p>
           <p className="flex">Call: (+66) 123456789</p>
         </div>
