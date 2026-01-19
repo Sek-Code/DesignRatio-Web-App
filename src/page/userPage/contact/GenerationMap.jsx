@@ -13,6 +13,6 @@ export default function GenerationMap() {
   }, []);
 
   return (
-    <div id="map" className="w-[75%] md:w-[40%] h-100 rounded-xl shadow" />
+    <div id="map" className="w-[75%] lg:w-[40%] h-auto rounded-xl shadow" />
   );
 }
