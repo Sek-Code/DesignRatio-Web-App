@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
@@ -12,6 +12,7 @@ const navLinks = [
 const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
+  { label: "Members", to: "/admin/members" },
   { label: "Before-edit", to: `/admin/edit-products/` },
 ];
 
@@ -33,7 +34,6 @@ const Navbar = () => {
           <button
             type="button"
             aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
             className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
