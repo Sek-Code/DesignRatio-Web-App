@@ -1,7 +1,7 @@
 export default function signInPage() {
      return (
     <div className="max-w-xl mx-auto my-25">
-      <form className="gap-4">
+      <form className="gap-4 px-9">
         <h1 className="text-6xl my-7 text-center h1-style">Log-in</h1>
 
         <div>
