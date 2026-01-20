@@ -20,7 +20,7 @@ export default function MemberTable() {
         </thead>
         <tbody>
           {users.map((user) => (
-            <tr key={user.userId} className="bg-[#f3ece3] text-center ">
+            <tr key={user._id} className="bg-[#f3ece3] text-center ">
               <td>{user.createdAt}</td>
               <td className="h-14 flex items-center justify-center">
                 <span className="inline-block text-left w-40 break-all">
@@ -31,8 +31,8 @@ export default function MemberTable() {
               <td className="pr-3">{user.phoneNumber}</td>
               <td>{user.role}</td>
               <td className="gap-1">
-                <button key={user.userId}
-                  onClick={() => navigate(`/admin/members/${user.userId}`)}
+                <button key={user._id}
+                  onClick={() => navigate(`/admin/members/${user._id}`)}
                 >
                   <Edit />
                 </button>
