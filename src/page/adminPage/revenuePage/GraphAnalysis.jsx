@@ -58,17 +58,24 @@ export default function GraphAnalysis() {
         <CardDescription>Jan - Dec 2025</CardDescription>
       </CardHeader>
 
-      <CardContent className="w-200 ">
+      <CardContent className="w-full">
+        <div className="h-[260px] sm:h-[300px] md:h-[360px] lg:h-[470px]">
         <ChartContainer config={chartConfig}>
           <BarChart data={chartData}>
             <CartesianGrid vertical={false} />
-            <XAxis dataKey="month" tickLine={false} axisLine={false} />
+            
+            <XAxis 
+            dataKey="month" 
+            tickLine={false} 
+            axisLine={false} />
+
             <YAxis tickFormatter={(value) => value.toLocaleString("en-US")} />
 
             <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
             <Bar dataKey="revenue" fill="var(--color-revenue)" radius={8} />
           </BarChart>
         </ChartContainer>
+        </div>
       </CardContent>
       <CardFooter>This month vs last</CardFooter>
     </Card>

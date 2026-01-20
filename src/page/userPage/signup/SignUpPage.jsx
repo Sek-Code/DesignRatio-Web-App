@@ -1,9 +1,12 @@
 export default function SignUpPage() {
   return (
-    <main className="mx-auto w-full lg:max-w-[980px] px-4 md:px-8 pt-20 pb-16 flex-1">
+    <main className="mx-auto min-h-auto lg:max-w-[950px] px-12 md:px-8 pt-20 pb-16 flex-1">
       <h1 className="font-['Playfair_Display'] mb-12">Sign up</h1>
 
-      <form className="w-full grid grid-cols-1 md:grid-cols-2 gap-x-16 gap-y-10">
+      <form className="w-full 
+  grid grid-cols-1 md:grid-cols-2 
+  gap-y-14 md:gap-y-10 
+  gap-x-0 md:gap-x-16">
         {/* <!-- Name --> */}
         <div>
           <label className="block mb-2 font-medium">Name :</label>
@@ -45,6 +48,15 @@ export default function SignUpPage() {
           <label className="block mb-2 font-medium">Password Confirm :</label>
           <input
             type="password"
+            className="block w-full bg-transparent border-b border-[var(--brown-color)] focus:outline-none focus:border-[var(--matcha-color)] py-2"
+          />
+        </div>
+
+                {/* <!-- tel-number --> */}
+        <div className="md:col-span-2">
+          <label className="block mb-2 font-medium">Tel :</label>
+          <input
+            type="tel"
             className="block w-full bg-transparent border-b border-[var(--brown-color)] focus:outline-none focus:border-[var(--matcha-color)] py-2"
           />
         </div>
