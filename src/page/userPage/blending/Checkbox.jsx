@@ -28,7 +28,7 @@
 
 const Checkbox = ({ checked, disabled, onChange }) => {
   return (
-    <div className="checkbox-wrapper">
+    <div className="checkbox-wrapper accent-(--color-light-cream) transform: scale-125">
       <label>
         <input
           type="checkbox"

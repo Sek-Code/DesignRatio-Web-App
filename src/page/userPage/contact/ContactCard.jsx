@@ -4,7 +4,7 @@ import { memberdata } from "../../../mock-data/memberMockData.js";
 export default function ContactCard() {
     const  members  = memberdata;
     return (
-        <div className="bg-[#9e9957] w-full py-10 px-[5%] flex flex-wrap gap-7 justify-center">
+        <div className="bg-(--color-matcha) w-full flex flex-wrap gap-7 justify-center px-10 py-10 lg:px-37.5 lg:py-15">
             {members.map((member) => <MemberCard key={member.id} member={member}/>)}
         </div>
     )
