@@ -2,7 +2,7 @@ import ProfilePic from "@/assets/img/kindpng_223965.png" ;
 
 export default function AccountPage() {
   return (
-    <div className="max-w-5xl mx-auto py-12">
+    <div className="max-w-5xl mx-auto py-12 px-10">
       <h1 className="font-semibold mb-8 mt-2">Account</h1>
       <div className="relative w-32 mx-auto">
         <img
@@ -19,7 +19,7 @@ export default function AccountPage() {
       </div>
 
       <form className="mt-20 space-y-6 ">
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-15">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           <div>
             <h2 className="h2-style text-sm">First Name:</h2>
             <input
@@ -36,7 +36,7 @@ export default function AccountPage() {
           </div>
         </div>
 
-        <div className="grid grid-cols-2 gap-15">
+        <div>
           <div>
             <h2 className="text-sm">Email:</h2>
             <input
@@ -44,14 +44,15 @@ export default function AccountPage() {
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4]"
             />
           </div>
-          <div>
+        </div>
+
+        <div>
             <h2 className="text-sm">Mobile Number:</h2>
             <input
               type="tel"
               className="w-full mt-2 p-2 rounded-4xl bg-[#F2EDE4]"
             />
           </div>
-        </div>
 
         <div>
           <h2 className="text-sm">Address:</h2>
