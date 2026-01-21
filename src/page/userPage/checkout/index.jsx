@@ -11,15 +11,29 @@ export default function Checkout() {
   const [selectedDelivery, setSelectedDelivery] = useState("delivery_a");
   const [selectedPayment, setSelectedPayment] = useState("creditcard");
 
-  // Transform cartItems on the fly instead of using useState
-  const items = cartItems.map((item) => ({
-    id: item.id,
-    name: item.product.name,
-    price: item.product.variants?.find(v => v.size === item.size)?.price || 0,
-    qty: item.quantity,
-    size: item.size,
-    product: item.product,
-  }));
+  // Transform cartItems - handle both ready and custom products
+  const items = cartItems.map((item) => {
+    let price = 0;
+    
+    if (item.product.type === 'custom') {
+      // Custom product - has price directly
+      price = item.product.price || 0;
+    } else {
+      // Ready product - find price by variant size
+      price = item.product.variants?.find(v => v.size === item.size)?.price || 0;
+    }
+    
+    return {
+      id: item.id,
+      name: item.product.name,
+      price,
+      qty: item.quantity,
+      size: item.size,
+      type: item.product.type,
+      ingredients: item.product.ingredientNames, // สำหรับ custom
+      product: item.product,
+    };
+  });
 
   const updateItemQty = (id, delta) => {
     const currentItem = cartItems.find(item => item.id === id);
@@ -79,6 +93,11 @@ export default function Checkout() {
                     {/* Product Info */}
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-[#411D03]">{item.name}</h3>
+                      {item.type === 'custom' && item.ingredients && (
+                        <p className="text-xs text-gray-600">
+                          Ingredients: {item.ingredients.join(', ')}
+                        </p>
+                      )}
                       <p className="text-sm text-gray-600">{item.price} บาท</p>
                     </div>
 
