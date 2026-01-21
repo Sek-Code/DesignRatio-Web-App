@@ -2,7 +2,6 @@
 import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
-import { useUserStore } from "@/store/userStore";
 
 
 const navLinks = [
