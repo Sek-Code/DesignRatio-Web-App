@@ -1,6 +1,5 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
-import { readyProducts } from "@/mock-data/readyProducts";
 import SizeChoose from "./sizeChoose/sizeScreen";
 import { useState } from "react";
 import { useCartStore } from "@/store/cartStore";
@@ -92,10 +91,10 @@ function CardItem({ product, onCardClick}) {
   );
 }
 
-export default function CardScreen({onCardClick}) {
+export default function CardScreen({ product = [], onCardClick }) {
   return (
     <div className="flex flex-wrap justify-center items-center w-full gap-7">
-      {readyProducts.map((item) => (
+      {product.map((item) => (
         <CardItem key={item._id || item.name} product={item}
         onCardClick={onCardClick}/>
       ))}
