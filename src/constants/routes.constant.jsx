@@ -14,6 +14,7 @@ import EditP from '@/page/adminPage/editProductDetails/EditP';
 import MemberPage from '@/page/adminPage/memberPage/MemberPage';
 import EditMember from '@/page/adminPage/memberPage/EditMember';
 import AddAdmin from '@/page/adminPage/memberPage/AddAdmin';
+import AdminGuard from './adminGuard';
 
 const routes = [
   {
@@ -24,17 +25,23 @@ const routes = [
       { path: 'blending', element: <Blending /> },
       { path: 'products', element: <ProductPage /> },
       { path: 'contact', element: <ContactPage /> },
-      { path: 'account', element: <AccountPage /> },
+      { path: 'account/:id', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },
       { path: 'signin', element: <SignInPage />},
       { path: 'signup', element: <SignUpPage />},
-      { path: 'admin/revenue', element: <RevenuePage /> },
-      { path: 'admin/orders', element: <OrderManagementPage /> },
-      { path: 'admin/edit-products', element: <EditProductDetailPage /> },
-      { path: 'admin/edit-product/:id', element: <EditP/> },
-      { path: 'admin/members', element: <MemberPage/>},
-      { path: 'admin/members/:id', element: <EditMember/>},
-      { path: 'admin/members/add-admin', element: <AddAdmin/>}
+      
+      {
+        element: <AdminGuard />,   
+        children: [
+          { path: 'admin/revenue', element: <RevenuePage /> },
+          { path: 'admin/orders', element: <OrderManagementPage /> },
+          { path: 'admin/edit-products', element: <EditProductDetailPage /> },
+          { path: 'admin/edit-product/:id', element: <EditP /> },
+          { path: 'admin/members', element: <MemberPage /> },
+          { path: 'admin/members/:id', element: <EditMember /> },
+          { path: 'admin/members/add-admin', element: <AddAdmin /> },
+        ],
+      }
     ],
   },
 ];

@@ -6,13 +6,15 @@ import { useNavigate } from "react-router-dom";
 export default function SignInPage() {
 
   const navigate = useNavigate();
-  const {  loginUser, loading, currentUser } = useUserStore();
+  const {  loginUser, loading, currentUser, } = useUserStore();
   //  const [authLoading, setAuthLoading] = useState(true);
   // const [authError, setAuthError] = useState(null);
 
+  
+
   useEffect(() => {
     if (currentUser) {
-      navigate("/account");
+      navigate(`/account/${currentUser._id}`);
     }
   }, [currentUser, navigate]);
 
@@ -60,7 +62,7 @@ export default function SignInPage() {
       await loginUser(formData.email, formData.password);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/account");
+        navigate("/account/:id");
       }, 1500);
       
     } catch (err) {
