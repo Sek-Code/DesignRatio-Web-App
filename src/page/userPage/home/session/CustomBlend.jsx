@@ -11,7 +11,7 @@ export default function CustomBlend() {
             <div className="relative w-full">
             <img src={bgBlend} alt="bg blend" className="lg:w-full h-auto"/>
             <Link to="/blending" className="absolute top-[7%] left-1/2 -translate-x-1/2">
-            <Button className="bg-(--color-matcha) hover:bg-(--color-cream) hover:text-(--color-brown) px-10 py-2 rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px]"  >
+            <Button className="cursor-pointer bg-(--color-matcha) hover:bg-(--color-cream) hover:text-(--color-brown) px-10 py-2 rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px]"  >
                 Blend Now
             </Button>
             </Link>
