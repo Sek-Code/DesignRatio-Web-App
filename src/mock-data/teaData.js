@@ -1,7 +1,7 @@
 
 export const teaProducts = [
     {
-        id: 1,
+        id: "READY_001",
         name: "Japanese Green Tea",
         img: "/teaImageData/29dc5b52815d1fc72e40975f34e34db7.jpg",
         sizes: {
@@ -10,7 +10,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 2,
+        id: "READY_002",
         name: "Taiwanese Oolong Tea",
         img: "/teaImageData/2e6476db8ea60314f4c8b78fc1436189.jpg",
         sizes: {
@@ -19,7 +19,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 3,
+        id: "READY_003",
         name: "Ceylon Black Tea",
         img: "/teaImageData/2f2e438f9f97bc46192739bd8b0eba9a.jpg",
         sizes: {
@@ -28,7 +28,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 4,
+        id: "READY_004",
         name: "Chinese Green Tea",
         img: "/teaImageData/593f574b8e36f3a3d8f74366410b2459.jpg",
         sizes: {
@@ -37,7 +37,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 5,
+        id: "READY_005",
         name: "Earl Grey Tea",
         img: "/teaImageData/a0d2ae75da36e469b94288666149247d.jpg",
         sizes: {
@@ -46,7 +46,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 6,
+        id: "READY_006",
         name: "Jasmine Green Tea",
         img: "/teaImageData/b5e2ef49603d13b6c05f95e34c2a4f9a.jpg",
         sizes: {
@@ -55,7 +55,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 7,
+        id: "READY_007",
         name: "White Tea",
         img: "/teaImageData/cd67f8c8750c520327ec8b9ea06ff1d8.jpg",
         sizes: {
@@ -64,7 +64,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 8,
+        id: "READY_008",
         name: "Pu-erh Tea",
         img: "/teaImageData/e5175a02712500a11df4df1ec5f1661a.jpg",
         sizes: {
@@ -73,7 +73,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 9,
+        id: "READY_009",
         name: "Chamomile Herbal Tea",
         img: "/teaImageData/f1343914aa2d3df3210fed4d43a1b078.jpg",
         sizes: {
@@ -82,7 +82,7 @@ export const teaProducts = [
         },
     },
     {
-        id: 10,
+        id: "READY_010",
         name: "Peppermint Herbal Tea",
         img: "/teaImageData/f2052713d01a1930494c26127031d7fd.jpg",
         sizes: {
