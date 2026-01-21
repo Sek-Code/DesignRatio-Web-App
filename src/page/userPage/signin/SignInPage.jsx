@@ -71,14 +71,14 @@ export default function SignInPage() {
 
      return (
     <div className="max-w-xl mx-auto my-25">
-      <form className="gap-4 px-9" onSubmit={handleLogin}>
-        <h1 className="text-6xl my-7 text-center h1-style">Log-in</h1>
+      <form className="px-9" onSubmit={handleLogin}>
+        <h1 className="lg:text-6xl my-7 text-center h1-style">Log-in</h1>
 
-        <div>
+        <div className="gap-4">
           {/* Email */}
-          <div className="flex flex-col gap-2 text-lg">
+          <div className="flex flex-col gap-4 text-lg">
             <label
-              className="text-gray-600 font-bold inline-block pb-2 h3-style"
+              className="text-(--color-brown) font-bold inline-block h3-style lg:text-2xl"
               htmlFor="email"
             >
               E-mail
@@ -96,9 +96,9 @@ export default function SignInPage() {
           </div>
 
           {/* Password */}
-          <div className="flex flex-col text-lg my-4">
+          <div className="flex flex-col text-lg my-4 gap-4">
             <label
-              className="text-gray-600 font-bold inline-block pb-2 h3-style"
+              className="text-(--color-brown) font-bold inline-block h3-style lg:text-2xl"
               htmlFor="password"
             >
               Password
@@ -125,14 +125,14 @@ export default function SignInPage() {
             </div>
 
             <div className="w-1/2 text-right">
-              <a href="#">Forgot password</a>
+              <a href="#" className="hover:underline cursor-pointer">Forgot password</a>
             </div>
           </div>
 
           {/* Buttons */}
           <div className="flex justify-center gap-4">
             <button
-              className="my-4 bg-[#989898] w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-yellow-950"
+              className="my-4 bg-gray-300 w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-(--color-matcha)"
               type="submit"
               
               disabled={loading}
@@ -140,7 +140,7 @@ export default function SignInPage() {
             >{loading ? "loading..." : "login"}</button>
 
             <input
-              className="my-4 bg-[#411D03] w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-gray-600"
+              className="my-4 bg-(--color-brown) w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-(--color-matcha)"
               type="button"
               value="Sign Up"
               onClick={() => navigate("/signup")}
@@ -150,7 +150,7 @@ export default function SignInPage() {
           {/* Google */}
           <button
             type="button"
-            className="bg-white w-full py-2 rounded-md text-[#411D03] font-bold flex items-center justify-center gap-3 border border-[#411D03] my-4"
+            className="cursor-pointer bg-white w-full py-2 rounded-md text-(--color-brown) font-bold flex items-center justify-center gap-3 border border-(--color-brown) my-4 hover:bg-(--color-brown) hover:text-white"
           >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/3/3c/Google_Favicon_2025.svg"
@@ -163,7 +163,7 @@ export default function SignInPage() {
           {/* Facebook */}
           <button
             type="button"
-            className="bg-[#411D03] w-full py-2 rounded-md text-white font-bold flex items-center justify-center gap-3 my-4"
+            className="cursor-pointer bg-(--color-brown) w-full py-2 rounded-md text-white font-bold flex items-center justify-center gap-3 my-4 hover:bg-(--color-matcha)"
           >
             <img
               src="https://upload.wikimedia.org/wikipedia/commons/0/05/Facebook_Logo_%282019%29.png"

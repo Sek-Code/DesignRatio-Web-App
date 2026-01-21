@@ -44,7 +44,7 @@ function CardItem({ product, onCardClick}) {
         />
       </div>
 
-      <h3 className="h3-style pt-5 pb-4 text-[#411D03] truncate w-full text-center ">
+      <h3 className="h3-style pt-5 pb-4 text-(--color-brown) truncate w-full text-center ">
         {product.name}
       </h3>
 
@@ -63,19 +63,16 @@ function CardItem({ product, onCardClick}) {
         : "—"} baht
       </p>
 
-      <div className="flex flex-row items-center gap-5 h3-style text-[#411D03] pb-5 ">
+      <div className="flex flex-row items-center gap-5 h3-style text-(--color-brown) pb-5 ">
         <button
-          className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8 active:bg-[#411D03] active:text-white"
-          onClick={(e) => {
-            e.stopPropagation();
-            decrement();
-          }}
+          className="flex items-center justify-center border border-(--color-brown) rounded-full w-8 h-8 active:bg-(--color-brown) active:text-white"
+          onClick={decrement}
         >
           <p>-</p>
         </button>
         <p>{count}</p>
         <button
-          className="flex items-center justify-center border border-[#411D03] rounded-full w-8 h-8 active:bg-[#411D03] active:text-white"
+          className="flex items-center justify-center border border-(--color-brown) rounded-full w-8 h-8 active:bg-(--color-brown) active:text-white"
           onClick={(e) => {
             e.stopPropagation();
             increment();
@@ -86,7 +83,7 @@ function CardItem({ product, onCardClick}) {
       </div>
       <Button
         variant="default"
-        className="bg-[#411D03] text-[#f3ece3] text-sm"
+        className="cursor-pointer bg-(--color-brown) text-white lg:text-base hover:bg-(--color-matcha)"
         onClick={handleAddToCart}
       >
         Add to Cart

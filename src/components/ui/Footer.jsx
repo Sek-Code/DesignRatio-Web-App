@@ -28,8 +28,8 @@ const Footer = () => {
             </Link>
 
             <Link
-              to="/products"
-              className="hover:text-(--color-matcha) transition text-(--nav-size)"
+              to="/product"
+              className="hover:text-(--color-matcha) transition"
             >
               Product
             </Link>

@@ -25,7 +25,7 @@ const Navbar = () => {
         <div className="col-start-2 col-end-3 flex items-center justify-center gap-2 sm:col-auto sm:justify-start sm:gap-3">
           <img
             src={logoMark}
-            alt="Design Ratio mark"
+            alt="Design Ratio logo"
             className="h-16 w-16 object-contain drop-shadow-sm sm:h-20 sm:w-20"
           />
         </div>
@@ -40,7 +40,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <nav className="hidden flex-1 items-center justify-center gap-8 text-[16px] lg:text-xl font-semibold text-matcha sm:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-8 text-[16px] font-semibold text-matcha sm:flex">
           <Link to="/" className="nav-link flex items-center gap-2 transition">
             <Home className="size-4" />
           </Link>
@@ -94,7 +94,7 @@ const Navbar = () => {
             <nav className="flex flex-col divide-y divide-border text-matcha text-center">
               <Link
                 to="/"
-                className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition hover:bg-cream"
+                className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition text-(--nav-size)"
                 onClick={() => setOpen(false)}
               >
                 Home

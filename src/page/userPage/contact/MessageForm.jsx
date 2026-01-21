@@ -29,7 +29,7 @@ export default function MessageForm() {
           <label htmlFor="message" className="lg:text-2xl">Message :</label>
           <Textarea id="message" placeholder="your message" className="mt-3" />
         </div>
-        <Button variant="default" type="sumbit" className="px-10 py-2 rounded-4xl lg:text-xl lg:py-4 lg:px-10 lg:rounded-[30px] hover:bg-(--color-matcha) lg:my-6">
+        <Button variant="default" type="sumbit" className="cursor-pointer px-10 py-2 rounded-4xl lg:text-xl lg:py-4 lg:px-10 lg:rounded-[30px] hover:bg-(--color-matcha) lg:my-6">
           Send
         </Button>
       </form>
