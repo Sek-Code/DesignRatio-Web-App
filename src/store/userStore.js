@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { fetchAllUsers, createNewUser, updateUserData, deleteUserData } from '@/api/userApi';
+import { fetchAllUsers, createNewUser, updateUserData, deleteUserData, login } from '@/api/userApi';
 
 /**
  * ═══════════════════════════════════════════════════════════════
@@ -22,10 +22,10 @@ export const useUserStore = create((set) => ({
   // STATE - ข้อมูลที่เก็บไว้เหล่านี้
   // ═══════════════════════════════════════════════════════════
   
-  users: [],               // ��� Array เก็บรายชื่อสมาชิกทั้งหมด
+  users: [],               // ��� Array เก็บรายชื่อสมาชิกทั้งหมด
   loading: false,         // ⏳ Flag แสดงว่ากำลัง fetch ข้อมูลอยู่
   error: null,            // ❌ เก็บข้อความ error ถ้าเกิดปัญหา
-  currentUser: null,      // ��� ผู้ใช้ปัจจุบันที่ logged in
+  currentUser: null,      // ��� ผู้ใช้ปัจจุบันที่ logged in
 
   // ═══════════════════════════════════════════════════════════
   // FUNCTIONS - ฟังก์ชันสำหรับจัดการข้อมูล
@@ -52,7 +52,7 @@ export const useUserStore = create((set) => ({
   loadUsers: async () => {
     set({ loading: true, error: null });  // ⏳ เริ่มโหลด
     try {
-      const response = await fetchAllUsers();  // ��� เรียก API
+      const response = await fetchAllUsers();  // ��� เรียก API
       set({ users: response.data || [], error: null });  // ✅ บันทึกข้อมูล
     } catch (err) {
       set({ error: err.message || 'Failed to load users' });  // ❌ บันทึก error
@@ -75,8 +75,8 @@ export const useUserStore = create((set) => ({
    */
   addUser: async (userData) => {
     try {
-      await createNewUser(userData);  // ��� ส่งข้อมูลไป API
-      const response = await fetchAllUsers();  // ��� ดึงรายการใหม่ทั้งหมด
+      await createNewUser(userData);  // ��� ส่งข้อมูลไป API
+      const response = await fetchAllUsers();  // ��� ดึงรายการใหม่ทั้งหมด
       set({ users: response.data || [], error: null });  // ✅ อัปเดต store
     } catch (err) {
       set({ error: err.message || 'Failed to create user' });  // ❌ เก็บ error
@@ -96,8 +96,8 @@ export const useUserStore = create((set) => ({
    */
   editUser: async (id, userData) => {
     try {
-      await updateUserData(id, userData);  // ��� ส่งข้อมูลแก้ไข
-      const response = await fetchAllUsers();  // ��� ดึงรายการใหม่
+      await updateUserData(id, userData);  // ��� ส่งข้อมูลแก้ไข
+      const response = await fetchAllUsers();  // ��� ดึงรายการใหม่
       set({ users: response.data || [], error: null });  // ✅ อัปเดต
     } catch (err) {
       set({ error: err.message || 'Failed to update user' });  // ❌ error
@@ -120,7 +120,7 @@ export const useUserStore = create((set) => ({
    */
   removeUser: async (id) => {
     try {
-      await deleteUserData(id);  // ��� เรียก API ลบ
+      await deleteUserData(id);  // ��� เรียก API ลบ
       set((state) => ({
         // ← set() สามารถรับ function ได้
         // ← ใช้เมื่อต้องอ้างอิง state เก่า
@@ -151,6 +151,22 @@ export const useUserStore = create((set) => ({
   getUserById: (id) => {
     return (state) => state.users.find(u => u._id === id);
   },
+
+  loginUser: async(email,password)=>{
+    set({ loading: true, error: null });
+    try {
+     const user = await login(email, password); // ← เรียก API จริง
+     set({ currentUser: user, loading: false });
+
+    return user;
+    } catch (err) {
+       set({ 
+      error: err.message || "Failed to login", 
+      loading: false 
+    });;  // ❌ error
+      console.error('Error log in:', err);
+      throw err
+  }},
 
   /**
    * 6️⃣ clearError - ลบข้อความ error
