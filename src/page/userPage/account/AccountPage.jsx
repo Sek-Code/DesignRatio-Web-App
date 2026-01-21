@@ -1,22 +1,23 @@
-import ProfilePic from "@/assets/img/kindpng_223965.png" ;
+import CloudinaryImage from "@/components/CloudinaryImage";
 
 export default function AccountPage() {
+  const handleProfileImageUpload = (url) => {
+    // Save image URL to server or state management
+    console.log('Uploaded image URL:', url);
+  };
+
   return (
     <div className="max-w-5xl mx-auto py-12 px-10">
       <h1 className="font-semibold mb-8 mt-2">Account</h1>
-      <div className="relative w-32 mx-auto">
-        <img
-          src={ProfilePic}
-          alt="ProfilePicture"
-          className="mt-10 w-full rounded-full border"
-        />
-        <button
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800
-       hover:text-white"
-        >
-          📷
-        </button>
-      </div>
+      
+      <CloudinaryImage 
+        publicId="cld-sample-5"
+        width={300}
+        height={300}
+        alt="Profile Picture"
+        isProfile={true}
+        onUpload={handleProfileImageUpload}
+      />
 
       <form className="mt-20 space-y-6 ">
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
