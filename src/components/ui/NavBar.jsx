@@ -2,10 +2,12 @@
 import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
+import { useUserStore } from "@/store/userStore";
+
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
-  { label: "Product", to: "/product" },
+  { label: "Product", to: "/products" },
   { label: "Contact", to: "/contact" }
 ];
 
@@ -18,6 +20,9 @@ const adminLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+
+  
+
 
   return (
     <header className="relative bg-lightCream text-brown font-body shadow-sm">
@@ -54,16 +59,17 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-
-          {adminLinks.map((item) => (
-            <Link
-              key={item.label}
-              to={item.to}
-              className="nav-link text-orange-600 transition hover:text-orange-800"
-            >
-              {item.label}
-            </Link>
-          ))}
+        {
+  adminLinks.map((item) => (
+    <Link
+      key={item.label}
+      to={item.to}
+      className="nav-link text-orange-600 transition hover:text-orange-800"
+    >
+      {item.label}
+    </Link>
+  ))}
+          
         </nav>
 
         <div className="hidden items-center gap-4 text-matcha sm:flex">

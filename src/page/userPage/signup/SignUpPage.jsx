@@ -13,7 +13,7 @@ export default function SignUpPage() {
 
 useEffect(() => {
   if (currentUser) {
-    navigate("/account");
+    navigate(`/account/${currentUser._id}`);
   }
 }, [currentUser, navigate]);
 

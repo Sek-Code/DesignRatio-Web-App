@@ -1,5 +1,5 @@
 import { create } from 'zustand';
-import { fetchAllUsers, createNewUser, updateUserData, deleteUserData, login } from '@/api/userApi';
+import { fetchAllUsers, createNewUser, updateUserData, deleteUserData, login, authUser } from '@/api/userApi';
 
 /**
  * ═══════════════════════════════════════════════════════════════
@@ -50,17 +50,24 @@ export const useUserStore = create((set) => ({
    * - set({ users: response.data }) = บอก Zustand ว่า "ใจให้ users เป็นข้อมูลนี้"
    */
   loadUsers: async () => {
-    set({ loading: true, error: null });  // ⏳ เริ่มโหลด
-    try {
-      const response = await fetchAllUsers();  // ��� เรียก API
-      set({ users: response.data || [], error: null });  // ✅ บันทึกข้อมูล
-    } catch (err) {
-      set({ error: err.message || 'Failed to load users' });  // ❌ บันทึก error
-      console.error('Error loading users:', err);
-    } finally {
-      set({ loading: false });  // ⏳ โหลดเสร็จ
-    }
-  },
+    const state = useUserStore.getState();
+
+  // ✅ ถ้า loading อยู่ หรือ fetch ล่าสุดยังไม่หมดเวลา 1-2 วินาที → return
+  if (state.loading) return;
+  const now = Date.now();
+  if (state.lastFetched && now - state.lastFetched < 2000) return; // 2s cooldown
+
+  set({ loading: true, error: null });
+
+  try {
+    const response = await fetchAllUsers();
+    set({ users: response.data || [], error: null, lastFetched: now });
+  } catch (err) {
+    set({ error: err.message || "Failed to load users" });
+  } finally {
+    set({ loading: false });
+  }
+},
 
   /**
    * 2️⃣ addUser - สร้างผู้ใช้ใหม่
@@ -167,6 +174,19 @@ export const useUserStore = create((set) => ({
       console.error('Error log in:', err);
       throw err
   }},
+
+  checkAuth: async () => {
+    set({ loading: true, error: null });
+  try {
+    const user = await authUser();
+    set({ currentUser: user });
+  } catch {
+    set({ currentUser: null });
+  } finally {
+    set({ loading: false });
+  }
+},
+ 
 
   /**
    * 6️⃣ clearError - ลบข้อความ error

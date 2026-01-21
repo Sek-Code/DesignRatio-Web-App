@@ -11,8 +11,12 @@ export default function MemberTable() {
   // API Call #1: ดึงข้อมูลผู้ใช้ทั้งหมด (GET /api/v2/users/)
   // ทำงาน: เมื่อ component mount แรกครั้ง เรียก loadUsers() เพื่อดึงรายชื่อสมาชิก
   useEffect(() => {
+  const timer = setTimeout(() => {
     loadUsers();
-  }, []);
+  }, 200); // delay 200ms
+  return () => clearTimeout(timer);
+}, []);
+
 
   // API Call #2: ลบผู้ใช้ (DELETE /api/v2/users/:id)
   // ทำงาน: กดปุ่มลบ → แสดง confirm dialog → เรียก removeUser(id) เพื่อลบสมาชิก
