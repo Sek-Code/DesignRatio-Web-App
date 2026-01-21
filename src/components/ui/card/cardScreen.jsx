@@ -3,10 +3,21 @@ import { Button } from "../button";
 import { readyProducts } from "@/mock-data/readyProducts";
 import SizeChoose from "./sizeChoose/sizeScreen";
 import { useState } from "react";
+import { useCartStore } from "@/store/cartStore";
 
 function CardItem({ product, onCardClick}) {
   const { count, increment, decrement } = useCounter();
   const [selectedSize, setSelectedSize] = useState(null)
+  const addToCart = useCartStore((state) => state.addToCart);
+
+  const handleAddToCart = () => {
+    if (!selectedSize) {
+      alert("Please select a size");
+      return;
+    }
+    addToCart(product, count, selectedSize);
+    alert("Added to cart!");
+  };
 
   return (
     <div
@@ -15,7 +26,6 @@ function CardItem({ product, onCardClick}) {
     onCardClick?.(product);
   }}
 >
-
 
       <div className="">
         <img
@@ -59,7 +69,11 @@ function CardItem({ product, onCardClick}) {
           <p>+</p>
         </button>
       </div>
-      <Button variant="default" className=" bg-[#411D03] text-[#f3ece3] text-sm  ">
+      <Button 
+        variant="default" 
+        className="bg-[#411D03] text-[#f3ece3] text-sm"
+        onClick={handleAddToCart}
+      >
         Add to Cart
       </Button>
     </div>
