@@ -5,7 +5,7 @@ import logoMark from "@/assets/img/Design-Ratio-logo.png";
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
-  { label: "Product", to: "/product" },
+  { label: "Product", to: "/products" },
   { label: "Contact", to: "/contact" }
 ];
 

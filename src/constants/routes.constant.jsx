@@ -13,6 +13,7 @@ import RevenuePage from '../page/adminPage/revenuePage/RevenuePage';
 import EditP from '@/page/adminPage/editProductDetails/EditP';
 import MemberPage from '@/page/adminPage/memberPage/MemberPage';
 import EditMember from '@/page/adminPage/memberPage/EditMember';
+import AddAdmin from '@/page/adminPage/memberPage/AddAdmin';
 
 const routes = [
   {
@@ -21,7 +22,7 @@ const routes = [
     children: [
       { index: true, element: <HomeScreen /> },
       { path: 'blending', element: <Blending /> },
-      { path: 'product', element: <ProductPage /> },
+      { path: 'products', element: <ProductPage /> },
       { path: 'contact', element: <ContactPage /> },
       { path: 'account', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },
@@ -32,7 +33,8 @@ const routes = [
       { path: 'admin/edit-products', element: <EditProductDetailPage /> },
       { path: 'admin/edit-product/:id', element: <EditP/> },
       { path: 'admin/members', element: <MemberPage/>},
-      { path: 'admin/members/:id', element: <EditMember/>}
+      { path: 'admin/members/:id', element: <EditMember/>},
+      { path: 'admin/members/add-admin', element: <AddAdmin/>}
     ],
   },
 ];
