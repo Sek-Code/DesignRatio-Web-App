@@ -1,4 +1,4 @@
-import { Button } from "@/components/ui/Button";
+import { Button } from "@/components/ui/button";
 
 export default function AboutUs (){
     return (
@@ -10,7 +10,7 @@ export default function AboutUs (){
               </div>
               <div className="w-full h-auto flex flex-col justify-center items-center lg:w-3/5 lg:gap-y-5">
                 <p className="text-left lg:text-xl">We curate thoughtfully crafted teas made from high-quality leaves, herbs, spices, and fruits sourced from trusted origins. Each blend is designed to deliver balance, depth, and a memorable sensory experience in every cup. Whether you’re seeking comfort, clarity, or a moment of calm, our teas invite you to slow down and savor something truly special.</p>
-                <Button className="px-10 py-2 mt-10 hover:bg-(--color-matcha) rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px]">Find More</Button>
+                <Button className="cursor-pointer px-10 py-2 mt-10 hover:bg-(--color-matcha) rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px]">Find More</Button>
               </div>
             </div>
         </div>

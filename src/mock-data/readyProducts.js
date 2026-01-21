@@ -2,8 +2,8 @@ export const readyProducts = [
     {
         _id: "READY_001",
         type: "ready",
-        name: "Japanese Latcha Green Tea",
-        image: "/teaImageData/29dc5b52815d1fc72e40975f34e34db7.jpg",
+        name: "Japanese Green Tea",
+        image: "/teaImageData/japanese green tea.png",
         variants: [
             {
                 variant_id: "READY_001_M",
@@ -27,8 +27,8 @@ export const readyProducts = [
     {
         _id: "READY_002",
         type: "ready",
-        name: "Taiwanese Oolong Tea",
-        image: "/teaImageData/2e6476db8ea60314f4c8b78fc1436189.jpg",
+        name: "Oolong Tea",
+        image: "/teaImageData/brewing-chinese-tea-ceramic-gaiwan-tea-ceremony-closeup.jpg",
         variants: [
             {
                 variant_id: "READY_002_M",
@@ -53,7 +53,7 @@ export const readyProducts = [
         _id: "READY_003",
         type: "ready",
         name: "Ceylon Black Tea",
-        image: "/teaImageData/2f2e438f9f97bc46192739bd8b0eba9a.jpg",
+        image: "/teaImageData/ceylon black tea.png",
         variants: [
             {
                 variant_id: "READY_003_M",
@@ -78,7 +78,7 @@ export const readyProducts = [
         _id: "READY_004",
         type: "ready",
         name: "Chinese Green Tea",
-        image: "/teaImageData/593f574b8e36f3a3d8f74366410b2459.jpg",
+        image: "/teaImageData/brewing-chinese-tea-ceramic-gaiwan-tea-ceremony-closeup (1).jpg",
         variants: [
             {
                 variant_id: "READY_004_M",
@@ -102,8 +102,8 @@ export const readyProducts = [
     {
         _id: "READY_005",
         type: "ready",
-        name: "Earl Grey Tea",
-        image: "/teaImageData/a0d2ae75da36e469b94288666149247d.jpg",
+        name: "Jasmine Green Tea",
+        image: "/teaImageData/jasmine green tea.png",
         variants: [
             {
                 variant_id: "READY_005_M",
@@ -127,8 +127,8 @@ export const readyProducts = [
     {
         _id: "READY_006",
         type: "ready",
-        name: "Jasmine Green Tea",
-        image: "/teaImageData/b5e2ef49603d13b6c05f95e34c2a4f9a.jpg",
+        name: "Earl Grey Tea",
+        image: "/teaImageData/front-view-kettle-with-tea-with-cinnamon-black-tea-dark-background-meal-color-table-morning-coffee-egg-food-breakfast.jpg",
         variants: [
             {
                 variant_id: "READY_006_M",
@@ -153,7 +153,7 @@ export const readyProducts = [
         _id: "READY_007",
         type: "ready",
         name: "White Tea",
-        image: "/teaImageData/cd67f8c8750c520327ec8b9ea06ff1d8.jpg",
+        image: "/teaImageData/white tea.png",
         variants: [
             {
                 variant_id: "READY_007_M",
@@ -177,8 +177,8 @@ export const readyProducts = [
     {
         _id: "READY_008",
         type: "ready",
-        name: "Pu-erh Tea",
-        image: "/teaImageData/e5175a02712500a11df4df1ec5f1661a.jpg",
+        name: "Chrysanthemum Tea",
+        image: "/teaImageData/chrysanthemum tea.png",
         variants: [
             {
                 variant_id: "READY_008_M",
@@ -203,7 +203,7 @@ export const readyProducts = [
         _id: "READY_009",
         type: "ready",
         name: "Chamomile Herbal Tea",
-        image: "/teaImageData/f1343914aa2d3df3210fed4d43a1b078.jpg",
+        image: "/teaImageData/wooden-spoons-strainer-near-chamomile-tea.jpg",
         variants: [
             {
                 variant_id: "READY_009_M",
@@ -227,8 +227,8 @@ export const readyProducts = [
     {
         _id: "READY_010",
         type: "ready",
-        name: "Peppermint Herbal Tea",
-        image: "/teaImageData/f2052713d01a1930494c26127031d7fd.jpg",
+        name: "Peppermint Tea",
+        image: "/teaImageData/peppermint tea.png",
         variants: [
             {
                 variant_id: "READY_010_M",
