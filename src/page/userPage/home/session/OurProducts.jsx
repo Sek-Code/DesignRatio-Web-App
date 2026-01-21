@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useProducts } from "@/components/ui/card/apiCard"
-import CardScreen from "@/components/ui/card/CardScreen"
+import CardScreen from "@/components/ui/card/cardScreen"
 import { Link } from "react-router-dom"
 
 
