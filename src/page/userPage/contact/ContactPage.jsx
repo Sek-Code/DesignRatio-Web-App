@@ -1,4 +1,4 @@
-import Banner from "./banner";
+import Banner from "./Banner";
 import ContactCard from "./ContactCard";
 import SendMessage from "./SendMessage";
 
