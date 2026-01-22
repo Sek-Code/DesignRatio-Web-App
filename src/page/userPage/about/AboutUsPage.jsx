@@ -4,7 +4,7 @@ import React from 'react';
 const teas = [
   {
     name: 'Green Tea',
-    image: '/public/teaImageData/japanese green tea.png',
+    image: '/teaImageData/japanese green tea.png',
     description: 'Green tea is unfermented, allowing it to retain its green color and high antioxidant levels, particularly the renowned EGCG.',
     benefits: [
       'Weight management and metabolism boost',
@@ -15,7 +15,7 @@ const teas = [
   },
   {
     name: 'Black Tea',
-    image: '/public/teaImageData/ceylon black tea.png',
+    image: '/teaImageData/ceylon black tea.png',
     description: 'Black tea is fully fermented, resulting in its dark color and robust flavor. It also contains higher caffeine levels than other types of tea.',
     benefits: [
       'Energizes and refreshes the body',
@@ -26,7 +26,7 @@ const teas = [
   },
   {
     name: 'White Tea',
-    image: '/public/teaImageData/white tea.png',
+    image: '/teaImageData/white tea.png',
     description: 'White tea is made from young tea buds still covered in fine white hairs. It is minimally processed, resulting in a smooth and delicate flavor.',
     benefits: [
       'Highest in antioxidants to help slow down aging.',
