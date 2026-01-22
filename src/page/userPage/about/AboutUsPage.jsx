@@ -3,25 +3,25 @@ import React from 'react';
 // Data for tea types
 const teas = [
   {
-    name: 'ชาเขียว (Green Tea)',
+    name: 'Green Tea',
     image: '/public/teaImageData/japanese green tea.png',
-    description: 'ชาเขียวคือชาที่ไม่ผ่านการหมัก ทำให้คงสีเขียวและสารต้านอนุมูลอิสระไว้ได้สูง โดยเฉพาะสาร EGCG ที่มีชื่อเสียง',
+    description: 'Green tea is unfermented, allowing it to retain its green color and high antioxidant levels, particularly the renowned EGCG.',
     benefits: [
-      'ช่วยในการควบคุมน้ำหนักและเร่งการเผาผลาญ',
-      'ลดความเสี่ยงโรคหัวใจและหลอดเลือด',
-      'บำรุงสมองและเพิ่มสมาธิ',
-      'ช่วยสุขภาพช่องปากและลดกลิ่นปาก',
+      'Weight management and metabolism boost',
+      'Reduced risk of cardiovascular diseases',
+      'Enhanced brain function and focus',
+      'Improved oral health and fresher breath',
     ],
   },
   {
-    name: 'ชาดำ (Black Tea)',
+    name: 'Black Tea',
     image: '/public/teaImageData/ceylon black tea.png',
-    description: 'ชาดำเป็นชาที่ผ่านกระบวนการหมักอย่างสมบูรณ์ ทำให้มีสีเข้มและรสชาติที่หนักแน่น มีคาเฟอีนสูงกว่าชาชนิดอื่น',
+    description: 'Black tea is fully fermented, resulting in its dark color and robust flavor. It also contains higher caffeine levels than other types of tea.',
     benefits: [
-      'กระตุ้นร่างกายให้สดชื่นและกระปรี้กระเปร่า',
-      'บำรุงสุขภาพหัวใจและลดคอเลสเตอรอล',
-      'ช่วยปรับปรุงการทำงานของระบบย่อยอาหาร',
-      'มีสารแอล-ธีอะนีน ช่วยลดความเครียด',
+      'Energizes and refreshes the body',
+      'Supports heart health and reduces cholesterol',
+      'Improves digestive system functions',
+      'Contains L-Theanine to help reduce stress',
     ],
   },
   {
