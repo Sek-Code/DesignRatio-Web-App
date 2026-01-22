@@ -58,21 +58,16 @@ export const deleteUserData = async (id) => {
   }
 };
 
-
 export const login = async (email, password) => {
-
   const url = `${VITE_API_BASE_URL}/api/v2/users/auth/cookie/login`
   
-  try {const response = await axios.post(url,{email,password},{withCredentials: true},)
- 
-return response.data.user;
-} catch (error) {
-      console.error('Error login:', error);
-    
-      throw error;
-    }
-
-  
+  try {
+    const response = await axios.post(url, { email, password }, { withCredentials: true })
+    return response.data.user;
+  } catch (error) {
+    console.error('Error login:', error);
+    throw error;
+  }
 };
 
 export const authUser = async () => {
@@ -81,13 +76,22 @@ export const authUser = async () => {
     const res = await axios.get(url, {
       withCredentials: true,
     });
-
     return res.data.user;
   } catch (error) {
-    console.error('Error login:', error);
-    console.log('Sending request to:', url);
+    console.error('Error checking auth:', error);
+    throw error;
+  }
+}
 
-    
-      throw error;
+export const logout = async () => {
+  const url = `${VITE_API_BASE_URL}/api/v2/users/auth/cookie/logout`
+  try {
+    const response = await axios.post(url, {}, {
+      withCredentials: true,
+    });
+    return response.data;
+  } catch (error) {
+    console.error('Error logout:', error);
+    throw error;
   }
 }
