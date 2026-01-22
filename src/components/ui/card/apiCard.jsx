@@ -10,3 +10,13 @@ export function useProducts() {
 
   return products;
 }
+
+export function useReadyProducts() {
+  const { products, loadProducts } = useProductStore();
+
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
+
+  return products.filter((product) => product.type === "ready");
+}
