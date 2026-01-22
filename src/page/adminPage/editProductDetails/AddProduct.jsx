@@ -57,7 +57,7 @@ export default function AddProduct() {
       await addUser(data);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/admin/products");
+        navigate("/admin/edit-products");
       }, 1500);
     } catch (err) {
       setError(err.message || "Failed to create product");
@@ -66,9 +66,9 @@ export default function AddProduct() {
 
   const handleClear = () => {
     setFormData({
-    productName: "",
-    productSize: "",
-    productPrice: "",
+      productName: "",
+      productSize: "",
+      productPrice: "",
     });
 
     setError(null);
@@ -78,7 +78,7 @@ export default function AddProduct() {
   return (
     <div className="max-w-5xl mx-auto py-12">
       <button
-        onClick={() => navigate(`/admin/members`)}
+        onClick={() => navigate(`/admin/edit-products`)}
         className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
       >
         <ArrowLeft size={20} />

@@ -42,14 +42,17 @@ export default function ProductTable() {
               // Get M and L variants
               const m = product.variants?.find(v => v.size === "M");
               const l = product.variants?.find(v => v.size === "L");
-              
+
               return (
                 <tr key={product._id} className="bg-[#f3ece3] text-center h-full">
-                  <td className="h-14 flex items-center justify-center">
-                    <span className="inline-block text-left w-40 break-all">
-                      {product.name}
-                    </span>
+                  <td className="h-14 text-center align-middle">
+                    <div className="flex items-center justify-center">
+                      <span className="inline-block text-left w-40 break-all">
+                        {product.name}
+                      </span>
+                    </div>
                   </td>
+
                   <td className="text-left">
                     {m && l ? `M, L` : m ? `M` : l ? `L` : `-`}
                   </td>
@@ -80,7 +83,7 @@ export default function ProductTable() {
           ) : (
             <tr>
               <td colSpan="4" className="text-center py-8 text-gray-500">
-                No products found
+                product not found
               </td>
             </tr>
           )}
