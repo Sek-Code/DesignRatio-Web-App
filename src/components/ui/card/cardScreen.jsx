@@ -1,7 +1,7 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
 import SizeChoose from "./sizeChoose/sizeScreen";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { useCartStore } from "@/store/cartStore";
 
 function CardItem({ product, onCardClick}) {
@@ -17,6 +17,15 @@ function CardItem({ product, onCardClick}) {
     };
     return acc;
   }, {}) || {};
+
+  // Debug log
+  useEffect(() => {
+    console.log("Product:", product.name, {
+      variants: product.variants,
+      sizes: sizes,
+      variantsLength: product.variants?.length || 0
+    });
+  }, [product]);
 
   const handleAddToCart = (e) => {
     e.stopPropagation();
@@ -47,20 +56,26 @@ function CardItem({ product, onCardClick}) {
         {product.name}
       </h3>
 
-      <SizeChoose
-        sizes={sizes}
-        selectedSize={selectedSize}
-        onSelect={setSelectedSize}
-      />
+      {Object.keys(sizes).length > 0 ? (
+        <>
+          <SizeChoose
+            sizes={sizes}
+            selectedSize={selectedSize}
+            onSelect={setSelectedSize}
+          />
 
-      <p>
-        Selected: {selectedSize || "—"}
-      </p>
-      <p className="mb-3">
-        Price: {selectedSize
-        ? sizes[selectedSize].price
-        : "—"} baht
-      </p>
+          <p>
+            Selected: {selectedSize || "—"}
+          </p>
+          <p className="mb-3">
+            Price: {selectedSize
+            ? sizes[selectedSize].price
+            : "—"} baht
+          </p>
+        </>
+      ) : (
+        <p className="text-red-500 text-sm mb-3">No sizes available</p>
+      )}
 
       <div className="flex flex-row items-center gap-5 h3-style text-(--color-brown) pb-5 ">
         <button
