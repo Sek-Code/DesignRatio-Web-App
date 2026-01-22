@@ -25,14 +25,14 @@ const teas = [
     ],
   },
   {
-    name: 'ชาขาว (White Tea)',
+    name: 'White Tea',
     image: '/public/teaImageData/white tea.png',
-    description: 'ชาขาวทำจากยอดอ่อนของใบชาที่ยังปกคลุมด้วยขนอ่อนสีขาว ผ่านการแปรรูปน้อยที่สุด ทำให้มีรสชาติที่นุ่มนวลและละเอียดอ่อน',
+    description: 'White tea is made from young tea buds still covered in fine white hairs. It is minimally processed, resulting in a smooth and delicate flavor.',
     benefits: [
-      'มีสารต้านอนุมูลอิสระสูงที่สุด ช่วยชะลอวัย',
-      'ปกป้องและบำรุงผิวพรรณ',
-      'เสริมสร้างภูมิคุ้มกันให้ร่างกาย',
-      'มีคาเฟอีนในปริมาณที่น้อย',
+      'Highest in antioxidants to help slow down aging.',
+      'Protects and nourishes the skin',
+      'Strengthens the immune system',
+      'Low in caffeine',
     ],
   },
 ];
