@@ -130,7 +130,7 @@ export default function EditMember() {
           type="button"
           className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
         >
-          í³·
+          Upload
         </button>
       </div>
 

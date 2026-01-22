@@ -16,7 +16,7 @@ const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
   { label: "Members", to: "/admin/members" },
-  { label: "Before-edit", to: `/admin/edit-products/` },
+  { label: "Editing", to: `/admin/edit-products/` },
 ];
 
 const Navbar = () => {
@@ -56,7 +56,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <nav className="hidden flex-1 items-center justify-center gap-8 text-[16px] font-semibold text-matcha sm:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-6 text-xs font-semibold text-matcha sm:flex">
           <Link to="/" className="nav-link flex items-center gap-2 transition cursor-pointer">
             <Home className="size-4" />
           </Link>
@@ -75,7 +75,7 @@ const Navbar = () => {
             <Link
               key={item.label}
               to={item.to}
-              className="nav-link text-orange-600 transition hover:text-orange-800"
+              className="nav-link text-(--color-brown) transition hover:text-orange-800"
             >
               {item.label}
             </Link>
@@ -121,7 +121,7 @@ const Navbar = () => {
             <nav className="flex flex-col divide-y divide-border text-matcha text-center">
               <Link
                 to="/"
-                className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition text-(--nav-size)"
+                className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition text-(--color-matcha)"
                 onClick={() => setOpen(false)}
               >
                 Home
@@ -142,7 +142,7 @@ const Navbar = () => {
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="nav-link flex items-center justify-center px-4 py-3 text-orange-600 transition hover:bg-cream"
+                  className="nav-link flex items-center justify-center px-4 py-3 text-(--color-brown) transition hover:bg-cream"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
