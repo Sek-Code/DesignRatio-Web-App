@@ -9,7 +9,8 @@ import { Button } from "./button";
 const navLinks = [
   { label: "Blending", to: "/blending" },
   { label: "Product", to: "/products" },
-  { label: "Contact", to: "/contact" },
+  { label: "About Us", to: "/about" },
+  { label: "Contact", to: "/contact" }
 ];
 
 const adminLinks = [
