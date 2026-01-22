@@ -43,9 +43,9 @@ const AboutUsPage = () => {
       <div className="container mx-auto px-4 py-12">
         {/* Header Section */}
         <div className="text-center mb-12">
-          <h1 className="text-5xl font-bold text-matcha mb-4 tracking-tight">เรื่องราวของใบชา</h1>
+          <h1 className="text-5xl font-bold text-matcha mb-4 tracking-tight">The Story of Tea</h1>
           <p className="text-lg text-gray-600 max-w-3xl mx-auto">
-            จากตำนานสู่เครื่องดื่มที่เป็นที่รักของผู้คนทั่วโลก เราจะพาคุณไปค้นพบประวัติศาสตร์อันยาวนานและสรรพคุณอันน่าทึ่งของชา
+            From ancient legends to a beloved beverage cherished worldwide, discover the long-standing history and remarkable benefits of tea.
           </p>
         </div>
 
@@ -59,19 +59,19 @@ const AboutUsPage = () => {
             />
           </div>
           <div className="md:w-1/2">
-            <h2 className="text-3xl font-semibold text-matcha mb-4">ประวัติศาสตร์แห่งใบชา</h2>
+            <h2 className="text-3xl font-semibold text-matcha mb-4">The History of Tea</h2>
             <p className="text-gray-700 leading-relaxed mb-4">
-              ตามตำนาน การค้นพบชามีต้นกำเนิดในประเทศจีนเมื่อกว่า 2,737 ปีก่อนคริสตกาล โดยจักรพรรดิเสินหนง จากการที่ใบชาปลิวลงในภาชนะที่กำลังต้มน้ำพอดี เมื่อได้ลองดื่มก็ทำให้พระองค์รู้สึกสดชื่นและกระปรี้กระเปร่าอย่างน่าประหลาด
+              Legend has it that tea was discovered in China over 2,737 BC by Emperor Shen Nong. It began when tea leaves drifted into his pot of boiling water. Upon tasting it, the Emperor was surprised by its remarkably refreshing and energizing effects.
             </p>
             <p className="text-gray-700 leading-relaxed">
-              นับตั้งแต่นั้น ชาได้กลายเป็นส่วนสำคัญของวัฒนธรรมเอเชีย ทั้งในด้านการแพทย์ วิถีชีวิต และปรัชญา ก่อนจะเดินทางผ่านเส้นทางสายไหมและเส้นทางการค้าทางทะเลไปสู่โลกตะวันตกในศตวรรษที่ 17 จนกลายเป็นเครื่องดื่มที่ได้รับความนิยมไปทั่วโลก เป็นรองเพียงแค่น้ำเปล่าเท่านั้น
+              Since then, tea has become a vital part of Asian culture—influencing medicine, lifestyle, and philosophy. In the 17th century, it traveled via the Silk Road and maritime trade routes to the West, eventually becoming the world’s most popular beverage, second only to water.
             </p>
           </div>
         </div>
 
         {/* Tea Types Section */}
         <div className="text-center mb-12">
-          <h2 className="text-4xl font-bold text-matcha">พบกับชา 3 ชนิดที่คุณต้องลอง</h2>
+          <h2 className="text-4xl font-bold text-matcha">3 Essential Teas You Must Try</h2>
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
