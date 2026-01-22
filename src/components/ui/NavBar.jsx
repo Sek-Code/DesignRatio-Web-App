@@ -1,14 +1,15 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
 import { useCartStore } from "@/store/cartStore";
 import { useUserStore } from "@/store/userStore";
+import { Button } from "./button";
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
   { label: "Product", to: "/products" },
-  { label: "Contact", to: "/contact" }
+  { label: "Contact", to: "/contact" },
 ];
 
 const adminLinks = [
@@ -48,7 +49,7 @@ const Navbar = () => {
           <button
             type="button"
             aria-label="Toggle menu"
-            className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
+            className="cursor-pointer rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
             onClick={() => setOpen(!open)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
@@ -56,7 +57,7 @@ const Navbar = () => {
         </div>
 
         <nav className="hidden flex-1 items-center justify-center gap-8 text-[16px] font-semibold text-matcha sm:flex">
-          <Link to="/" className="nav-link flex items-center gap-2 transition">
+          <Link to="/" className="nav-link flex items-center gap-2 transition cursor-pointer">
             <Home className="size-4" />
           </Link>
 
@@ -64,12 +65,12 @@ const Navbar = () => {
             <Link
               key={item.label}
               to={item.to}
-              className="nav-link transition"
+              className="nav-link transition cursor-pointer"
             >
               {item.label}
             </Link>
           ))}
-          
+
           {showAdminLinks && adminLinks.map((item) => (
             <Link
               key={item.label}
@@ -83,9 +84,18 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-4 text-matcha sm:flex">
           <Link
+            to="/signin">
+            <Button
+                  type="button"
+                  className="cursor-pointer bg-(--color-brown) hover:bg-(--color-matcha) text-white px-8 rounded-3xl text-base"
+                >Login
+            </Button>
+          </Link>
+
+          <Link
             to={profileLink}
             aria-label={profileAriaLabel}
-            className="rounded-full p-2 transition hover:text-brown"
+            className="cursor-pointer rounded-full p-2 transition hover:text-brown"
           >
             <User className="size-5" />
           </Link>
@@ -93,7 +103,7 @@ const Navbar = () => {
           <Link
             to="/checkout"
             aria-label="Cart"
-            className="relative rounded-full p-2 transition hover:text-brown"
+            className="cursor-pointer relative rounded-full p-2 transition hover:text-brown"
           >
             <ShoppingCart className="size-5" />
             {cartCount > 0 && (
@@ -143,10 +153,17 @@ const Navbar = () => {
                 <Link
                   to={profileLink}
                   aria-label={profileAriaLabel}
-                  className="rounded-full p-2 text-matcha transition hover:text-brown"
+                  className="cursor-pointer rounded-full p-2 text-matcha transition hover:text-brown"
                   onClick={() => setOpen(false)}
                 >
                   <User className="size-5" />
+                </Link>
+
+                <Link to="/signin">
+                <button
+                  type="button"
+                  className="cursor-pointer text-(--color-brown) hover:text-(--color-matcha) px-6 py-0 rounded-3xl text-base"
+                >Login</button>
                 </Link>
 
                 <Link

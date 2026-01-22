@@ -10,8 +10,6 @@ export default function SignInPage() {
   //  const [authLoading, setAuthLoading] = useState(true);
   // const [authError, setAuthError] = useState(null);
 
-  
-
   useEffect(() => {
     if (currentUser) {
       navigate(`/account/${currentUser._id}`);
@@ -25,7 +23,7 @@ export default function SignInPage() {
 
     const [error, setError] = useState(null);
       const [success, setSuccess] = useState(false);
-    
+
       const handleInputChange = (e) => {
         const { name, value } = e.target;
         setFormData((prev) => ({
@@ -57,14 +55,13 @@ export default function SignInPage() {
 
     try {
       // ← API PATCH ถูกเรียกที่นี่ผ่าน editUser() function
-      
 
       await loginUser(formData.email, formData.password);
       setSuccess(true);
       setTimeout(() => {
         navigate("/account/:id");
       }, 1500);
-      
+
     } catch (err) {
       setError(err.message || "Failed to login");
     }
@@ -136,10 +133,10 @@ export default function SignInPage() {
             <button
               className="my-4 bg-gray-300 w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-(--color-matcha)"
               type="submit"
-              
+
               disabled={loading}
-              
-            >{loading ? "loading..." : "login"}</button>
+
+            >{loading ? "loading..." : "Login"}</button>
 
             <input
               className="my-4 bg-(--color-brown) w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-(--color-matcha)"

@@ -170,11 +170,11 @@ export default function BlendingPage() {
       </div>
 
       {/* Price & Quantity Control */}
-      <div className="bg-white rounded-lg p-6 border-2 border-[#4366CC] w-full max-w-md">
+      <div className="bg-white rounded-lg p-6 border-2 w-full max-w-md">
         <div className="space-y-4">
           <div className="flex justify-between items-center">
             <span className="font-semibold text-[#411D03]">Price:</span>
-            <span className="text-lg font-bold text-[#411D03]">{totalPrice} บาท</span>
+            <span className="text-lg font-bold text-[#411D03]">{totalPrice} THB</span>
           </div>
 
           <div className="flex items-center justify-between">
