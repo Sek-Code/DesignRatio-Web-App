@@ -102,7 +102,7 @@ export default function Checkout() {
         }))
       : [],
 
-    ingredients_total_price: item.price
+    
   })),
 
   delivery_option: {
@@ -122,7 +122,6 @@ export default function Checkout() {
         : "QR Code",
   },
 
-  grandTotal: totalPrice,
 };
 
     
