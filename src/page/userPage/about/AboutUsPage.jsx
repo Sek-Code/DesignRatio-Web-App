@@ -53,7 +53,7 @@ const AboutUsPage = () => {
         <div className="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-8 mb-16">
           <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
             <img 
-              src="/public/teaImageData/brewing-chinese-tea-ceramic-gaiwan-tea-ceremony-closeup.jpg" 
+              src="/teaImageData/brewing-chinese-tea-ceramic-gaiwan-tea-ceremony-closeup.jpg" 
               alt="Tea Ceremony" 
               className="rounded-lg shadow-md w-full h-auto object-cover"
             />

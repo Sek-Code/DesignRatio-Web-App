@@ -57,7 +57,7 @@ const Navbar = () => {
           </button>
         </div>
 
-        <nav className="hidden flex-1 items-center justify-center gap-6 text-xs font-semibold text-matcha sm:flex">
+        <nav className="hidden flex-1 items-center justify-center gap-6 text-xs text-matcha sm:flex">
           <Link to="/" className="nav-link flex items-center gap-2 transition cursor-pointer">
             <Home className="size-4" />
           </Link>
@@ -66,7 +66,7 @@ const Navbar = () => {
             <Link
               key={item.label}
               to={item.to}
-              className="nav-link transition cursor-pointer"
+              className="nav-link transition cursor-pointer lg:text-base"
             >
               {item.label}
             </Link>
@@ -76,7 +76,7 @@ const Navbar = () => {
             <Link
               key={item.label}
               to={item.to}
-              className="nav-link text-(--color-brown) transition hover:text-orange-800"
+              className="nav-link text-(--color-brown) transition hover:text-orange-800 lg:text-base"
             >
               {item.label}
             </Link>
