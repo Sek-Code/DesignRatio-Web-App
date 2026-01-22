@@ -49,7 +49,7 @@ export default function MemberTable() {
           {/* แสดงรายการสมาชิกจากข้อมูล API ที่ดึงมา */}
           {users.length > 0 ? (
             users.map((user) => (
-              <tr key={user._id} className="bg-[#f3ece3] text-center">
+              <tr key={user._id} className="bg-[#f3ece3] text-center h-full">
                 <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                 <td className="h-14 flex items-center justify-center">
                   <span className="inline-block text-left w-40 break-all">
@@ -59,7 +59,8 @@ export default function MemberTable() {
                 <td className="text-left">{user.email}</td>
                 <td className="pr-3">{user.phoneNumber}</td>
                 <td>{user.role}</td>
-                <td className="gap-1 flex justify-center">
+                <td >
+                  <div className="gap-1 flex justify-center items-center h-full">
                   {/* ปุ่มแก้ไข - ไปหน้า EditMember (ไม่เรียก API ตรงนี้) */}
                   <button
                     onClick={() => navigate(`/admin/members/${user._id}`)}
@@ -74,6 +75,7 @@ export default function MemberTable() {
                   >
                     <TrashIcon />
                   </button>
+                  </div>
                 </td>
               </tr>
             ))
