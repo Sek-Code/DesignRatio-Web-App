@@ -1,31 +1,10 @@
-import CardScreen from "@/components/ui/card/cardScreen";
-import { useNavigate } from "react-router-dom";
-import { useEffect, useState } from "react";
-import { useProductStore } from "@/store/productStore";
+import ProductTable from "./ProductTable";
 
 export default function EditDetailProduct(){
-    const navigate = useNavigate();
-    const { products, loadProducts } = useProductStore();
-    const [loading, setLoading] = useState(true);
-
-    useEffect(() => {
-        const fetchProducts = async () => {
-            await loadProducts();
-            setLoading(false);
-        };
-        fetchProducts();
-    }, []);
-
-    if (loading) {
-        return <div className="text-center py-20">⏳ Loading products...</div>;
-    }
-
     return(
-        <div>
-            <CardScreen
-                product={products}
-                onCardClick={(product) => navigate(`/admin/edit-product/${product._id}`)}
-            />
+        <div className="w-full px-[7%] py-12">
+            <h1 className="mb-6 font-semibold text-2xl">Edit Products</h1>
+            <ProductTable />
         </div>
     );
 }
