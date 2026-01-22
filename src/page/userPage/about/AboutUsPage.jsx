@@ -4,7 +4,7 @@ import React from 'react';
 const teas = [
   {
     name: 'ชาเขียว (Green Tea)',
-    image: '/public/teaImageData/japanese green tea.png',
+    image: '/teaImageData/japanese green tea.png',
     description: 'ชาเขียวคือชาที่ไม่ผ่านการหมัก ทำให้คงสีเขียวและสารต้านอนุมูลอิสระไว้ได้สูง โดยเฉพาะสาร EGCG ที่มีชื่อเสียง',
     benefits: [
       'ช่วยในการควบคุมน้ำหนักและเร่งการเผาผลาญ',
@@ -15,7 +15,7 @@ const teas = [
   },
   {
     name: 'ชาดำ (Black Tea)',
-    image: '/public/teaImageData/ceylon black tea.png',
+    image: '/teaImageData/ceylon black tea.png',
     description: 'ชาดำเป็นชาที่ผ่านกระบวนการหมักอย่างสมบูรณ์ ทำให้มีสีเข้มและรสชาติที่หนักแน่น มีคาเฟอีนสูงกว่าชาชนิดอื่น',
     benefits: [
       'กระตุ้นร่างกายให้สดชื่นและกระปรี้กระเปร่า',
@@ -26,7 +26,7 @@ const teas = [
   },
   {
     name: 'ชาขาว (White Tea)',
-    image: '/public/teaImageData/white tea.png',
+    image: '/teaImageData/white tea.png',
     description: 'ชาขาวทำจากยอดอ่อนของใบชาที่ยังปกคลุมด้วยขนอ่อนสีขาว ผ่านการแปรรูปน้อยที่สุด ทำให้มีรสชาติที่นุ่มนวลและละเอียดอ่อน',
     benefits: [
       'มีสารต้านอนุมูลอิสระสูงที่สุด ช่วยชะลอวัย',
@@ -53,7 +53,7 @@ const AboutUsPage = () => {
         <div className="flex flex-col md:flex-row items-center bg-white rounded-xl shadow-lg p-8 mb-16">
           <div className="md:w-1/2 mb-6 md:mb-0 md:pr-8">
             <img 
-              src="/public/teaImageData/brewing-chinese-tea-ceramic-gaiwan-tea-ceremony-closeup.jpg" 
+              src="/teaImageData/brewing-chinese-tea-ceramic-gaiwan-tea-ceremony-closeup.jpg" 
               alt="Tea Ceremony" 
               className="rounded-lg shadow-md w-full h-auto object-cover"
             />
