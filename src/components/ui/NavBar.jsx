@@ -8,6 +8,7 @@ import { useUserStore } from "@/store/userStore";
 const navLinks = [
   { label: "Blending", to: "/blending" },
   { label: "Product", to: "/products" },
+  { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" }
 ];
 
