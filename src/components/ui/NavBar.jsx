@@ -1,7 +1,9 @@
-﻿import React, { useState } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
+import { useCartStore } from "@/store/cartStore";
+import { useUserStore } from "@/store/userStore";
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
@@ -18,6 +20,18 @@ const adminLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const cartItems = useCartStore((state) => state.items);
+  const currentUser = useUserStore((state) => state.currentUser);
+
+  // Calculate total cart count
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  // Determine profile link based on login state
+  const profileLink = currentUser ? "/account" : "/signin";
+  const profileAriaLabel = currentUser ? "Profile" : "Sign In";
+
+  // Show admin links only if user is logged in
+  const showAdminLinks = !!currentUser;
 
   return (
     <header className="relative bg-lightCream text-brown font-body shadow-sm">
@@ -35,6 +49,7 @@ const Navbar = () => {
             type="button"
             aria-label="Toggle menu"
             className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
+            onClick={() => setOpen(!open)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
@@ -54,8 +69,8 @@ const Navbar = () => {
               {item.label}
             </Link>
           ))}
-
-          {adminLinks.map((item) => (
+          
+          {showAdminLinks && adminLinks.map((item) => (
             <Link
               key={item.label}
               to={item.to}
@@ -68,8 +83,8 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-4 text-matcha sm:flex">
           <Link
-            to="/signin"
-            aria-label="Profile"
+            to={profileLink}
+            aria-label={profileAriaLabel}
             className="rounded-full p-2 transition hover:text-brown"
           >
             <User className="size-5" />
@@ -81,9 +96,11 @@ const Navbar = () => {
             className="relative rounded-full p-2 transition hover:text-brown"
           >
             <ShoppingCart className="size-5" />
-            <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
-              2
-            </span>
+            {cartCount > 0 && (
+              <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
+                {cartCount}
+              </span>
+            )}
           </Link>
         </div>
       </div>
@@ -111,7 +128,7 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              {adminLinks.map((item) => (
+              {showAdminLinks && adminLinks.map((item) => (
                 <Link
                   key={item.label}
                   to={item.to}
@@ -124,8 +141,8 @@ const Navbar = () => {
 
               <div className="flex items-center justify-between px-4 py-3">
                 <Link
-                  to="/account"
-                  aria-label="Profile"
+                  to={profileLink}
+                  aria-label={profileAriaLabel}
                   className="rounded-full p-2 text-matcha transition hover:text-brown"
                   onClick={() => setOpen(false)}
                 >
@@ -139,9 +156,11 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                 >
                   <ShoppingCart className="size-5" />
-                  <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
-                    2
-                  </span>
+                  {cartCount > 0 && (
+                    <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
               </div>
             </nav>

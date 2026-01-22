@@ -62,7 +62,7 @@ export const deleteUserData = async (id) => {
 export const login = async (email, password) => {
 
   const url = `${VITE_API_BASE_URL}/api/v2/users/auth/cookie/login`
-   console.log("LOGIN URL:", url);
+  
   try {const response = await axios.post(url,{email,password},{withCredentials: true},)
  
 return response.data.user;
@@ -74,3 +74,20 @@ return response.data.user;
 
   
 };
+
+export const authUser = async () => {
+  const url = `${VITE_API_BASE_URL}/api/v2/users/auth/cookie/me`
+  try {
+    const res = await axios.get(url, {
+      withCredentials: true,
+    });
+
+    return res.data.user;
+  } catch (error) {
+    console.error('Error login:', error);
+    console.log('Sending request to:', url);
+
+    
+      throw error;
+  }
+}

@@ -1,6 +1,6 @@
 
 import { useProducts } from "@/components/ui/card/apiCard";
-import CardScreen from "@/components/ui/card/CardScreen";
+import CardScreen from "@/components/ui/card/cardScreen";
 
 
 export default function OurProduct() {

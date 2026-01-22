@@ -30,6 +30,38 @@ export const useCartStore = create(
             };
           }
         }),
+      
+      addCustomToCart: (customProduct, quantity) =>
+        set((state) => {
+          const existingItem = state.items.find(
+            item => item.product.type === 'custom' && 
+                    JSON.stringify(item.product.ingredients?.sort()) === 
+                    JSON.stringify(customProduct.ingredients?.sort())
+          );
+          
+          if (existingItem) {
+            return {
+              items: state.items.map(item =>
+                item.id === existingItem.id
+                  ? { ...item, quantity: item.quantity + quantity }
+                  : item
+              )
+            };
+          } else {
+            return {
+              items: [...state.items, {
+                id: `custom-${Date.now()}-${Math.random()}`,
+                product: {
+                  ...customProduct,
+                  type: 'custom'
+                },
+                quantity,
+                size: customProduct.size || 'M'
+              }]
+            };
+          }
+        }),
+      
       removeFromCart: (id) =>
         set((state) => ({
           items: state.items.filter(item => item.id !== id)
