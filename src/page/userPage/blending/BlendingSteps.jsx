@@ -1,14 +1,8 @@
 import { useState } from 'react';
 
-export default function BlendingSteps() {
+export default function BlendingSteps({ onSizeChange, onBaseChange }) {
   const [selectedSize, setSelectedSize] = useState();
   const [selectedBases, setSelectedBases] = useState();
-
-  // const handleBaseChange = (base) => {
-  //   setSelectedBases((prev) =>
-  //     prev.includes(base) ? prev.filter((b) => b !== base) : [...prev, base]
-  //   );
-  // };
 
   const sizeOptions = [
     { value: 'size-s', label: 'Size S (approx. 50 g.) + 50 THB' },
@@ -23,6 +17,16 @@ export default function BlendingSteps() {
     { value: 'white-tea', label: 'White Tea + 30 THB' },
   ];
 
+  const handleSizeChange = (value) => {
+    setSelectedSize(value);
+    if (onSizeChange) onSizeChange(value);
+  };
+
+  const handleBaseChange = (value) => {
+    setSelectedBases(value);
+    if (onBaseChange) onBaseChange(value);
+  };
+
   return (
     <div className="blending-steps w-full space-y-8">
       {/* Step 1: Choose Your Tea Base */}
@@ -33,7 +37,7 @@ export default function BlendingSteps() {
         >
           Step 1: Choose Your Tea Base
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-3/4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {baseOptions.map((option) => (
             <label
               key={option.value}
@@ -43,8 +47,8 @@ export default function BlendingSteps() {
               <input
                 type="radio"
                 value={option.value}
-                checked={selectedBases===option.value}
-                onChange={(e) => setSelectedBases(e.target.value)}
+                checked={selectedBases === option.value}
+                onChange={(e) => handleBaseChange(e.target.value)}
                 className="w-4 h-4 accent-(--color-brown)"
               />
               <span className="ml-2 text-sm">{option.label}</span>
@@ -73,7 +77,7 @@ export default function BlendingSteps() {
                 name="tea-size"
                 value={option.value}
                 checked={selectedSize === option.value}
-                onChange={(e) => setSelectedSize(e.target.value)}
+                onChange={(e) => handleSizeChange(e.target.value)}
                 className="w-4 h-4 accent-(--color-brown)"
               />
               <span className="ml-2 text-sm">{option.label}</span>
@@ -81,8 +85,6 @@ export default function BlendingSteps() {
           ))}
         </div>
       </div>
-
-      
     </div>
   );
 }

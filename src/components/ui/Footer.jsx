@@ -29,7 +29,7 @@ const Footer = () => {
 
             <Link
               to="/product"
-              className="hover:text-(--color-matcha) transition text-(--nav-size)"
+              className="hover:text-(--color-matcha) transition"
             >
               Product
             </Link>

@@ -1,22 +1,39 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
+import { useCartStore } from "@/store/cartStore";
+import { useUserStore } from "@/store/userStore";
+import { Button } from "./button";
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
-  { label: "Product", to: "/product" },
+  { label: "Product", to: "/products" },
+  { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" }
 ];
 
 const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
-  { label: "Before-edit", to: `/admin/edit-products/` },
+  { label: "Members", to: "/admin/members" },
+  { label: "Editing", to: `/admin/edit-products/` },
 ];
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const cartItems = useCartStore((state) => state.items);
+  const currentUser = useUserStore((state) => state.currentUser);
+
+  // Calculate total cart count
+  const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
+
+  // Determine profile link based on login state
+  const profileLink = currentUser ? "/account" : "/signin";
+  const profileAriaLabel = currentUser ? "Profile" : "Sign In";
+
+  // Show admin links only if user is logged in
+  const showAdminLinks = !!currentUser;
 
   return (
     <header className="relative bg-lightCream text-brown font-body shadow-sm">
@@ -24,7 +41,7 @@ const Navbar = () => {
         <div className="col-start-2 col-end-3 flex items-center justify-center gap-2 sm:col-auto sm:justify-start sm:gap-3">
           <img
             src={logoMark}
-            alt="Design Ratio mark"
+            alt="Design Ratio logo"
             className="h-16 w-16 object-contain drop-shadow-sm sm:h-20 sm:w-20"
           />
         </div>
@@ -33,15 +50,15 @@ const Navbar = () => {
           <button
             type="button"
             aria-label="Toggle menu"
-            onClick={() => setOpen((v) => !v)}
-            className="rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
+            className="cursor-pointer rounded-md p-2 text-matcha transition hover:text-brown focus-visible:outline focus-visible:outline-offset-2 focus-visible:outline-matcha"
+            onClick={() => setOpen(!open)}
           >
             {open ? <X className="size-5" /> : <Menu className="size-5" />}
           </button>
         </div>
 
-        <nav className="hidden flex-1 items-center justify-center gap-8 text-[16px] lg:text-xl font-semibold text-matcha sm:flex">
-          <Link to="/" className="nav-link flex items-center gap-2 transition">
+        <nav className="hidden flex-1 items-center justify-center gap-6 text-xs text-matcha sm:flex">
+          <Link to="/" className="nav-link flex items-center gap-2 transition cursor-pointer">
             <Home className="size-4" />
           </Link>
 
@@ -49,17 +66,17 @@ const Navbar = () => {
             <Link
               key={item.label}
               to={item.to}
-              className="nav-link transition"
+              className="nav-link transition cursor-pointer lg:text-base"
             >
               {item.label}
             </Link>
           ))}
 
-          {adminLinks.map((item) => (
+          {showAdminLinks && adminLinks.map((item) => (
             <Link
               key={item.label}
               to={item.to}
-              className="nav-link text-orange-600 transition hover:text-orange-800"
+              className="nav-link text-(--color-brown) transition hover:text-orange-800 lg:text-base"
             >
               {item.label}
             </Link>
@@ -68,9 +85,18 @@ const Navbar = () => {
 
         <div className="hidden items-center gap-4 text-matcha sm:flex">
           <Link
-            to="/signin"
-            aria-label="Profile"
-            className="rounded-full p-2 transition hover:text-brown"
+            to="/signin">
+            <Button
+                  type="button"
+                  className="cursor-pointer bg-(--color-brown) hover:bg-(--color-matcha) text-white px-8 rounded-3xl text-base"
+                >Login
+            </Button>
+          </Link>
+
+          <Link
+            to={profileLink}
+            aria-label={profileAriaLabel}
+            className="cursor-pointer rounded-full p-2 transition hover:text-brown"
           >
             <User className="size-5" />
           </Link>
@@ -78,12 +104,14 @@ const Navbar = () => {
           <Link
             to="/checkout"
             aria-label="Cart"
-            className="relative rounded-full p-2 transition hover:text-brown"
+            className="cursor-pointer relative rounded-full p-2 transition hover:text-brown"
           >
             <ShoppingCart className="size-5" />
-            <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
-              2
-            </span>
+            {cartCount > 0 && (
+              <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
+                {cartCount}
+              </span>
+            )}
           </Link>
         </div>
       </div>
@@ -94,7 +122,7 @@ const Navbar = () => {
             <nav className="flex flex-col divide-y divide-border text-matcha text-center">
               <Link
                 to="/"
-                className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition hover:bg-cream"
+                className="nav-link flex items-center justify-center gap-2 px-4 py-3 transition text-(--color-matcha)"
                 onClick={() => setOpen(false)}
               >
                 Home
@@ -111,11 +139,11 @@ const Navbar = () => {
                 </Link>
               ))}
 
-              {adminLinks.map((item) => (
+              {showAdminLinks && adminLinks.map((item) => (
                 <Link
                   key={item.label}
                   to={item.to}
-                  className="nav-link flex items-center justify-center px-4 py-3 text-orange-600 transition hover:bg-cream"
+                  className="nav-link flex items-center justify-center px-4 py-3 text-(--color-brown) transition hover:bg-cream"
                   onClick={() => setOpen(false)}
                 >
                   {item.label}
@@ -124,12 +152,19 @@ const Navbar = () => {
 
               <div className="flex items-center justify-between px-4 py-3">
                 <Link
-                  to="/account"
-                  aria-label="Profile"
-                  className="rounded-full p-2 text-matcha transition hover:text-brown"
+                  to={profileLink}
+                  aria-label={profileAriaLabel}
+                  className="cursor-pointer rounded-full p-2 text-matcha transition hover:text-brown"
                   onClick={() => setOpen(false)}
                 >
                   <User className="size-5" />
+                </Link>
+
+                <Link to="/signin">
+                <button
+                  type="button"
+                  className="cursor-pointer text-(--color-brown) hover:text-(--color-matcha) px-6 py-0 rounded-3xl text-base"
+                >Login</button>
                 </Link>
 
                 <Link
@@ -139,9 +174,11 @@ const Navbar = () => {
                   onClick={() => setOpen(false)}
                 >
                   <ShoppingCart className="size-5" />
-                  <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
-                    2
-                  </span>
+                  {cartCount > 0 && (
+                    <span className="absolute -right-1 -top-1 inline-flex h-5 min-w-5 items-center justify-center rounded-full bg-[#e45353] px-1 text-[11px] font-semibold text-white">
+                      {cartCount}
+                    </span>
+                  )}
                 </Link>
               </div>
             </nav>

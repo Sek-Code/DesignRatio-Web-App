@@ -1,6 +1,6 @@
 import { Button } from "@/components/ui/button"
 import { useProducts } from "@/components/ui/card/apiCard"
-import CardScreen from "@/components/ui/card/CardScreen"
+import CardScreen from "@/components/ui/card/cardScreen"
 import { Link } from "react-router-dom"
 
 
@@ -18,7 +18,7 @@ export default function OurProduct() {
             <Link
                 to="/products"
                 className="hover:text-(--color-matcha) transition-colors flex justify-center mb-20 mt-10">
-                <Button className="px-10 py-2 rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px] hover:bg-(--color-matcha)">
+                <Button className="cursor-pointer px-10 py-2 rounded-4xl lg:text-xl lg:py-6 lg:px-15 lg:rounded-[30px] hover:bg-(--color-matcha)">
                     See more
                 </Button>
             </Link>

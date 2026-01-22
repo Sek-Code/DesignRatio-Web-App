@@ -1,21 +1,41 @@
 import { useCounter } from "./cardContainer";
 import { Button } from "../button";
-import { readyProducts } from "@/mock-data/readyProducts";
 import SizeChoose from "./sizeChoose/sizeScreen";
 import { useState } from "react";
+import { useCartStore } from "@/store/cartStore";
 
 function CardItem({ product, onCardClick}) {
   const { count, increment, decrement } = useCounter();
   const [selectedSize, setSelectedSize] = useState(null)
-  const sizeMap = Object.fromEntries(
-  (product.variants || []).map(v => [v.size, v])
-);
+  const addToCart = useCartStore((state) => state.addToCart);
 
+  // แปลง variants → sizes object
+  const sizes = product.variants?.reduce((acc, variant) => {
+    acc[variant.size] = { 
+      price: variant.price,
+      gram: variant.gram
+    };
+    return acc;
+  }, {}) || {};
+
+  const handleAddToCart = (e) => {
+    e.stopPropagation();
+    if (!selectedSize) {
+      alert("Please select a size");
+      return;
+    }
+    addToCart(product, count, selectedSize);
+    alert("Added to cart!");
+  };
 
   return (
-    <div className="w-66 h-auto my-4 p-3 flex flex-col items-center gap-y-4">
-
-      <div>
+    <div
+      className="w-66 h-auto mb-15 p-3 flex flex-col items-center"
+      onClick={() => {
+        onCardClick?.(product);
+      }}
+    >
+      <div className="">
         <img
           src={product.image}
           alt={product.name}
@@ -23,23 +43,23 @@ function CardItem({ product, onCardClick}) {
         />
       </div>
 
-      <h3 className="lg:text-2xl pt-5 pb-4 text-(--color-brown) truncate w-full text-center ">
+      <h3 className="h3-style pt-5 pb-4 text-(--color-brown) truncate w-full text-center ">
         {product.name}
       </h3>
 
       <SizeChoose
-        sizes={sizeMap}
+        sizes={sizes}
         selectedSize={selectedSize}
         onSelect={setSelectedSize}
       />
 
-        <p className="lg:text-xl">
+      <p>
         Selected: {selectedSize || "—"}
-        </p>
-        <p className="mb-3 lg:text-xl">
+      </p>
+      <p className="mb-3">
         Price: {selectedSize
-          ? sizeMap[selectedSize]?.price ?? "—"
-          : "—"} baht
+        ? sizes[selectedSize].price
+        : "—"} baht
       </p>
 
       <div className="flex flex-row items-center gap-5 h3-style text-(--color-brown) pb-5 ">
@@ -52,22 +72,29 @@ function CardItem({ product, onCardClick}) {
         <p>{count}</p>
         <button
           className="flex items-center justify-center border border-(--color-brown) rounded-full w-8 h-8 active:bg-(--color-brown) active:text-white"
-          onClick={increment}
+          onClick={(e) => {
+            e.stopPropagation();
+            increment();
+          }}
         >
           <p>+</p>
         </button>
       </div>
-      <Button className="px-6 py-2 rounded-4xl lg:text-base lg:py-5 lg:px-8 lg:rounded-[30px] hover:bg-(--color-matcha)">
+      <Button
+        variant="default"
+        className="cursor-pointer bg-(--color-brown) text-white lg:text-base hover:bg-(--color-matcha)"
+        onClick={handleAddToCart}
+      >
         Add to Cart
       </Button>
     </div>
   );
 }
 
-export default function CardScreen({onCardClick}) {
+export default function CardScreen({ product = [], onCardClick }) {
   return (
-    <div className="flex flex-wrap justify-center items-center w-full gap-4">
-      {readyProducts.map((item) => (
+    <div className="flex flex-wrap justify-center items-center w-full gap-7">
+      {product.map((item) => (
         <CardItem key={item._id || item.name} product={item}
         onCardClick={onCardClick}/>
       ))}

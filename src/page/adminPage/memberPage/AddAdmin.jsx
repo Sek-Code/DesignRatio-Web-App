@@ -1,48 +1,25 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import { useUserStore } from "@/store/userStore";
+import { ArrowLeft } from "lucide-react";
 
-export default function EditMember() {
-  const { id } = useParams();
+export default function AddAdmin() {
   const navigate = useNavigate();
-  // ดึง functions และ state จาก store (editUser จะเรียก API PATCH /users/:id)
-  const { users, editUser, loadUsers, loading } = useUserStore();
+  const { addUser, loading } = useUserStore();
 
   const [formData, setFormData] = useState({
     userName: "",
     userLast: "",
+    password: "",
+    confirmPassword: "",
     email: "",
     phoneNumber: "",
     address: "",
+    role: "admin",
   });
 
-  const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
-
-  // API Call #1: ดึงข้อมูลผู้ใช้ทั้งหมด (GET /api/v2/users/)
-  // ทำงาน: เรียก loadUsers() ถ้า users array ยังว่าง
-  useEffect(() => {
-    if (!users.length) {
-      loadUsers();
-    }
-  }, []);
-
-  // API Call #2 (Indirect): ใช้ข้อมูลจาก API เพื่อหา user ตาม ID จาก URL
-  // ทำงาน: ค้นหา user ในรายการ แล้ว populate form ด้วยข้อมูลเก่า
-  useEffect(() => {
-    const user = users.find((u) => u._id === id);
-    if (user) {
-      setFormData({
-        userName: user.userName || "",
-        userLast: user.userLast || "",
-        email: user.email || "",
-        phoneNumber: user.phoneNumber || "",
-        address: user.address || "",
-      });
-    }
-  }, [users, id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,11 +31,9 @@ export default function EditMember() {
     setSuccess(false);
   };
 
-  // API Call #3: ส่งข้อมูลแก้ไขไปยัง server (PATCH /api/v2/users/:id)
-  // ทำงาน: เรียก editUser(id, formData) เมื่อกดปุ่ม Save
   const handleSave = async (e) => {
     e.preventDefault();
-    
+
     // Validation
     if (!formData.userName.trim() || !formData.userLast.trim()) {
       setError("First name and last name are required");
@@ -70,65 +45,67 @@ export default function EditMember() {
       return;
     }
 
-    setIsSaving(true);
+    if (!formData.password.trim()) {
+      setError("Password is required");
+      return;
+    }
+
+    if (formData.password.length < 6) {
+      setError("Password must be at least 6 characters");
+      return;
+    }
+
+    if (formData.password !== formData.confirmPassword) {
+      setError("Password and Confirm Password do not match");
+      return;
+    }
+
     try {
       // ← API PATCH ถูกเรียกที่นี่ผ่าน editUser() function
-      await editUser(id, formData);
+      const { confirmPassword: _, ...data } = formData;
+
+      await addUser(data);
       setSuccess(true);
       setTimeout(() => {
         navigate("/admin/members");
       }, 1500);
     } catch (err) {
-      setError(err.message || "Failed to update member");
-    } finally {
-      setIsSaving(false);
+      setError(err.message || "Failed to create admin");
     }
   };
 
   const handleClear = () => {
-    const user = users.find((u) => u._id === id);
-    if (user) {
-      setFormData({
-        userName: user.userName || "",
-        userLast: user.userLast || "",
-        email: user.email || "",
-        phoneNumber: user.phoneNumber || "",
-        address: user.address || "",
-      });
-    }
+    setFormData({
+      userName: "",
+      userLast: "",
+      password: "",
+      confirmPassword: "",
+      email: "",
+      phoneNumber: "",
+      address: "",
+    });
+
     setError(null);
     setSuccess(false);
   };
-
-  if (loading) {
-    return (
-      <div className="max-w-5xl mx-auto py-12 text-center">
-        <div>Loading member data...</div>
-      </div>
-    );
-  }
 
   return (
     <div className="max-w-5xl mx-auto py-12">
       <button
         onClick={() => navigate(`/admin/members`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
+        className="flex items-center gap-2 hover:text-(--color-brown) transition mb-6"
       >
         <ArrowLeft size={20} />
         Back to Members
       </button>
 
       <div className="relative w-32 mx-auto">
-        <div className="mt-10 w-32 h-32 rounded-full border-4 border-amber-800 bg-gray-100 flex items-center justify-center overflow-hidden">
-          {formData.profileImage ? (
-            <img src={formData.profileImage} alt="Profile" className="w-full h-full object-cover" />
-          ) : (
-            <span className="text-gray-400">No Image</span>
-          )}
+        <div className="mt-10 w-32 h-32 rounded-full border-2 border-(--color-brown) bg-gray-100 flex items-center justify-center overflow-hidden">
+          <span className="text-gray-400">No Image</span>
         </div>
         <button
           type="button"
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
+          className="absolute bottom-0.5 left-10 bg-white border rounded-full shadow hover:bg-(--color-brown) hover:text-white px-6 py-1"
         >
           Upload
         </button>
@@ -142,7 +119,7 @@ export default function EditMember() {
 
       {success && (
         <div className="mt-6 p-3 bg-green-100 text-green-700 rounded-lg text-center">
-          Member updated successfully! Redirecting...
+          Admin created successfully! Redirecting...
         </div>
       )}
 
@@ -176,6 +153,35 @@ export default function EditMember() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
+            <label className="text-sm font-medium">Password:</label>
+            <input
+              type="password"
+              name="password"
+              value={formData.password}
+              minLength={6}
+              onChange={handleInputChange}
+              placeholder="Enter password"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              required
+            />
+          </div>
+          <div>
+            <label className="text-sm font-medium">Password Confirm:</label>
+            <input
+              type="password"
+              name="confirmPassword"
+              value={formData.confirmPassword}
+              minLength={6}
+              onChange={handleInputChange}
+              placeholder="Enter phone number"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              required
+            />
+          </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div>
             <label className="text-sm font-medium">Email:</label>
             <input
               type="email"
@@ -194,6 +200,7 @@ export default function EditMember() {
               name="phoneNumber"
               value={formData.phoneNumber}
               onChange={handleInputChange}
+              pattern="[0-9]{10}"
               placeholder="Enter phone number"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
             />
@@ -212,13 +219,13 @@ export default function EditMember() {
           ></textarea>
         </div>
 
-        <div className="flex gap-4 justify-center pt-4">
+        <div className="w-full flex gap-4 justify-center pt-4">
           <button
             type="submit"
-            disabled={isSaving}
+            disabled={loading}
             className="button-style px-16 py-1.5 bg-amber-800 text-white rounded-3xl hover:bg-amber-900 transition disabled:opacity-50"
           >
-            {isSaving ? "Saving..." : "Save"}
+            {loading ? "Saving..." : "Save"}
           </button>
           <button
             type="button"

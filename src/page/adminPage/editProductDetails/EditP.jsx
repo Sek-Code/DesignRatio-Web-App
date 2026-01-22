@@ -155,6 +155,13 @@ console.log("READY PRODUCTS 👉", readyProducts.map(p => p._id));
                     >
                         SAVE
                     </button>
+                    <button
+                        type="button"
+                        onClick={handleSave}
+                        className="px-16 py-1.5 bg-[#d8d8d8] rounded-4xl hover:bg-amber-800 hover:text-white"
+                    >
+                        DELETE
+                    </button>
                 </div>
             </form>
         </div>

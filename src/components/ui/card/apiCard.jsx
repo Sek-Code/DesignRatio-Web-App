@@ -1,19 +1,12 @@
-import axios from "axios";
-import {  useState } from "react";
+import { useProductStore } from "@/store/productStore";
+import { useEffect } from "react";
 
 export function useProducts() {
-    const[products,setProducts] = useState([]);
+  const { products, loadProducts } = useProductStore();
 
-    const fetchData = async() => {
-        try {
-            const products = await axios.get("https://fakestoreapi.com/products");
-            setProducts(products.data)
-        } catch (error) {
-            console.log(error);
-        }
-    }
+  useEffect(() => {
+    loadProducts();
+  }, [loadProducts]);
 
-        fetchData();
-
-    return products;
+  return products;
 }
