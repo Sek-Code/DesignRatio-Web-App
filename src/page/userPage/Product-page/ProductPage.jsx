@@ -1,10 +1,9 @@
-
-import { useProducts } from "@/components/ui/card/apiCard";
+import { useReadyProducts } from "@/components/ui/card/apiCard";
 import CardScreen from "@/components/ui/card/cardScreen";
 
 
 export default function OurProduct() {
-    const products = useProducts()
+    const products = useReadyProducts()
 
     return (
         <div className=" w-full flex-col justify-center px-10 py-10 lg:px-37.5">
