@@ -1,6 +1,6 @@
-﻿import React, { useState } from "react";
-import { Link } from "react-router-dom";
-import { Home, User, ShoppingCart, Menu, X } from "lucide-react";
+import React, { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
+import { Home, User, ShoppingCart, Menu, X, LogOut } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
 import { useCartStore } from "@/store/cartStore";
 import { useUserStore } from "@/store/userStore";
@@ -22,8 +22,10 @@ const adminLinks = [
 
 const Navbar = () => {
   const [open, setOpen] = useState(false);
+  const navigate = useNavigate();
   const cartItems = useCartStore((state) => state.items);
   const currentUser = useUserStore((state) => state.currentUser);
+  const logoutUser = useUserStore((state) => state.logoutUser);
 
   // Calculate total cart count
   const cartCount = cartItems.reduce((total, item) => total + item.quantity, 0);
@@ -34,6 +36,15 @@ const Navbar = () => {
 
   // Show admin links only if user is logged in
   const showAdminLinks = !!currentUser;
+
+  const handleLogout = async () => {
+    try {
+      await logoutUser();
+      navigate("/");
+    } catch (err) {
+      console.error("Logout failed:", err);
+    }
+  };
 
   return (
     <header className="relative bg-lightCream text-brown font-body shadow-sm">
@@ -84,14 +95,27 @@ const Navbar = () => {
         </nav>
 
         <div className="hidden items-center gap-4 text-matcha sm:flex">
-          <Link
-            to="/signin">
-            <Button
-                  type="button"
-                  className="cursor-pointer bg-(--color-brown) hover:bg-(--color-matcha) text-white px-8 rounded-3xl text-base"
-                >Login
-            </Button>
-          </Link>
+          {currentUser ? (
+            <>
+              <Button
+                type="button"
+                className="cursor-pointer bg-red-600 hover:bg-red-700 text-white px-8 rounded-3xl text-base flex items-center gap-2"
+                onClick={handleLogout}
+              >
+                <LogOut className="size-4" />
+                Logout
+              </Button>
+            </>
+          ) : (
+            <Link to="/signin">
+              <Button
+                type="button"
+                className="cursor-pointer bg-(--color-brown) hover:bg-(--color-matcha) text-white px-8 rounded-3xl text-base"
+              >
+                Login
+              </Button>
+            </Link>
+          )}
 
           <Link
             to={profileLink}
@@ -160,12 +184,28 @@ const Navbar = () => {
                   <User className="size-5" />
                 </Link>
 
-                <Link to="/signin">
-                <button
-                  type="button"
-                  className="cursor-pointer text-(--color-brown) hover:text-(--color-matcha) px-6 py-0 rounded-3xl text-base"
-                >Login</button>
-                </Link>
+                {currentUser ? (
+                  <button
+                    type="button"
+                    className="cursor-pointer text-red-600 hover:text-red-700 px-6 py-0 rounded-3xl text-base flex items-center gap-2"
+                    onClick={() => {
+                      handleLogout();
+                      setOpen(false);
+                    }}
+                  >
+                    <LogOut className="size-4" />
+                    Logout
+                  </button>
+                ) : (
+                  <Link to="/signin" onClick={() => setOpen(false)}>
+                    <button
+                      type="button"
+                      className="cursor-pointer text-(--color-brown) hover:text-(--color-matcha) px-6 py-0 rounded-3xl text-base"
+                    >
+                      Login
+                    </button>
+                  </Link>
+                )}
 
                 <Link
                   to="/checkout"
