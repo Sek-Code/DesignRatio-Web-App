@@ -11,7 +11,6 @@ export default function EditProduct() {
 
   const [formData, setFormData] = useState({
     productName: "",
-    productLast: "",
     productSize: "",
     productPrice: "",
   });
