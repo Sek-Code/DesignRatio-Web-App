@@ -17,7 +17,7 @@ import { fetchAllUsers, createNewUser, updateUserData, deleteUserData, login, au
  * ✅ อัปเดตตรงจุด store แล้วทุก component อัปเดตอัตโนมัติ
  */
 
-export const useUserStore = create((set) => ({
+export const useUserStore = create((set,get) => ({
   // ═══════════════════════════════════════════════════════════
   // STATE - ข้อมูลที่เก็บไว้เหล่านี้
   // ═══════════════════════════════════════════════════════════
@@ -25,7 +25,8 @@ export const useUserStore = create((set) => ({
   users: [],               // ��� Array เก็บรายชื่อสมาชิกทั้งหมด
   loading: false,         // ⏳ Flag แสดงว่ากำลัง fetch ข้อมูลอยู่
   error: null,            // ❌ เก็บข้อความ error ถ้าเกิดปัญหา
-  currentUser: null,      // ��� ผู้ใช้ปัจจุบันที่ logged in
+  currentUser: null,  
+  lastFetched: null,    // ��� ผู้ใช้ปัจจุบันที่ logged in
 
   // ═══════════════════════════════════════════════════════════
   // FUNCTIONS - ฟังก์ชันสำหรับจัดการข้อมูล
@@ -50,7 +51,7 @@ export const useUserStore = create((set) => ({
    * - set({ users: response.data }) = บอก Zustand ว่า "ใจให้ users เป็นข้อมูลนี้"
    */
   loadUsers: async () => {
-    const state = useUserStore.getState();
+    const state = get();
 
   // ✅ ถ้า loading อยู่ หรือ fetch ล่าสุดยังไม่หมดเวลา 1-2 วินาที → return
   if (state.loading) return;

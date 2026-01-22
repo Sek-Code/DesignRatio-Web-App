@@ -12,7 +12,7 @@ export default function SignInPage() {
 
   useEffect(() => {
     if (currentUser) {
-      navigate('/account');
+      navigate(`/account/${currentUser._id}`);
     }
   }, [currentUser, navigate]);
 
