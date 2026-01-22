@@ -9,7 +9,10 @@ export default function AccountPage() {
   const { id } = useParams();
   const navigate = useNavigate();
   // ดึง functions และ state จาก store (editUser จะเรียก API PATCH /users/:id)
-  const { users, editUser, loadUsers, loading } = useUserStore();
+  const { users, editUser, loadUsers, loading, currentUser } = useUserStore();
+
+  // Determine which user ID to use: from URL or from logged-in user
+  const userId = id || currentUser?._id;
 
   const [formData, setFormData] = useState({
     userName: "",
@@ -31,10 +34,10 @@ export default function AccountPage() {
     }
   }, []);
 
-  // API Call #2 (Indirect): ใช้ข้อมูลจาก API เพื่อหา user ตาม ID จาก URL
+  // API Call #2 (Indirect): ใช้ข้อมูลจาก API เพื่อหา user ตาม ID จาก URL หรือ currentUser
   // ทำงาน: ค้นหา user ในรายการ แล้ว populate form ด้วยข้อมูลเก่า
   useEffect(() => {
-    const user = users.find((u) => u._id === id);
+    const user = users.find((u) => u._id === userId);
     if (user) {
       setFormData({
         userName: user.userName || "",
@@ -44,7 +47,7 @@ export default function AccountPage() {
         address: user.address || "",
       });
     }
-  }, [users, id]);
+  }, [users, userId]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -75,7 +78,7 @@ export default function AccountPage() {
     setIsSaving(true);
     try {
       // ← API PATCH ถูกเรียกที่นี่ผ่าน editUser() function
-      await editUser(id, formData);
+      await editUser(userId, formData);
       setSuccess(true);
       setTimeout(() => {
         navigate("/admin/members");
@@ -88,7 +91,7 @@ export default function AccountPage() {
   };
 
   const handleClear = () => {
-    const user = users.find((u) => u._id === id);
+    const user = users.find((u) => u._id === userId);
     if (user) {
       setFormData({
         userName: user.userName || "",
@@ -102,124 +105,124 @@ export default function AccountPage() {
     setSuccess(false);
   };
 
-  if (loading) {
-    return (
-      <div className="max-w-5xl mx-auto py-12 text-center">
-        <div>Loading member data...</div>
-      </div>
-    );
-  }
-
   return (
-    <div className="max-w-5xl mx-auto py-12">
-      
-
-      <div className="relative w-32 mx-auto">
-        <div className="mt-10 w-32 h-32 rounded-full border-4 border-amber-800 bg-gray-100 flex items-center justify-center overflow-hidden">
-          {formData.profileImage ? (
-            <img src={formData.profileImage} alt="Profile" className="w-full h-full object-cover" />
-          ) : (
-            <span className="text-gray-400">No Image</span>
-          )}
-        </div>
-        <button
-          type="button"
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
-        >
-          ���
-        </button>
+    <div className="max-w-md mx-auto my-16 bg-white p-6 rounded-lg shadow-md">
+      {/* Header */}
+      <div className="flex justify-center mb-6">
+        <img
+          src={ProfilePic}
+          alt="Profile"
+          className="w-32 h-32 rounded-full object-cover border-4 border-matcha"
+        />
       </div>
 
-      {error && (
-        <div className="mt-6 p-3 bg-red-100 text-red-700 rounded-lg text-center">
-          {error}
-        </div>
-      )}
-
-      {success && (
-        <div className="mt-6 p-3 bg-green-100 text-green-700 rounded-lg text-center">
-          Member updated successfully! Redirecting...
-        </div>
-      )}
-
-      <form className="mt-20 space-y-6" onSubmit={handleSave}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="text-sm font-medium">First Name:</label>
-            <input
-              type="text"
-              name="userName"
-              value={formData.userName}
-              onChange={handleInputChange}
-              placeholder="Enter first name"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-              required
-            />
+      {/* Form */}
+      <form onSubmit={handleSave} className="space-y-5">
+        {/* Error Message */}
+        {error && (
+          <div className="p-4 bg-red-100 text-red-700 rounded-md text-center">
+            {error}
           </div>
-          <div>
-            <label className="text-sm font-medium">Last Name:</label>
-            <input
-              type="text"
-              name="userLast"
-              value={formData.userLast}
-              onChange={handleInputChange}
-              placeholder="Enter last name"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-              required
-            />
-          </div>
-        </div>
+        )}
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="text-sm font-medium">Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
-              onChange={handleInputChange}
-              placeholder="Enter email"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-              required
-            />
+        {/* Success Message */}
+        {success && (
+          <div className="p-4 bg-green-100 text-green-700 rounded-md text-center">
+            Profile updated successfully!
           </div>
-          <div>
-            <label className="text-sm font-medium">Mobile Number:</label>
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              placeholder="Enter phone number"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-            />
-          </div>
-        </div>
+        )}
 
+        {/* First Name */}
         <div>
-          <label className="text-sm font-medium">Address:</label>
+          <label className="block text-sm font-semibold text-gray-700">
+            First Name
+          </label>
+          <input
+            type="text"
+            name="userName"
+            value={formData.userName}
+            onChange={handleInputChange}
+            placeholder="Enter first name"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-matcha focus:border-transparent outline-none"
+            required
+          />
+        </div>
+
+        {/* Last Name */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Last Name
+          </label>
+          <input
+            type="text"
+            name="userLast"
+            value={formData.userLast}
+            onChange={handleInputChange}
+            placeholder="Enter last name"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-matcha focus:border-transparent outline-none"
+            required
+          />
+        </div>
+
+        {/* Email */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Email
+          </label>
+          <input
+            type="email"
+            name="email"
+            value={formData.email}
+            onChange={handleInputChange}
+            placeholder="Enter email"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-matcha focus:border-transparent outline-none"
+            required
+          />
+        </div>
+
+        {/* Phone Number */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Phone Number
+          </label>
+          <input
+            type="tel"
+            name="phoneNumber"
+            value={formData.phoneNumber}
+            onChange={handleInputChange}
+            placeholder="Enter phone number"
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-matcha focus:border-transparent outline-none"
+          />
+        </div>
+
+        {/* Address */}
+        <div>
+          <label className="block text-sm font-semibold text-gray-700">
+            Address
+          </label>
           <textarea
             name="address"
             value={formData.address}
             onChange={handleInputChange}
             placeholder="Enter address"
-            className="w-full mt-2 p-3 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800 resize-none"
             rows="4"
-          ></textarea>
+            className="w-full px-4 py-2 mt-1 border border-gray-300 rounded-lg focus:ring-2 focus:ring-matcha focus:border-transparent outline-none resize-none"
+          />
         </div>
 
-        <div className="flex gap-4 justify-center pt-4">
+        {/* Buttons */}
+        <div className="flex gap-3 pt-4">
           <button
             type="submit"
             disabled={isSaving}
-            className="button-style px-16 py-1.5 bg-amber-800 text-white rounded-3xl hover:bg-amber-900 transition disabled:opacity-50"
+            className="flex-1 bg-matcha text-white font-semibold py-2 rounded-lg hover:bg-opacity-90 disabled:opacity-50 transition"
           >
             {isSaving ? "Saving..." : "Save"}
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="button-style px-16 py-1.5 bg-gray-400 text-white rounded-3xl hover:bg-gray-500 transition"
+            className="flex-1 bg-gray-200 text-gray-700 font-semibold py-2 rounded-lg hover:bg-gray-300 transition"
           >
             Clear
           </button>
