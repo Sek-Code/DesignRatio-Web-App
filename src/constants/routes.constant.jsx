@@ -8,7 +8,7 @@ import AccountPage from '../page/userPage/account/AccountPage'
 import Checkout from '../page/userPage/checkout';
 import SignInPage from '../page/userPage/signin/SignInPage';
 import SignUpPage from '../page/userPage/signup/SignUpPage';
-import EditProductDetailPage from '../page/adminPage/editProductDetails/notUse/editProductsDetailPage';
+import EditProductDetailPage from '../page/adminPage/editProductDetails/editProductsDetailPage';
 import OrderManagementPage from '../page/adminPage/orderManagementPage/orederMagementPage';
 import RevenuePage from '../page/adminPage/revenuePage/RevenuePage';
 import EditP from '@/page/adminPage/editProductDetails/notUse/EditP';
