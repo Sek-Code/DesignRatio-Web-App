@@ -11,11 +11,6 @@ export default function AddAdmin() {
     userName: "",
     userLast: "",
     password: "",
-    confirmPassword: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
-    role: "admin",
   });
 
   const [error, setError] = useState(null);

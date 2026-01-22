@@ -1,17 +1,17 @@
 import { Button } from "@/components/ui/button";
-import MemberTable from "./ProductTable";
+import ProductTable from "./ProductTable";
 import { Link } from "react-router-dom";
 
-export default function MemberPage() {
+export default function ProductPage() {
     return (
         <div className="w-full px-[7%] py-12">
             <div className="w-full flex justify-between items-center">
-            <h1>Members</h1>
-            <Link to="/admin/members/add-admin">
-            <Button variant="default"> Add Admin</Button>
+            <h1>Products</h1>
+            <Link to="/admin/products/add-product">
+            <Button variant="default">Add Product</Button>
             </Link>
             </div>
-            <MemberTable/>
+            <ProductTable/>
         </div>
     )
 }
