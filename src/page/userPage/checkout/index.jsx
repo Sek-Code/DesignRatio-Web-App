@@ -1,8 +1,14 @@
 import { useState } from "react";
 import { Trash2, Minus, Plus } from "lucide-react";
 import { useCartStore } from "@/store/cartStore";
+import { useNavigate } from "react-router-dom";
+import { useUserStore } from "@/store/userStore";
+import { useOrderStore } from "@/store/orderStore";
 
 export default function Checkout() {
+  const navigate = useNavigate();
+  const {currentUser, loading}  = useUserStore()
+  const {addOrder} = useOrderStore()
   const cartItems = useCartStore((state) => state.items);
   const removeFromCart = useCartStore((state) => state.removeFromCart);
   const updateQty = useCartStore((state) => state.updateQty);
@@ -10,6 +16,10 @@ export default function Checkout() {
   const [selectedAddress, setSelectedAddress] = useState("");
   const [selectedDelivery, setSelectedDelivery] = useState("delivery_a");
   const [selectedPayment, setSelectedPayment] = useState("creditcard");
+
+  console.log(currentUser)
+
+
 
   // Transform cartItems - handle both ready and custom products
   const items = cartItems.map((item) => {
@@ -53,7 +63,14 @@ export default function Checkout() {
   const deliveryFee = selectedDelivery === "delivery_a" ? 50 : selectedDelivery === "delivery_b" ? 100 : 180;
   const totalPrice = getTotalPrice() + deliveryFee;
 
-  const handleCheckout = () => {
+  const handleCheckout = async () => {
+    
+    if (!currentUser?._id) {
+  navigate("/signin");
+  return;
+}
+
+    
     if (items.length === 0) {
       alert("Cart is empty");
       return;
@@ -62,9 +79,69 @@ export default function Checkout() {
       alert("Please select an address");
       return;
     }
+
+    const data = {
+  user_id: currentUser._id,
+
+  order_items: items.map(item => ({
+    product_id: item.product._id || item.id,
+    type: item.type,
+    name: item.name,
+    size: item.size,
+    quantity: item.qty,
+
+    bases: item.type === "custom"
+      ? [{ name: item.product.teaBase }]
+      : [],
+
+    ingredients: item.type === "custom"
+      ? item.product.ingredients.map((ing, i) => ({
+          component_id: `${i}`,
+          name: item.ingredients[i],
+          category: ing.split("-")[0],
+        }))
+      : [],
+
+    ingredients_total_price: item.price
+  })),
+
+  delivery_option: {
+    delivery_id: selectedDelivery,
+    name:
+      selectedDelivery === "delivery_a"
+        ? "Delivery A"
+        : selectedDelivery === "delivery_b"
+        ? "Delivery B"
+        : "Delivery C",
+  },
+
+  payment_option: {
+    method:
+      selectedPayment === "creditcard"
+        ? "Credit Card"
+        : "QR Code",
+  },
+
+  grandTotal: totalPrice,
+};
+
+    
+    
     console.log("Checking out with:", { items, address: selectedAddress, delivery: selectedDelivery, payment: selectedPayment });
-    alert("Order placed!");
-    clearCart();
+
+    try {
+  await addOrder(data);
+  alert("Order placed!");
+  clearCart();
+} catch (err) {
+  console.error(err);
+  alert("Order failed");
+}
+
+    
+ 
+  
+    
   };
 
   return (
@@ -221,9 +298,10 @@ export default function Checkout() {
 
             <button
               onClick={handleCheckout}
+              disabled={loading}
               className="w-full bg-white text-[#411D03] font-bold py-3 rounded-lg hover:bg-gray-100 transition mt-4"
             >
-              Place Order
+              {loading ? "Placing order..." :"Place Order"}
             </button>
           </div>
         </div>

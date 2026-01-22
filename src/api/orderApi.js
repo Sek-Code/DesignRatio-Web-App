@@ -12,3 +12,13 @@ export const fetchAllOrders = async ()=>    {
     throw error;
   }
 }
+
+export const createNewOrder = async (orderData) => {
+    try {
+        const response = await axios.post(`${API_Order}/`, orderData);
+            return response.data;
+    } catch (error) {
+        console.error('Error creating order:', error);
+    throw error;
+    }
+}

@@ -1,4 +1,4 @@
-import { fetchAllOrders } from '@/api/orderApi';
+import { createNewOrder, fetchAllOrders } from '@/api/orderApi';
 import { create } from 'zustand';
 
 export const useOrderStore = create((set,get) => ({
@@ -26,6 +26,17 @@ export const useOrderStore = create((set,get) => ({
       set({ loading: false });
     }
 },
+    addOrder: async (orderData) => {
+    try {
+      await createNewOrder(orderData);  // ��� ส่งข้อมูลไป API
+      const response = await fetchAllOrders();  // ��� ดึงรายการใหม่ทั้งหมด
+      set({ orders: response.data || [], error: null });  // ✅ อัปเดต store
+    } catch (err) {
+      set({ error: err.message || 'Failed to create order' });  // ❌ เก็บ error
+      console.error('Error creating order:', err);
+      throw err;  // ส่งต่อ error ให้ component ที่เรียก
+    }
+  },
    clearError: () => set({ error: null }),  // ลบ error
 }
 ));
