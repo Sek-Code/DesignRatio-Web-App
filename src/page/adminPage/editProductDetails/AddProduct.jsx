@@ -5,7 +5,7 @@ import { useProductStore } from "@/store/productStore";
 
 export default function AddProduct() {
   const navigate = useNavigate();
-  const { addUser, loading } = useProductStore();
+  const { addProduct, loading } = useProductStore();
 
   const [formData, setFormData] = useState({
     productName: "",
@@ -30,10 +30,6 @@ export default function AddProduct() {
     e.preventDefault();
 
     // Validation
-    if (!formData.productName.trim()) {
-      setError("Product name are required");
-      return;
-    }
 
     if (!formData.productName.trim()) {
       setError("Product name are required");
@@ -54,7 +50,7 @@ export default function AddProduct() {
       // ← API PATCH ถูกเรียกที่นี่ผ่าน editUser() function
       const { confirmPassword: _, ...data } = formData;
 
-      await addUser(data);
+      await addProduct(data);
       setSuccess(true);
       setTimeout(() => {
         navigate("/admin/edit-products");
@@ -76,10 +72,10 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="max-w-5xl mx-auto py-12">
+    <div className="w-full mx-auto py-12">
       <button
         onClick={() => navigate(`/admin/edit-products`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
+        className="flex items-center gap-2 hover:text-amber-800 transition mb-6 mx-20"
       >
         <ArrowLeft size={20} />
         Back to Products
@@ -109,8 +105,8 @@ export default function AddProduct() {
         </div>
       )}
 
-      <form className="mt-20 space-y-6" onSubmit={handleSave}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <form className="mt-20 mx-20 space-y-6" onSubmit={handleSave}>
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
             <label className="text-sm font-medium">Product Name:</label>
             <input
@@ -118,38 +114,37 @@ export default function AddProduct() {
               name="productName"
               value={formData.productName}
               onChange={handleInputChange}
-              placeholder="Enter first name"
+              placeholder="Enter name product"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
             <label className="text-sm font-medium">Size:</label>
             <input
-              type="size"
+              type="text"
               name="productSize"
               value={formData.productSize}
-              minLength={6}
               onChange={handleInputChange}
-              placeholder="Enter product"
+              placeholder="Enter size product"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
           </div>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
             <label className="text-sm font-medium">Price:</label>
             <input
-              type="price"
-              name="price"
+              type="number"
+              name="productPrice"
               value={formData.productPrice}
               onChange={handleInputChange}
-              placeholder="Enter email"
+              placeholder="Enter price product"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />

@@ -147,7 +147,7 @@ export default function EditProduct() {
       )}
 
       <form className="mt-20 space-y-6" onSubmit={handleSave}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
             <label className="text-sm font-medium">Product Name:</label>
             <input

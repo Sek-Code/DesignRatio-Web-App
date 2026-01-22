@@ -45,7 +45,7 @@ const routes = [
           { path: 'admin/members/:id', element: <EditMember /> },
           { path: 'admin/members/add-admin', element: <AddAdmin /> },
           { path: 'admin/products/add-product/:id', element: <AddProduct /> },
-          { path: 'admin/products/add-product', element: <AddProduct /> },
+          { path: 'admin/edit-products/add-product', element: <AddProduct /> },
         ],
       }
     ],
