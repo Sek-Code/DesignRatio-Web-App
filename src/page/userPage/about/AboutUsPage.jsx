@@ -81,7 +81,7 @@ const AboutUsPage = () => {
               <div className="p-6">
                 <h3 className="text-2xl font-bold text-matcha mb-2">{tea.name}</h3>
                 <p className="text-gray-600 mb-4">{tea.description}</p>
-                <h4 className="font-semibold text-gray-800 mb-2">สรรพคุณเด่น:</h4>
+                <h4 className="font-semibold text-gray-800 mb-2">Benefits:</h4>
                 <ul className="list-disc list-inside text-gray-700 space-y-1">
                   {tea.benefits.map((benefit) => (
                     <li key={benefit}>{benefit}</li>
