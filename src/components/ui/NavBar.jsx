@@ -99,7 +99,7 @@ const Navbar = () => {
             <>
               <Button
                 type="button"
-                className="cursor-pointer bg-red-600 hover:bg-red-700 text-white px-8 rounded-3xl text-base flex items-center gap-2"
+                className="cursor-pointer bg-(--color-brown) hover:bg-(--color-matcha) text-white px-8 rounded-3xl text-base flex items-center gap-2"
                 onClick={handleLogout}
               >
                 <LogOut className="size-4" />
@@ -187,7 +187,7 @@ const Navbar = () => {
                 {currentUser ? (
                   <button
                     type="button"
-                    className="cursor-pointer text-red-600 hover:text-red-700 px-6 py-0 rounded-3xl text-base flex items-center gap-2"
+                    className="cursor-pointer bg-(--color-brown) hover:bg-(--color-matcha) text-white px-6 py-2 rounded-3xl text-base flex items-center gap-2"
                     onClick={() => {
                       handleLogout();
                       setOpen(false);
@@ -200,7 +200,7 @@ const Navbar = () => {
                   <Link to="/signin" onClick={() => setOpen(false)}>
                     <button
                       type="button"
-                      className="cursor-pointer text-(--color-brown) hover:text-(--color-matcha) px-6 py-0 rounded-3xl text-base"
+                      className="cursor-pointer text-(--color-brown) hover:text-(--color-matcha) px-6 py-2 rounded-3xl text-base"
                     >
                       Login
                     </button>
