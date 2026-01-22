@@ -1,4 +1,3 @@
-
 import { useEffect } from "react";
 import OrderStatusBadge from "./OrderStatusBadge";
 import { useOrderStore } from "@/store/orderStore";
@@ -19,10 +18,10 @@ console.log(orders)
 
 
   return (
-    <div className="w-full p-6 bg-lightCream min-h-screen">
-      <h1 className="text-3xl font-display text-brown mb-6">Order Management</h1>
+    <div className="w-full p-6 min-h-screen px-10 py-10 lg:px-37.5">
+      <h1 className="lg:text-4xl text-(--color-brown) mb-10">Order Management</h1>
       <div className="overflow-x-auto rounded-lg shadow">
-        <table className="w-full text-left text-brown">
+        <table className="w-full text-left text-brown bg-(--color-light-cream)">
           <thead className="bg-cream">
             <tr>
               <th className="p-4 font-semibold">Order ID</th>

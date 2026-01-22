@@ -145,7 +145,7 @@ export default function Checkout() {
   };
 
   return (
-    <div className="w-full px-4 py-8 lg:px-12 bg-[#f5f0eb] min-h-screen">
+    <div className="w-full px-4 py-8 lg:px-12 bg-white min-h-screen">
       <h1 className="text-3xl lg:text-5xl font-bold text-center text-[#411D03] mb-8">Checkout</h1>
 
       <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -154,18 +154,18 @@ export default function Checkout() {
           {/* Cart Items */}
           <div className="space-y-4">
             {items.length === 0 ? (
-              <div className="bg-white rounded-lg p-8 text-center text-gray-500">
+              <div className="bg-(--color-cream) rounded-lg p-8 text-center text-gray-500">
                 Your cart is empty
               </div>
             ) : (
               items.map((item) => (
-                <div 
-                  key={item.id} 
-                  className="bg-white rounded-lg p-4 border-2 border-[#4366CC]"
+                <div
+                  key={item.id}
+                  className="bg-white rounded-lg p-4 border-2 border-(--color-brown)"
                 >
                   <div className="flex items-center gap-4">
                     {/* Product Image Placeholder */}
-                    <div className="w-20 h-20 bg-gray-200 rounded flex-shrink-0"></div>
+                    <div className="w-20 h-20 bg-gray-200 rounded shrink-0"></div>
 
                     {/* Product Info */}
                     <div className="flex-1 min-w-0">
@@ -175,11 +175,11 @@ export default function Checkout() {
                           Ingredients: {item.ingredients.join(', ')}
                         </p>
                       )}
-                      <p className="text-sm text-gray-600">{item.price} บาท</p>
+                      <p className="text-sm text-gray-600">{item.price} THB</p>
                     </div>
 
                     {/* Quantity Control */}
-                    <div className="flex items-center gap-2 flex-shrink-0">
+                    <div className="flex items-center gap-2 shrink-0">
                       <button
                         onClick={() => updateItemQty(item.id, -1)}
                         className="flex items-center justify-center w-7 h-7 rounded-full border border-[#411D03] text-[#411D03] hover:bg-[#411D03] hover:text-white transition"
@@ -196,8 +196,8 @@ export default function Checkout() {
                     </div>
 
                     {/* Price & Delete */}
-                    <div className="text-right flex flex-col items-center flex-shrink-0">
-                      <p className="font-semibold text-[#411D03] text-lg">{item.price * item.qty} บาท</p>
+                    <div className="text-right flex flex-col items-center shrink-0">
+                      <p className="font-semibold text-[#411D03] text-lg">{item.price * item.qty} THB</p>
                       <button
                         onClick={() => removeItem(item.id)}
                         className="text-[#411D03] hover:text-[#5a2b04] transition mt-1"
@@ -224,15 +224,15 @@ export default function Checkout() {
           </div>
 
           {/* Delivery & Payment */}
-          <div className="bg-white rounded-lg p-6 space-y-6">
+          <div className="bg-white rounded-lg pl-6 space-y-6">
             {/* Delivery Options */}
             <div>
               <label className="block font-semibold text-[#411D03] mb-3">Delivery :</label>
               <div className="space-y-2">
                 {[
-                  { id: "delivery_a", label: "Delivery A - 50฿", fee: 50 },
-                  { id: "delivery_b", label: "Delivery B - 100฿", fee: 100 },
-                  { id: "delivery_c", label: "Delivery C - 180฿", fee: 180 },
+                  { id: "delivery_a", label: "Post Thailand + 50 THB", fee: 50 },
+                  { id: "delivery_b", label: "KEX + 100 THB", fee: 100 },
+                  { id: "delivery_c", label: "Flash + 180 THB", fee: 180 },
                 ].map((option) => (
                   <label key={option.id} className="flex items-center gap-3 cursor-pointer">
                     <input
@@ -283,17 +283,17 @@ export default function Checkout() {
             <div className="border-t border-white/30 pt-4 space-y-3">
               <div className="flex justify-between text-sm">
                 <span>Subtotal</span>
-                <span>{getTotalPrice()} บาท</span>
+                <span>{getTotalPrice()} THB</span>
               </div>
               <div className="flex justify-between text-sm">
                 <span>Delivery</span>
-                <span>{deliveryFee} บาท</span>
+                <span>{deliveryFee} THB</span>
               </div>
             </div>
 
             <div className="border-t border-white/30 pt-4 flex justify-between font-bold text-lg">
               <span>Total</span>
-              <span>{totalPrice} บาท</span>
+              <span>{totalPrice} THB</span>
             </div>
 
             <button

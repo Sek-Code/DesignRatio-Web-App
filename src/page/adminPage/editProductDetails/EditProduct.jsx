@@ -1,48 +1,45 @@
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
-import { useUserStore } from "@/store/userStore";
+import { useProductStore } from "@/store/productStore";
 
 export default function EditMember() {
   const { id } = useParams();
   const navigate = useNavigate();
-  // ดึง functions และ state จาก store (editUser จะเรียก API PATCH /users/:id)
-  const { users, editUser, loadUsers, loading } = useUserStore();
+  // ดึง functions และ state จาก store (editUser จะเรียก API PATCH /products/:id)
+  const { products, editUser, loadProducts, loading } = useProductStore();
 
   const [formData, setFormData] = useState({
-    userName: "",
-    userLast: "",
-    email: "",
-    phoneNumber: "",
-    address: "",
+    productName: "",
+    productLast: "",
+    productSize: "",
+    productPrice: "",
   });
 
   const [isSaving, setIsSaving] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  // API Call #1: ดึงข้อมูลผู้ใช้ทั้งหมด (GET /api/v2/users/)
-  // ทำงาน: เรียก loadUsers() ถ้า users array ยังว่าง
+  // API Call #1: ดึงข้อมูลสินค้าทั้งหมด (GET /api/v2/products/)
+  // ทำงาน: เรียก loadProducts() ถ้า products array ยังว่าง
   useEffect(() => {
-    if (!users.length) {
-      loadUsers();
+    if (!products.length) {
+      loadProducts();
     }
   }, []);
 
-  // API Call #2 (Indirect): ใช้ข้อมูลจาก API เพื่อหา user ตาม ID จาก URL
-  // ทำงาน: ค้นหา user ในรายการ แล้ว populate form ด้วยข้อมูลเก่า
+  // API Call #2 (Indirect): ใช้ข้อมูลจาก API เพื่อหา product ตาม ID จาก URL
+  // ทำงาน: ค้นหา product ในรายการ แล้ว populate form ด้วยข้อมูลเก่า
   useEffect(() => {
-    const user = users.find((u) => u._id === id);
-    if (user) {
+    const product = products.find((u) => u._id === id);
+    if (product) {
       setFormData({
-        userName: user.userName || "",
-        userLast: user.userLast || "",
-        email: user.email || "",
-        phoneNumber: user.phoneNumber || "",
-        address: user.address || "",
+        productName: product.productName || "",
+        productSize: product.productSize || "",
+        productPrice: product.productPrice ||  "",
       });
     }
-  }, [users, id]);
+  }, [products, id]);
 
   const handleInputChange = (e) => {
     const { name, value } = e.target;
@@ -54,46 +51,49 @@ export default function EditMember() {
     setSuccess(false);
   };
 
-  // API Call #3: ส่งข้อมูลแก้ไขไปยัง server (PATCH /api/v2/users/:id)
-  // ทำงาน: เรียก editUser(id, formData) เมื่อกดปุ่ม Save
+  // API Call #3: ส่งข้อมูลแก้ไขไปยัง server (PATCH /api/v2/products/:id)
+  // ทำงาน: เรียก editProduct(id, formData) เมื่อกดปุ่ม Save
   const handleSave = async (e) => {
     e.preventDefault();
-    
+
     // Validation
-    if (!formData.userName.trim() || !formData.userLast.trim()) {
-      setError("First name and last name are required");
+    if (!formData.productName.trim()) {
+      setError("Product name are required");
       return;
     }
 
-    if (!formData.email.trim()) {
-      setError("Email is required");
+    if (!formData.productSize.trim()) {
+      setError("Size is required");
+      return;
+    }
+
+    if (!formData.productPrice.trim()) {
+      setError("Price product is required");
       return;
     }
 
     setIsSaving(true);
     try {
-      // ← API PATCH ถูกเรียกที่นี่ผ่าน editUser() function
+      // ← API PATCH ถูกเรียกที่นี่ผ่าน editProduct() function
       await editUser(id, formData);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/admin/members");
+        navigate("/admin/products");
       }, 1500);
     } catch (err) {
-      setError(err.message || "Failed to update member");
+      setError(err.message || "Failed to update product");
     } finally {
       setIsSaving(false);
     }
   };
 
   const handleClear = () => {
-    const user = users.find((u) => u._id === id);
-    if (user) {
+    const product = products.find((u) => u._id === id);
+    if (product) {
       setFormData({
-        userName: user.userName || "",
-        userLast: user.userLast || "",
-        email: user.email || "",
-        phoneNumber: user.phoneNumber || "",
-        address: user.address || "",
+        productName: product.productName || "",
+        productSize: product.productSize || "",
+        productPrice: product.productPrice ||  "",
       });
     }
     setError(null);
@@ -103,7 +103,7 @@ export default function EditMember() {
   if (loading) {
     return (
       <div className="max-w-5xl mx-auto py-12 text-center">
-        <div>Loading member data...</div>
+        <div>Loading product data...</div>
       </div>
     );
   }
@@ -111,11 +111,11 @@ export default function EditMember() {
   return (
     <div className="max-w-5xl mx-auto py-12">
       <button
-        onClick={() => navigate(`/admin/members`)}
+        onClick={() => navigate(`/admin/products`)}
         className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
       >
         <ArrowLeft size={20} />
-        Back to Members
+        Back to Products
       </button>
 
       <div className="relative w-32 mx-auto">
@@ -130,7 +130,7 @@ export default function EditMember() {
           type="button"
           className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
         >
-          Upload
+          ���
         </button>
       </div>
 
@@ -142,32 +142,20 @@ export default function EditMember() {
 
       {success && (
         <div className="mt-6 p-3 bg-green-100 text-green-700 rounded-lg text-center">
-          Member updated successfully! Redirecting...
+          Product updated successfully! Redirecting...
         </div>
       )}
 
       <form className="mt-20 space-y-6" onSubmit={handleSave}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="text-sm font-medium">First Name:</label>
+            <label className="text-sm font-medium">Product Name:</label>
             <input
               type="text"
-              name="userName"
-              value={formData.userName}
+              name="productName"
+              value={formData.productName}
               onChange={handleInputChange}
               placeholder="Enter first name"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-              required
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Last Name:</label>
-            <input
-              type="text"
-              name="userLast"
-              value={formData.userLast}
-              onChange={handleInputChange}
-              placeholder="Enter last name"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
@@ -176,11 +164,11 @@ export default function EditMember() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="text-sm font-medium">Email:</label>
+            <label className="text-sm font-medium">Size:</label>
             <input
-              type="email"
-              name="email"
-              value={formData.email}
+              type="text"
+              name="productSize"
+              value={formData.productSize}
               onChange={handleInputChange}
               placeholder="Enter email"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
@@ -188,11 +176,11 @@ export default function EditMember() {
             />
           </div>
           <div>
-            <label className="text-sm font-medium">Mobile Number:</label>
+            <label className="text-sm font-medium">Price:</label>
             <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
+              type="text"
+              name="productPrice"
+              value={formData.productPrice}
               onChange={handleInputChange}
               placeholder="Enter phone number"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
@@ -200,17 +188,6 @@ export default function EditMember() {
           </div>
         </div>
 
-        <div>
-          <label className="text-sm font-medium">Address:</label>
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleInputChange}
-            placeholder="Enter address"
-            className="w-full mt-2 p-3 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800 resize-none"
-            rows="4"
-          ></textarea>
-        </div>
 
         <div className="flex gap-4 justify-center pt-4">
           <button
