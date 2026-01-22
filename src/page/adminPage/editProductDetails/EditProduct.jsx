@@ -3,15 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { ArrowLeft } from "lucide-react";
 import { useProductStore } from "@/store/productStore";
 
-export default function EditMember() {
+export default function EditProduct() {
   const { id } = useParams();
   const navigate = useNavigate();
   // ดึง functions และ state จาก store (editUser จะเรียก API PATCH /products/:id)
-  const { products, editUser, loadProducts, loading } = useProductStore();
+  const { products, editProduct, loadProducts, loading } = useProductStore();
 
   const [formData, setFormData] = useState({
     productName: "",
-    productLast: "",
     productSize: "",
     productPrice: "",
   });
@@ -75,10 +74,10 @@ export default function EditMember() {
     setIsSaving(true);
     try {
       // ← API PATCH ถูกเรียกที่นี่ผ่าน editProduct() function
-      await editUser(id, formData);
+      await editProduct(id, formData);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/admin/products");
+        navigate("/admin/edit-products");
       }, 1500);
     } catch (err) {
       setError(err.message || "Failed to update product");
@@ -111,7 +110,7 @@ export default function EditMember() {
   return (
     <div className="max-w-5xl mx-auto py-12">
       <button
-        onClick={() => navigate(`/admin/products`)}
+        onClick={() => navigate(`/admin/edit-products`)}
         className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
       >
         <ArrowLeft size={20} />
@@ -147,7 +146,7 @@ export default function EditMember() {
       )}
 
       <form className="mt-20 space-y-6" onSubmit={handleSave}>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
             <label className="text-sm font-medium">Product Name:</label>
             <input
