@@ -12,7 +12,7 @@ export default function SignInPage() {
 
   useEffect(() => {
     if (currentUser) {
-      navigate(`/account/${currentUser._id}`);
+      navigate('/account');
     }
   }, [currentUser, navigate]);
 
@@ -59,7 +59,7 @@ export default function SignInPage() {
       await loginUser(formData.email, formData.password);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/account/:id");
+        navigate('/account');
       }, 1500);
 
     } catch (err) {

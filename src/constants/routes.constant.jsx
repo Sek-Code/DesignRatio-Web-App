@@ -25,6 +25,7 @@ const routes = [
       { path: 'blending', element: <Blending /> },
       { path: 'products', element: <ProductPage /> },
       { path: 'contact', element: <ContactPage /> },
+      { path: 'account', element: <AccountPage /> },
       { path: 'account/:id', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },
       { path: 'signin', element: <SignInPage />},
