@@ -93,21 +93,21 @@ export default function AddAdmin() {
     <div className="max-w-5xl mx-auto py-12">
       <button
         onClick={() => navigate(`/admin/members`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
+        className="flex items-center gap-2 hover:text-(--color-brown) transition mb-6"
       >
         <ArrowLeft size={20} />
         Back to Members
       </button>
 
       <div className="relative w-32 mx-auto">
-        <div className="mt-10 w-32 h-32 rounded-full border-4 border-amber-800 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <div className="mt-10 w-32 h-32 rounded-full border-2 border-(--color-brown) bg-gray-100 flex items-center justify-center overflow-hidden">
           <span className="text-gray-400">No Image</span>
         </div>
         <button
           type="button"
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
+          className="absolute bottom-0.5 left-10 bg-white border rounded-full shadow hover:bg-(--color-brown) hover:text-white px-6 py-1"
         >
-          ���
+          Upload
         </button>
       </div>
 

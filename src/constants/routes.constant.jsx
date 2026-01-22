@@ -3,6 +3,7 @@ import HomeScreen from '../page/userPage/home';
 import ProductPage from '../page/userPage/Product-page/ProductPage';
 import Blending from '../page/userPage/blending/BlendingPage';
 import ContactPage from '../page/userPage/contact/ContactPage';
+import AboutUsPage from '../page/userPage/about/AboutUsPage';
 import AccountPage from '../page/userPage/account/AccountPage'
 import Checkout from '../page/userPage/checkout';
 import SignInPage from '../page/userPage/signin/SignInPage';
@@ -26,6 +27,7 @@ const routes = [
       { path: 'blending', element: <Blending /> },
       { path: 'products', element: <ProductPage /> },
       { path: 'contact', element: <ContactPage /> },
+      { path: 'about', element: <AboutUsPage /> },
       { path: 'account', element: <AccountPage /> },
       { path: 'account/:id', element: <AccountPage /> },
       { path: 'checkout', element: <Checkout /> },

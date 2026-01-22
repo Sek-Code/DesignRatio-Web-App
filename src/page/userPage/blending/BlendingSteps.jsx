@@ -37,7 +37,7 @@ export default function BlendingSteps({ onSizeChange, onBaseChange }) {
         >
           Step 1: Choose Your Tea Base
         </h2>
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6 w-3/4">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
           {baseOptions.map((option) => (
             <label
               key={option.value}
