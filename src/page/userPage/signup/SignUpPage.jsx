@@ -227,14 +227,14 @@ useEffect(() => {
         <button
             type="submit"
             disabled={loading}
-            className="w-28 py-2 rounded-xl bg-(--color-brown) hover:bg-(--color-matcha) text-white font-medium shadow-md"
+            className="w-28 py-2 rounded-3xl bg-(--color-brown) hover:bg-(--color-matcha) text-white font-medium shadow-md"
           >
             {loading ? "loading..." : "Sign up"}
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="w-28 py-2 rounded-xl bg-gray-400 hover:bg-gray-600 text-white font-medium shadow-md"
+            className="w-28 py-2 rounded-3xl bg-gray-300 hover:bg-gray-600 text-white font-medium shadow-md"
           >
             Clear
           </button>

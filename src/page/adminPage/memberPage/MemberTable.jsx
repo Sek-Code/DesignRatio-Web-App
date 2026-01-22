@@ -33,7 +33,7 @@ export default function MemberTable() {
   if (loading) return <div className="text-center py-8">Loading...</div>;
 
   return (
-    <div className="py-3">
+    <div className="py-3 overflow-x-auto rounded-lg shadow bg-(--color-light-cream) mt-6">
       <table className="w-full border-separate border-spacing-y-2">
         <thead className="text-[#9e9957]">
           <tr className="text-center font-bold">
@@ -49,14 +49,14 @@ export default function MemberTable() {
           {/* แสดงรายการสมาชิกจากข้อมูล API ที่ดึงมา */}
           {users.length > 0 ? (
             users.map((user) => (
-              <tr key={user._id} className="bg-[#f3ece3] text-center h-full">
+              <tr key={user._id} className="text-center h-full">
                 <td>{new Date(user.createdAt).toLocaleDateString()}</td>
                 <td className="h-14 flex items-center justify-center">
-                  <span className="inline-block text-left w-40 break-all">
+                  <span className="inline-block text-center w-40 break-all">
                     {user.userName} {user.userLast}
                   </span>
                 </td>
-                <td className="text-left">{user.email}</td>
+                <td className="text-center">{user.email}</td>
                 <td className="pr-3">{user.phoneNumber}</td>
                 <td>{user.role}</td>
                 <td >

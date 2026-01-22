@@ -1,4 +1,4 @@
-import ProfilePic from "@/assets/img/kindpng_223965.png" ;
+import ProfilePic from "@/assets/img/kindpng_223965.jpg" ;
 import { useState, useEffect } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
@@ -134,7 +134,7 @@ export default function AccountPage() {
 
         {/* First Name */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
+          <label className="block text-sm font-semibold text-(--color-brown)">
             First Name
           </label>
           <input
@@ -150,7 +150,7 @@ export default function AccountPage() {
 
         {/* Last Name */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
+          <label className="block text-sm font-semibold text-(--color-brown)">
             Last Name
           </label>
           <input
@@ -166,7 +166,7 @@ export default function AccountPage() {
 
         {/* Email */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
+          <label className="block text-sm font-semibold text-(--color-brown)">
             Email
           </label>
           <input
@@ -182,7 +182,7 @@ export default function AccountPage() {
 
         {/* Phone Number */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
+          <label className="block text-sm font-semibold text-(--color-brown)">
             Phone Number
           </label>
           <input
@@ -197,7 +197,7 @@ export default function AccountPage() {
 
         {/* Address */}
         <div>
-          <label className="block text-sm font-semibold text-gray-700">
+          <label className="block text-sm font-semibold text-(--color-brown)">
             Address
           </label>
           <textarea
@@ -215,14 +215,14 @@ export default function AccountPage() {
           <button
             type="submit"
             disabled={isSaving}
-            className="flex-1 bg-matcha text-white font-semibold py-2 rounded-lg hover:bg-opacity-90 disabled:opacity-50 transition"
+            className="flex-1 bg-matcha text-white font-semibold py-2 rounded-3xl hover:bg-opacity-90 disabled:opacity-50 transition"
           >
             {isSaving ? "Saving..." : "Save"}
           </button>
           <button
             type="button"
             onClick={handleClear}
-            className="flex-1 bg-gray-200 text-gray-700 font-semibold py-2 rounded-lg hover:bg-gray-300 transition"
+            className="flex-1 bg-gray-300 text-white font-semibold py-2 rounded-3xl hover:bg-(--color-brown) transition"
           >
             Clear
           </button>
