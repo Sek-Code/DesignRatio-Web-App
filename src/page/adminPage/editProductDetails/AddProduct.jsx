@@ -1,16 +1,16 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { useUserStore } from "@/store/userStore";
 import { ArrowLeft } from "lucide-react";
+import { useProductStore } from "@/store/productStore";
 
-export default function AddAdmin() {
+export default function AddProduct() {
   const navigate = useNavigate();
-  const { addUser, loading } = useUserStore();
+  const { addUser, loading } = useProductStore();
 
   const [formData, setFormData] = useState({
-    userName: "",
-    userLast: "",
-    password: "",
+    productName: "",
+    productSize: "",
+    productPrice: "",
   });
 
   const [error, setError] = useState(null);
@@ -30,28 +30,23 @@ export default function AddAdmin() {
     e.preventDefault();
 
     // Validation
-    if (!formData.userName.trim() || !formData.userLast.trim()) {
-      setError("First name and last name are required");
+    if (!formData.productName.trim()) {
+      setError("Product name are required");
       return;
     }
 
-    if (!formData.email.trim()) {
-      setError("Email is required");
+    if (!formData.productName.trim()) {
+      setError("Product name are required");
       return;
     }
 
-    if (!formData.password.trim()) {
-      setError("Password is required");
+    if (!formData.productSize.trim()) {
+      setError("Size is required");
       return;
     }
 
-    if (formData.password.length < 6) {
-      setError("Password must be at least 6 characters");
-      return;
-    }
-
-    if (formData.password !== formData.confirmPassword) {
-      setError("Password and Confirm Password do not match");
+    if (!formData.productPrice.trim()) {
+      setError("Price product is required");
       return;
     }
 
@@ -62,22 +57,18 @@ export default function AddAdmin() {
       await addUser(data);
       setSuccess(true);
       setTimeout(() => {
-        navigate("/admin/members");
+        navigate("/admin/products");
       }, 1500);
     } catch (err) {
-      setError(err.message || "Failed to create admin");
+      setError(err.message || "Failed to create product");
     }
   };
 
   const handleClear = () => {
     setFormData({
-      userName: "",
-      userLast: "",
-      password: "",
-      confirmPassword: "",
-      email: "",
-      phoneNumber: "",
-      address: "",
+    productName: "",
+    productSize: "",
+    productPrice: "",
     });
 
     setError(null);
@@ -91,7 +82,7 @@ export default function AddAdmin() {
         className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
       >
         <ArrowLeft size={20} />
-        Back to Members
+        Back to Products
       </button>
 
       <div className="relative w-32 mx-auto">
@@ -114,32 +105,36 @@ export default function AddAdmin() {
 
       {success && (
         <div className="mt-6 p-3 bg-green-100 text-green-700 rounded-lg text-center">
-          Admin created successfully! Redirecting...
+          Product created successfully! Redirecting...
         </div>
       )}
 
       <form className="mt-20 space-y-6" onSubmit={handleSave}>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="text-sm font-medium">First Name:</label>
+            <label className="text-sm font-medium">Product Name:</label>
             <input
               type="text"
-              name="userName"
-              value={formData.userName}
+              name="productName"
+              value={formData.productName}
               onChange={handleInputChange}
               placeholder="Enter first name"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
           </div>
+        </div>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="text-sm font-medium">Last Name:</label>
+            <label className="text-sm font-medium">Size:</label>
             <input
-              type="text"
-              name="userLast"
-              value={formData.userLast}
+              type="size"
+              name="productSize"
+              value={formData.productSize}
+              minLength={6}
               onChange={handleInputChange}
-              placeholder="Enter last name"
+              placeholder="Enter product"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
@@ -148,70 +143,17 @@ export default function AddAdmin() {
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <div>
-            <label className="text-sm font-medium">Password:</label>
+            <label className="text-sm font-medium">Price:</label>
             <input
-              type="password"
-              name="password"
-              value={formData.password}
-              minLength={6}
-              onChange={handleInputChange}
-              placeholder="Enter password"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-              required
-            />
-          </div>
-          <div>
-            <label className="text-sm font-medium">Password Confirm:</label>
-            <input
-              type="password"
-              name="confirmPassword"
-              value={formData.confirmPassword}
-              minLength={6}
-              onChange={handleInputChange}
-              placeholder="Enter phone number"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-              required
-            />
-          </div>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          <div>
-            <label className="text-sm font-medium">Email:</label>
-            <input
-              type="email"
-              name="email"
-              value={formData.email}
+              type="price"
+              name="price"
+              value={formData.productPrice}
               onChange={handleInputChange}
               placeholder="Enter email"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
           </div>
-          <div>
-            <label className="text-sm font-medium">Mobile Number:</label>
-            <input
-              type="tel"
-              name="phoneNumber"
-              value={formData.phoneNumber}
-              onChange={handleInputChange}
-              pattern="[0-9]{10}"
-              placeholder="Enter phone number"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
-            />
-          </div>
-        </div>
-
-        <div>
-          <label className="text-sm font-medium">Address:</label>
-          <textarea
-            name="address"
-            value={formData.address}
-            onChange={handleInputChange}
-            placeholder="Enter address"
-            className="w-full mt-2 p-3 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800 resize-none"
-            rows="4"
-          ></textarea>
         </div>
 
         <div className="w-full flex gap-4 justify-center pt-4">

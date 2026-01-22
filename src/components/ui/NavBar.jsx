@@ -15,7 +15,7 @@ const adminLinks = [
   { label: "Revenue", to: "/admin/revenue" },
   { label: "Orders", to: "/admin/orders" },
   { label: "Members", to: "/admin/members" },
-  { label: "Before-edit", to: `/admin/edit-products/` },
+  { label: "Edit-product", to: `/admin/products/` },
 ];
 
 const Navbar = () => {
