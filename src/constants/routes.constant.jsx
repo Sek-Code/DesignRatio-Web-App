@@ -8,13 +8,14 @@ import AccountPage from '../page/userPage/account/AccountPage'
 import Checkout from '../page/userPage/checkout';
 import SignInPage from '../page/userPage/signin/SignInPage';
 import SignUpPage from '../page/userPage/signup/SignUpPage';
-import EditProductDetailPage from '../page/adminPage/editProductDetails/editProductsDetailPage';
+import EditProductDetailPage from '../page/adminPage/editProductDetails/notUse/editProductsDetailPage';
 import OrderManagementPage from '../page/adminPage/orderManagementPage/orederMagementPage';
 import RevenuePage from '../page/adminPage/revenuePage/RevenuePage';
-import EditP from '@/page/adminPage/editProductDetails/EditP';
+import EditP from '@/page/adminPage/editProductDetails/notUse/EditP';
 import MemberPage from '@/page/adminPage/memberPage/MemberPage';
 import EditMember from '@/page/adminPage/memberPage/EditMember';
 import AddAdmin from '@/page/adminPage/memberPage/AddAdmin';
+import AddProduct from '@/page/adminPage/editProductDetails/AddProduct';
 import AdminGuard from './adminGuard';
 
 const routes = [
@@ -43,6 +44,8 @@ const routes = [
           { path: 'admin/members', element: <MemberPage /> },
           { path: 'admin/members/:id', element: <EditMember /> },
           { path: 'admin/members/add-admin', element: <AddAdmin /> },
+          { path: 'admin/products/add-product/:id', element: <AddProduct /> },
+          { path: 'admin/products/add-product/', element: <AddProduct /> },
         ],
       }
     ],
