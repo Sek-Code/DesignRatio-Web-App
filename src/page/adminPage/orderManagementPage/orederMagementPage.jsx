@@ -15,6 +15,8 @@ const timer = setTimeout(() => {
 }, []);
 
 console.log(orders)
+
+
   return (
     <div className="w-full p-6 min-h-screen px-10 py-10 lg:px-37.5">
       <h1 className="lg:text-4xl text-(--color-brown) mb-10">Order Management</h1>
@@ -37,6 +39,7 @@ console.log(orders)
                 <td className="p-4">฿{orders.grandTotal.toLocaleString()}</td>
                 <td className="p-4">
                 <OrderStatusBadge status={orders.status_order.delivery_status} />
+                
                 </td>
                 <td className="p-4"> {orders.order_items.map(item => `${item.name} size ${item.size} x${item.quantity}`).join(', ')}</td>
               </tr>

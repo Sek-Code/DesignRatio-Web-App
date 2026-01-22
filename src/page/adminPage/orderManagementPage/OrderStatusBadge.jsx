@@ -1,15 +1,15 @@
 import React from 'react';
 
 const OrderStatusBadge = ({ status }) => {
-  const baseClasses = 'px-3 py-1 text-sm font-semibold rounded-full capitalize';
+  const baseClasses = 'inline-flex px-3 py-1 text-sm font-semibold rounded-full capitalize justify-center items-center min-w-[110px]';
   let statusClasses;
 
-  switch (status.toLowerCase()) {
-    case 'shipping':
-      statusClasses = 'bg-matcha text-white';
+  switch (status?.toLowerCase()) {
+    case 'shipped':
+      statusClasses = 'bg-[#9e9957] text-white';
       break;
     case 'preparing':
-      statusClasses = 'bg-cream text-brown';
+      statusClasses = 'bg-[#f3ece3] text-brown';
       break;
     case 'delivered':
       statusClasses = 'bg-green-200 text-green-800';
