@@ -8,7 +8,7 @@ import { Button } from "./button";
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
-  { label: "Product", to: "/products" },
+  { label: "Products", to: "/products" },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" }
 ];
