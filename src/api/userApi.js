@@ -71,17 +71,44 @@ export const login = async (email, password) => {
 };
 
 export const authUser = async () => {
-  const url = `${VITE_API_BASE_URL}/api/v2/users/auth/cookie/me`
+  const url = VITE_API_BASE_URL + "/api/v2/users/auth/cookie/me";
+
   try {
     const res = await axios.get(url, {
       withCredentials: true,
     });
     return res.data.user;
   } catch (error) {
-    console.error('Error checking auth:', error);
+    // Not logged in is an expected state; don't treat 401 as an app error
+    if (axios.isAxiosError(error) && error.response?.status === 401) {
+      return null;
+    }
+
+    console.error("Error checking auth:", error);
     throw error;
   }
 }
+
+export const uploadUserAvatar = async (file) => {
+  const url = `${VITE_API_BASE_URL}/api/upload/avatar`;
+
+  const form = new FormData();
+  form.append("file", file);
+
+  try {
+    const res = await axios.post(url, form, {
+      headers: {
+        "Content-Type": "multipart/form-data",
+      },
+    });
+
+    // { url, public_id }
+    return res.data;
+  } catch (error) {
+    console.error("Error uploading avatar:", error);
+    throw error;
+  }
+};
 
 export const logout = async () => {
   const url = `${VITE_API_BASE_URL}/api/v2/users/auth/cookie/logout`

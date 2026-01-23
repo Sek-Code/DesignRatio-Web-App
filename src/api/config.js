@@ -28,4 +28,4 @@
  * - Development:  'http://localhost:3000'
  * - Production:   'https://api.designratio.com'
  */
-export const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || 'http://localhost:3000';
+export const VITE_API_BASE_URL = import.meta.env.VITE_API_BASE_URL || "";
