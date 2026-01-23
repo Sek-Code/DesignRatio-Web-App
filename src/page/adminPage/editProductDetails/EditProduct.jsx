@@ -111,14 +111,14 @@ export default function EditProduct() {
     <div className="max-w-5xl mx-auto py-12">
       <button
         onClick={() => navigate(`/admin/edit-products`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
+        className="flex items-center gap-2 hover:text-(--color-brown) transition mb-6"
       >
         <ArrowLeft size={20} />
         Back to Products
       </button>
 
       <div className="relative w-32 mx-auto">
-        <div className="mt-10 w-32 h-32 rounded-full border-4 border-amber-800 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <div className="mt-10 w-32 h-32 rounded-full border-4 border-(--color-brown) bg-gray-100 flex items-center justify-center overflow-hidden">
           {formData.profileImage ? (
             <img src={formData.profileImage} alt="Profile" className="w-full h-full object-cover" />
           ) : (
@@ -127,9 +127,9 @@ export default function EditProduct() {
         </div>
         <button
           type="button"
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
+          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-(--color-brown) hover:text-white"
         >
-          ���
+          Upload
         </button>
       </div>
 
@@ -155,7 +155,7 @@ export default function EditProduct() {
               value={formData.productName}
               onChange={handleInputChange}
               placeholder="Enter first name"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-(--color-brown)"
               required
             />
           </div>
@@ -170,7 +170,7 @@ export default function EditProduct() {
               value={formData.productSize}
               onChange={handleInputChange}
               placeholder="Enter email"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-(--color-brown)"
               required
             />
           </div>
@@ -182,7 +182,7 @@ export default function EditProduct() {
               value={formData.productPrice}
               onChange={handleInputChange}
               placeholder="Enter phone number"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-(--color-brown)"
             />
           </div>
         </div>
@@ -192,7 +192,7 @@ export default function EditProduct() {
           <button
             type="submit"
             disabled={isSaving}
-            className="button-style px-16 py-1.5 bg-amber-800 text-white rounded-3xl hover:bg-amber-900 transition disabled:opacity-50"
+            className="button-style px-16 py-1.5 bg-(--color-brown) text-white rounded-3xl hover:bg-(--color-brown) transition disabled:opacity-50"
           >
             {isSaving ? "Saving..." : "Save"}
           </button>
