@@ -26,7 +26,7 @@ export default function ProductTable() {
   if (loading) return <div className="text-center py-8">Loading...</div>;
 
   return (
-    <div className="py-3">
+    <div className="py-3 rounded-lg">
       <table className="w-full border-separate border-spacing-y-2">
         <thead className="text-[#9e9957]">
           <tr className="text-center font-bold">

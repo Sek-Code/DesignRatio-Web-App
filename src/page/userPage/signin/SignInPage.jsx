@@ -131,7 +131,7 @@ export default function SignInPage() {
           {/* Buttons */}
           <div className="flex justify-center gap-4">
             <button
-              className="my-4 bg-gray-300 w-32 py-2 rounded-3xl text-white font-bold cursor-pointer hover:bg-(--color-matcha)"
+              className="my-4 w-32 py-2 rounded-3xl text-white font-bold cursor-pointer bg-(--color-matcha)"
               type="submit"
 
               disabled={loading}

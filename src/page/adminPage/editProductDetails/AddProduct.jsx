@@ -72,24 +72,24 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="w-full mx-auto py-12">
+    <div className="w-full mx-auto py-12 lg:px-37.5">
       <button
         onClick={() => navigate(`/admin/edit-products`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6 mx-20"
+        className="cursor-pointer flex items-center gap-2 hover:text-(--color-brown) transition mb-6 mx-20"
       >
         <ArrowLeft size={20} />
         Back to Products
       </button>
 
       <div className="relative w-32 mx-auto">
-        <div className="mt-10 w-32 h-32 rounded-full border-4 border-amber-800 bg-gray-100 flex items-center justify-center overflow-hidden">
+        <div className="mt-10 w-32 h-32 rounded-full border-4 border-(--color-brown) bg-gray-100 flex items-center justify-center overflow-hidden">
           <span className="text-gray-400">No Image</span>
         </div>
         <button
           type="button"
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
+          className="absolute bottom-1 left-10 bg-white border p-1 rounded-full shadow hover:bg-(--color-brown) hover:text-white px-6"
         >
-          ���
+          Upload
         </button>
       </div>
 
@@ -108,14 +108,14 @@ export default function AddProduct() {
       <form className="mt-20 mx-20 space-y-6" onSubmit={handleSave}>
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
-            <label className="text-sm font-medium">Product Name:</label>
+            <label className="lg:text-xl font-medium">Product Name:</label>
             <input
               type="text"
               name="productName"
               value={formData.productName}
               onChange={handleInputChange}
               placeholder="Enter name product"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-(--color-brown)"
               required
             />
           </div>
@@ -123,14 +123,14 @@ export default function AddProduct() {
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
-            <label className="text-sm font-medium">Size:</label>
+            <label className="lg:text-xl font-medium">Size:</label>
             <input
               type="text"
               name="productSize"
               value={formData.productSize}
               onChange={handleInputChange}
               placeholder="Enter size product"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-(--color-brown)"
               required
             />
           </div>
@@ -138,14 +138,14 @@ export default function AddProduct() {
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
-            <label className="text-sm font-medium">Price:</label>
+            <label className="lg:text-xl font-medium">Price:</label>
             <input
               type="number"
               name="productPrice"
               value={formData.productPrice}
               onChange={handleInputChange}
               placeholder="Enter price product"
-              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
+              className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-(--color-brown)"
               required
             />
           </div>
@@ -155,7 +155,7 @@ export default function AddProduct() {
           <button
             type="submit"
             disabled={loading}
-            className="button-style px-16 py-1.5 bg-amber-800 text-white rounded-3xl hover:bg-amber-900 transition disabled:opacity-50"
+            className="button-style px-16 py-1.5 bg-(--color-brown) text-white rounded-3xl hover:bg-amber-900 transition disabled:opacity-50"
           >
             {loading ? "Saving..." : "Save"}
           </button>
