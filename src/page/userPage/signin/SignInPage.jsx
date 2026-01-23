@@ -114,7 +114,7 @@ export default function SignInPage() {
             />
           </div>
 
-          {/* Remember + Forgot */}
+          {/* Remember + Forgot
           <div className="flex my-6">
             <div className="w-1/2">
               <input type="checkbox" name="rememberMe" id="rememberMe" />
@@ -126,7 +126,7 @@ export default function SignInPage() {
             <div className="w-1/2 text-right">
               <a href="#" className="hover:underline cursor-pointer">Forgot password</a>
             </div>
-          </div>
+          </div> */}
 
           {/* Buttons */}
           <div className="flex justify-center gap-4">
@@ -147,7 +147,7 @@ export default function SignInPage() {
           </div>
 
           {/* Google */}
-          <button
+          {/* <button
             type="button"
             className="cursor-pointer bg-white w-full py-2 rounded-md text-(--color-brown) font-bold flex items-center justify-center gap-3 border border-(--color-brown) my-4 hover:bg-(--color-brown) hover:text-white"
           >
@@ -157,10 +157,10 @@ export default function SignInPage() {
               alt="Google"
             />
             Log In with Google
-          </button>
+          </button> */}
 
           {/* Facebook */}
-          <button
+          {/* <button
             type="button"
             className="cursor-pointer bg-(--color-brown) w-full py-2 rounded-md text-white font-bold flex items-center justify-center gap-3 my-4 hover:bg-(--color-matcha)"
           >
@@ -170,7 +170,7 @@ export default function SignInPage() {
               alt="Facebook"
             />
             Log In with Facebook
-          </button>
+          </button> */}
 
         </div>
       {error && (

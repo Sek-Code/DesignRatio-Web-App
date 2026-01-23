@@ -36,6 +36,7 @@ function CardItem({ product, onCardClick}) {
     addToCart(product, count, selectedSize);
     alert("Added to cart!");
   };
+  console.log(product)
 
   return (
     <div
