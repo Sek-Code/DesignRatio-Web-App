@@ -35,7 +35,8 @@ const Navbar = () => {
   const profileAriaLabel = currentUser ? "Profile" : "Sign In";
 
   // Show admin links only if user is logged in
-  const showAdminLinks = (currentUser.role === "admin");
+  const showAdminLinks = currentUser?.role === "admin";
+
 
   console.log(currentUser)
   const handleLogout = async () => {
