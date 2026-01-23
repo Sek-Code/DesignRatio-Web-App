@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X, LogOut } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
@@ -8,7 +8,7 @@ import { Button } from "./button";
 
 const navLinks = [
   { label: "Blending", to: "/blending" },
-  { label: "Product", to: "/products" },
+  { label: "Products", to: "/products" },
   { label: "About Us", to: "/about" },
   { label: "Contact", to: "/contact" }
 ];
@@ -37,6 +37,7 @@ const Navbar = () => {
   // Show admin links only if user is admin
   const showAdminLinks = currentUser?.role === "admin";
 
+  console.log(currentUser)
   const handleLogout = async () => {
     try {
       await logoutUser();

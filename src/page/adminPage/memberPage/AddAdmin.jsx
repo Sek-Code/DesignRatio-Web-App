@@ -173,7 +173,7 @@ export default function AddAdmin() {
               value={formData.confirmPassword}
               minLength={6}
               onChange={handleInputChange}
-              placeholder="Enter phone number"
+              placeholder="Confirm password"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />

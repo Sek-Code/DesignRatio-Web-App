@@ -155,7 +155,7 @@ export default function EditProduct() {
     <div className="max-w-5xl mx-auto py-12">
       <button
         onClick={() => navigate(`/admin/edit-products`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
+        className="flex items-center gap-2 hover:text-(--color-brown) transition mb-6"
       >
         <ArrowLeft size={20} />
         Back to Products

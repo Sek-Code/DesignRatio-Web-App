@@ -185,10 +185,10 @@ export default function AddProduct() {
   };
 
   return (
-    <div className="w-full mx-auto py-12">
+    <div className="w-full mx-auto py-12 lg:px-37.5">
       <button
         onClick={() => navigate(`/admin/edit-products`)}
-        className="flex items-center gap-2 hover:text-amber-800 transition mb-6 mx-20"
+        className="cursor-pointer flex items-center gap-2 hover:text-(--color-brown) transition mb-6 mx-20"
       >
         <ArrowLeft size={20} />
         Back to Products
@@ -270,7 +270,7 @@ export default function AddProduct() {
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
-            <label className="text-sm font-medium">Product Name:</label>
+            <label className="lg:text-xl font-medium">Product Name:</label>
             <input
               type="text"
               name="productName"
@@ -318,7 +318,7 @@ export default function AddProduct() {
 
         <div className="grid grid-cols-1 md:grid-cols-1 gap-6">
           <div>
-            <label className="text-sm font-medium">Price:</label>
+            <label className="lg:text-xl font-medium">Price:</label>
             <input
               type="number"
               name="productPrice"
