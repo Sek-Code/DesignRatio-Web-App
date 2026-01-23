@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+﻿import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { Home, User, ShoppingCart, Menu, X, LogOut } from "lucide-react";
 import logoMark from "@/assets/img/Design-Ratio-logo.png";
@@ -35,8 +35,9 @@ const Navbar = () => {
   const profileAriaLabel = currentUser ? "Profile" : "Sign In";
 
   // Show admin links only if user is logged in
-  const showAdminLinks = !!currentUser;
+  const showAdminLinks = (currentUser.role === "admin");
 
+  console.log(currentUser)
   const handleLogout = async () => {
     try {
       await logoutUser();
