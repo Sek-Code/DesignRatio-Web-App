@@ -154,7 +154,7 @@ export default function EditProduct() {
               name="productName"
               value={formData.productName}
               onChange={handleInputChange}
-              placeholder="Enter first name"
+              placeholder="Enter product name"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
@@ -169,7 +169,7 @@ export default function EditProduct() {
               name="productSize"
               value={formData.productSize}
               onChange={handleInputChange}
-              placeholder="Enter email"
+              placeholder="Enter size"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
               required
             />
@@ -181,7 +181,7 @@ export default function EditProduct() {
               name="productPrice"
               value={formData.productPrice}
               onChange={handleInputChange}
-              placeholder="Enter phone number"
+              placeholder="Enter pricer"
               className="w-full mt-2 p-2 rounded-3xl bg-[#F2EDE4] border border-transparent focus:outline-none focus:border-amber-800"
             />
           </div>
