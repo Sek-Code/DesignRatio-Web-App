@@ -9,6 +9,10 @@ function CardItem({ product, onCardClick}) {
   const [selectedSize, setSelectedSize] = useState(null)
   const addToCart = useCartStore((state) => state.addToCart);
 
+  const resolvedImageSrc = (
+    typeof product.image === "string" ? product.image.trim() : product.image
+  ) || null;
+
   // แปลง variants → sizes object
   const sizes = product.variants?.reduce((acc, variant) => {
     acc[variant.size] = { 
@@ -46,11 +50,19 @@ function CardItem({ product, onCardClick}) {
       }}
     >
       <div className="">
-        <img
-          src={product.image}
-          alt={product.name}
-          className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover"
-        />
+        {resolvedImageSrc ? (
+          <img
+            src={resolvedImageSrc}
+            alt={product.name}
+            className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg object-cover"
+          />
+        ) : (
+          <div
+            className="w-60 h-60 rounded-tl-[35%] rounded-br-[35%] shadow-lg bg-gray-100"
+            role="img"
+            aria-label={`${product.name} image unavailable`}
+          />
+        )}
       </div>
 
       <h3 className="h3-style pt-5 pb-4 text-(--color-brown) truncate w-full text-center ">

@@ -170,6 +170,9 @@ export default function Checkout() {
                     {/* Product Info */}
                     <div className="flex-1 min-w-0">
                       <h3 className="font-semibold text-[#411D03]">{item.name}</h3>
+                      {item.type !== 'custom' && item.size && (
+                        <p className="text-xs text-gray-600">Size: {item.size}</p>
+                      )}
                       {item.type === 'custom' && item.ingredients && (
                         <p className="text-xs text-gray-600">
                           Ingredients: {item.ingredients.join(', ')}

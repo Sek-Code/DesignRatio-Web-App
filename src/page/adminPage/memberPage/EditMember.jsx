@@ -1,13 +1,15 @@
-import { useState, useEffect } from "react";
-import { useParams, useNavigate } from "react-router-dom";
-import { ArrowLeft } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import { useNavigate, useParams } from "react-router-dom";
+import { ArrowLeft, Pencil } from "lucide-react";
 import { useUserStore } from "@/store/userStore";
+import { uploadUserAvatar } from "@/api/userApi";
 
 export default function EditMember() {
   const { id } = useParams();
   const navigate = useNavigate();
-  // ดึง functions และ state จาก store (editUser จะเรียก API PATCH /users/:id)
   const { users, editUser, loadUsers, loading } = useUserStore();
+
+  const fileInputRef = useRef(null);
 
   const [formData, setFormData] = useState({
     userName: "",
@@ -15,22 +17,20 @@ export default function EditMember() {
     email: "",
     phoneNumber: "",
     address: "",
+    avatarUrl: "",
   });
 
   const [isSaving, setIsSaving] = useState(false);
+  const [isUploading, setIsUploading] = useState(false);
   const [error, setError] = useState(null);
   const [success, setSuccess] = useState(false);
 
-  // API Call #1: ดึงข้อมูลผู้ใช้ทั้งหมด (GET /api/v2/users/)
-  // ทำงาน: เรียก loadUsers() ถ้า users array ยังว่าง
   useEffect(() => {
     if (!users.length) {
       loadUsers();
     }
-  }, []);
+  }, [users.length, loadUsers]);
 
-  // API Call #2 (Indirect): ใช้ข้อมูลจาก API เพื่อหา user ตาม ID จาก URL
-  // ทำงาน: ค้นหา user ในรายการ แล้ว populate form ด้วยข้อมูลเก่า
   useEffect(() => {
     const user = users.find((u) => u._id === id);
     if (user) {
@@ -40,6 +40,7 @@ export default function EditMember() {
         email: user.email || "",
         phoneNumber: user.phoneNumber || "",
         address: user.address || "",
+        avatarUrl: user.avatarUrl || user.img || "",
       });
     }
   }, [users, id]);
@@ -54,12 +55,35 @@ export default function EditMember() {
     setSuccess(false);
   };
 
-  // API Call #3: ส่งข้อมูลแก้ไขไปยัง server (PATCH /api/v2/users/:id)
-  // ทำงาน: เรียก editUser(id, formData) เมื่อกดปุ่ม Save
+  const handlePickAvatar = () => {
+    fileInputRef.current?.click();
+  };
+
+  const handleAvatarSelected = async (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+
+    setError(null);
+    setSuccess(false);
+    setIsUploading(true);
+
+    try {
+      const uploaded = await uploadUserAvatar(file);
+      setFormData((prev) => ({
+        ...prev,
+        avatarUrl: uploaded?.url || "",
+      }));
+    } catch (err) {
+      setError(err?.message || "Failed to upload image");
+    } finally {
+      setIsUploading(false);
+      e.target.value = "";
+    }
+  };
+
   const handleSave = async (e) => {
     e.preventDefault();
-    
-    // Validation
+
     if (!formData.userName.trim() || !formData.userLast.trim()) {
       setError("First name and last name are required");
       return;
@@ -71,15 +95,24 @@ export default function EditMember() {
     }
 
     setIsSaving(true);
+    setError(null);
+
     try {
-      // ← API PATCH ถูกเรียกที่นี่ผ่าน editUser() function
-      await editUser(id, formData);
+      await editUser(id, {
+        userName: formData.userName,
+        userLast: formData.userLast,
+        email: formData.email,
+        phoneNumber: formData.phoneNumber,
+        address: formData.address,
+        avatarUrl: formData.avatarUrl,
+      });
+
       setSuccess(true);
       setTimeout(() => {
         navigate("/admin/members");
-      }, 1500);
+      }, 1200);
     } catch (err) {
-      setError(err.message || "Failed to update member");
+      setError(err?.message || "Failed to update member");
     } finally {
       setIsSaving(false);
     }
@@ -94,6 +127,7 @@ export default function EditMember() {
         email: user.email || "",
         phoneNumber: user.phoneNumber || "",
         address: user.address || "",
+        avatarUrl: user.avatarUrl || user.img || "",
       });
     }
     setError(null);
@@ -111,7 +145,7 @@ export default function EditMember() {
   return (
     <div className="max-w-5xl mx-auto py-12">
       <button
-        onClick={() => navigate(`/admin/members`)}
+        onClick={() => navigate("/admin/members")}
         className="flex items-center gap-2 hover:text-amber-800 transition mb-6"
       >
         <ArrowLeft size={20} />
@@ -120,24 +154,35 @@ export default function EditMember() {
 
       <div className="relative w-32 mx-auto">
         <div className="mt-10 w-32 h-32 rounded-full border-4 border-amber-800 bg-gray-100 flex items-center justify-center overflow-hidden">
-          {formData.profileImage ? (
-            <img src={formData.profileImage} alt="Profile" className="w-full h-full object-cover" />
+          {formData.avatarUrl ? (
+            <img src={formData.avatarUrl} alt="Avatar" className="w-full h-full object-cover" />
           ) : (
             <span className="text-gray-400">No Image</span>
           )}
         </div>
+
+        <input
+          ref={fileInputRef}
+          type="file"
+          accept="image/*"
+          onChange={handleAvatarSelected}
+          className="hidden"
+        />
+
         <button
           type="button"
-          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white"
+          onClick={handlePickAvatar}
+          disabled={isUploading}
+          className="absolute bottom-1 right-1 bg-white border p-1 rounded-full shadow hover:bg-amber-800 hover:text-white disabled:opacity-50"
+          aria-label="Upload avatar"
+          title="Upload avatar"
         >
-          Upload
+          <Pencil size={16} />
         </button>
       </div>
 
       {error && (
-        <div className="mt-6 p-3 bg-red-100 text-red-700 rounded-lg text-center">
-          {error}
-        </div>
+        <div className="mt-6 p-3 bg-red-100 text-red-700 rounded-lg text-center">{error}</div>
       )}
 
       {success && (
@@ -215,7 +260,7 @@ export default function EditMember() {
         <div className="flex gap-4 justify-center pt-4">
           <button
             type="submit"
-            disabled={isSaving}
+            disabled={isSaving || isUploading}
             className="button-style px-16 py-1.5 bg-amber-800 text-white rounded-3xl hover:bg-amber-900 transition disabled:opacity-50"
           >
             {isSaving ? "Saving..." : "Save"}
